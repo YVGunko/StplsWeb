@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Прайс.</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    </head>
+    <body>
+       <div th:switch="${price}" class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 th:case="null">Список пуст!</h2>
+                    <div th:case="*">
+                        <h2 class="my-5">Прайс. <span th:text="${priceFilter.sample} ? 'Образцы.' : 'Серия.'"></span></h2>
+                        <hr>
+                        <form action="#" th:action="@{__${#httpServletRequest.requestURI}__}" th:object="${priceFilter}" method="post">
+                        		<div class="form-row col-md-auto">
+								<label for="sample"  class="form-control-sm">Образцы</label>
+								<input class="form-control-sm" type="checkbox" name="sample" th:field="*{sample}" th:value="${priceFilter.sample}"/>
+								<button type="submit" name="action" value="filter" class="form-control-sm"> >> </button>
+							</div>
+                        		<div class="form-row col-md-auto">
+                               	<label for="priceType.name" class="form-control-sm"> Выбор прайса </label>
+								<select  id="priceType" class="form-control-sm" name="priceType" th:field="*{priceType.id}" >
+									<option th:each="priceType : ${priceTypes}" th:value="${priceType.id}" th:utext="${priceType.name}"/>
+								</select>
+					    			<button type="submit" name="action" value="filter" class="form-control-sm"> >> </button>
+					    		</div>
+							<div class="form-row col-md-auto">
+                                	<label for="priceRoot.desc" class="form-control-sm"> Дата прайса </label>
+								<select  id="priceRoot" class="form-control-sm" name="priceRoot" th:field="*{priceRoot.id}" >
+									<option th:each="priceRoot : ${priceRoots}" th:value="${priceRoot.id}" th:utext="${priceRoot.desc}"/>
+								</select>
+								<button type="submit" name="action" value="filter" class="form-control-sm"> >> </button>
+							</div>
+							<div class="form-row col-md-auto">
+								<label for="name" class="form-control-sm" title ="Поиск"> Поиск </label>
+								<input type="text" class="form-control-sm" th:field="*{name}"/>
+
+					    			<button type="submit" name="action" value="filter" class="form-control-sm"> >> </button>									
+	                        </div>
+                        </form>
+                        <br>
+                        <table class="table table-striped table-responsive-md text-nowrap">
+                            <thead>
+                                <tr>
+			                        <th>Наименование</th>
+			                        <th>Рант</th>
+			                        <th>Подкл/Шпал</th>
+			                        <th:block th:if="${not #lists.isEmpty(price)}">
+				                        <th:block  th:each="pp : ${price[0].strHeader}">
+					                        <th th:text="${pp}">
+				                        </th:block>
+									</th:block>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="p : ${price}">
+				                    <td th:text="${#strings.toUpperCase(p.name)}"></td>
+				                    <td th:text="${p.rant}"></td>
+				                    <td th:text="${p.shpalt}"></td>
+				                        <th:block  th:each="pc : ${p.column}">
+					                        <td th:text="${pc.columnPrice}"></td>
+				                        </th:block>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>                      
+                </div>
+            </div>
+           </div> 
+
+    </body>
+</html>

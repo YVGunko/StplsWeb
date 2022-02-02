@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Редактировать наименование</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    </head>
+
+	<body>
+        <div class="container md-5 justify-content-center">
+            <h2 class="md-5">Редактирование строки прайса</h2>
+            <div class="row">
+                <div class="col-md-auto">
+                    <form action="#" th:action="@{/updPrice/{id}(id=${price.id})}" th:object="${price}" method="post">
+                        <div class="row">
+                            <div class="form-row col-md-auto">
+								<label for="sample"  class="form-control-lg">Образeц</label>
+								<input class="form-control-lg" type="checkbox" name="sample" th:field="*{sample}" th:value="${sample}" disabled="disabled"/>
+								<input class="form-control-lg" type="hidden" name="sample" th:field="*{sample}" th:value="${sample}">
+							</div>
+                            <div class="form-group col-md-auto">
+                                <label for="name" class="col-form-label">Наименование подошвы</label>
+                                <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Наименование подошвы">
+                                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-auto">
+                                <label for="priceType.name" class="col-form-label">Вид прайса</label>
+								<select  id="priceType" name="priceType" th:field="*{priceType.id}" >
+								<option th:each="priceType : ${priceTypes}" th:value="${priceType.id}" th:utext="${priceType.name}"/>
+								</select>
+                            </div>
+                            <div class="form-group col-md-auto">
+                            		<label for="bRant" class="col-form-label">Рант</label>
+                            		<input type="checkbox" name="bRant" th:field="*{bRant}" />
+                            </div>
+                            <div class="form-group col-md-auto">
+                            		<label for="bLiner" class="col-form-label">Подкл/Шпал</label>
+                            		<input type="checkbox" name="bLiner" th:field="*{bLiner}" />
+                            </div>
+                            <div class="form-group col-md-auto">
+                                <label for="weight" class="col-form-label">Вес</label>
+                                <input type="number" min="0.001" step="0.001" th:field="*{weight}" class="form-control" id="weight" placeholder="Вес, кг.">
+                                <span th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-auto">
+                                <label for="number_per_box" class="col-form-label">Пар в коробке</label>
+                                <input type="number" min="1" step="1" th:field="*{number_per_box}" class="form-control" id="number_per_box" placeholder="Пар в коробке">
+                                <span th:if="${#fields.hasErrors('number_per_box')}" th:errors="*{number_per_box}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-auto">                              
+                                <input type="hidden" th:field="*{costs}" class="form-control" id="costs">
+                                <input type="hidden" th:field="*{paint}" class="form-control" id="paint">
+                                <input type="hidden" th:field="*{rant}" class="form-control" id="rant">
+                                <input type="hidden" th:field="*{shpalt}" class="form-control" id="shpalt">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-auto">
+                                <input type="submit" class="btn btn-primary" value="Сохранить">
+                            </div>
+                        </div>    
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+	</body>
+</html>

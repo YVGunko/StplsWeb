@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<script>
+		function printDiv(divName) {
+			var css = '@page { size: landscape; }',
+    			head = document.head || document.getElementsByTagName('head')[0],
+    			style = document.createElement('style');
+
+			style.type = 'text/css';
+			style.media = 'print';
+			
+			if (style.styleSheet){
+			  style.styleSheet.cssText = css;
+			} else {
+			  style.appendChild(document.createTextNode(css));
+			}
+			
+			head.appendChild(style);
+		    window.print();
+		}
+	</script>
+	
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Выборка заказов</title>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
+    </head>
+
+  	<body>
+    		<div class="container-fluid">
+			<div id="printableArea">
+			<h2 class="my-5">Выборка заказов</h2>
+    			<table class="table table-striped table-responsive-md">
+
+    				<thead>
+					<tr>
+						<form action="#" th:action="@{/viewOrdersGroup}" th:object="${ogFilter}" method="post">
+							<td>
+							</td>
+							<td>
+								<label for="orderText" class="col-form-label">№ заказа</label>
+									<input type="text" th:field="*{orderText}"/>
+							</td>
+							<td>
+								<label for="customer" class="col-form-label">Получатель</label>
+									<input type="text" th:field="*{customer}"/>
+							</td>
+							<td>
+ 					    			<button type="submit" name="action" value="filter" class="btn btn-primary">Выбрать</button>
+							</td>
+						</form>
+					</tr>
+
+		          <tr>
+		            <th>Дата</th>
+		            <th>№ заказа</th>
+		            	<th>Получатель</th>
+		            	<th>Подразделение</th>	
+		          </tr>
+       			</thead>
+
+        			<tbody>
+					<tr th:each="order : ${orders}">				
+					  <td th:text="${order.sdate}"></td>
+					  <td th:text="${order.orderText}"></td>
+					  <td th:text="${order.customer}"></td>
+					  <td th:text="${order.divisionName}"></td>
+					  <td><a th:href="@{/viewOrderById/{orderText}(id=${order.orderText})}" class="btn btn-primary">Смотреть</a></td>
+					</tr>
+        			</tbody>
+
+      		</table>
+    			</div>
+		<input type="button" onclick="printDiv('printableArea')" class="btn btn-primary" value="Распечатать" />
+    </div>
+
+  </body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Редактировать сырье</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    </head>
+
+	<body>
+        <div class="container my-5">
+            <h2 class="mb-5">Редактировать сырье</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <form action="#" th:action="@{/updCrude/{id}(id=${crude.id})}" th:object="${crude}" method="post">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="crudeName" class="col-form-label">Наименование сырья</label>
+                                <input type="text" th:field="*{crudeName}" class="form-control" id="crudeName" placeholder="Наименование материала">
+                                <span th:if="${#fields.hasErrors('crudeName')}" th:errors="*{crudeName}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="columnName" class="col-form-label">Наим. колонки прайса</label>
+                                <input type="text" th:field="*{columnName}" class="form-control" id="columnName" placeholder="Наим. колонки прайса">
+                                <span th:if="${#fields.hasErrors('columnName')}" th:errors="*{columnName}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="crudeCost" class="col-form-label">Стоимость сырья, руб/кг</label>
+                                <input type="text" th:field="*{crudeCost}" class="form-control" id="crudeCost" placeholder="Стоимость сырья, руб/кг">
+                                <span th:if="${#fields.hasErrors('crudeCost')}" th:errors="*{crudeCost}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="crudePlus" class="col-form-label">Наценка для расчета себестоимости, если стоимлсть сырья 0</label>
+                                <input type="text" th:field="*{crudePlus}" class="form-control" id="crudePlus" placeholder="Наценка для расчета себестоимости">
+                                <span th:if="${#fields.hasErrors('crudePlus')}" th:errors="*{crudePlus}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="crudeExtra" class="col-form-label">Наценка, руб</label>
+                                <input type="text" th:field="*{crudeExtra}" class="form-control" id="crudeExtra" placeholder="Наценка, руб">
+                                <span th:if="${#fields.hasErrors('crudeExtra')}" th:errors="*{crudeExtra}" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mt-5">
+                                <input type="submit" class="btn btn-primary" value="Сохранить">
+                            </div>
+                        </div>    
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+	</body>
+</html>

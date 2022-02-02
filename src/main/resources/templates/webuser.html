@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Users</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    </head>
+    <body>
+        <div th:switch="${users}" class="container my-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 th:case="null">Список пуст!</h2>
+                    <div th:case="*">
+                        <h2 class="my-5">Пользователи</h2>
+                        <table class="table table-striped table-responsive-md text-nowrap">
+                            <thead>
+                                <tr>
+			                        <th>
+<a th:href="@{'/admin/getUser/page/' + ${currentPage} + '?sort-field=name&sort-dir=' + ${reverseSortDir}}" th:text="${sortDir=='asc'} ? 'Имя &#11015; ' : 'Имя &#11014;'">Имя</a>
+            							</th>
+			                        <th>Пароль</th>
+
+			                        <th>
+<a th:href="@{'/admin/getUser/page/' + ${currentPage} + '?sort-field=superUser&sort-dir=' + ${reverseSortDir}}" th:text="${sortDir=='asc'} ? 'Супер &#11015; ' : 'Супер &#11014;'">Супер</a>
+            							</th>			                        
+			                        <th>
+<a th:href="@{'/admin/getUser/page/' + ${currentPage} + '?sort-field=external&sort-dir=' + ${reverseSortDir}}" th:text="${sortDir=='asc'} ? 'Внешний &#11015; ' : 'Внешний &#11014;'">Внешний</a>			                     
+			                        </th>
+			                        <th>Сотрудник</th>
+			                        <th>Edit</th>
+			                        <th>Delete</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr th:each="user_ : ${users}">
+				                    <td th:text="${user_.name}"></td>
+				                    <td th:text="${user_.pswd}"></td>
+				                    <td th:text="${user_.superUser} ? 'Да' : 'Нет'"></td>
+				                    <td th:text="${user_.external} ? 'Да' : 'Нет'"></td>
+				                    <td th:text="${user_.employee.name}"></td>
+                                    <td><a th:href="@{/admin/editUser/{id}(id=${user_.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
+                                    <td><a th:href="@{/admin/deleteUser/{id}(id=${user_.id})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                            <!-- pagination control -->
+    <div th:if="${totalPages > 1}">
+        <div class="row">
+            <div class="col-10">
+                Всего пользователей: <strong>[[${totalItems}]]</strong>
+            </div>
+        </div>
+        <div class="row">
+	         <div class="col-3">
+	             Страницы:
+	         </div>
+	         <div class="col-4">
+	                 <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+	                     <a th:href="@{'' + ${i} + '?sort-field=' + ${sortField} + '&sort-dir=' + ${sortDir}}"
+	                        th:if="${currentPage != i}">[[${i}]]</a>
+	                     <span th:unless="${currentPage != i}">[[${i}]]</span>
+	                 </span>
+	         </div>
+	         <div class="col-2">
+	             <a th:href="@{'' + ${currentPage + 1} + '?sort-field=' + ${sortField} + '&sort-dir=' + ${sortDir}}"
+	                th:if="${currentPage < totalPages}">
+	                 &#10509;
+	             </a>
+	             <span th:unless="${currentPage < totalPages}">&#10509;</span>
+	         </div>
+	         <div class="col-2">
+	             <a th:href="@{'' + ${totalPages} + '?sort-field=' + ${sortField} + '&sort-dir=' + ${sortDir}}"
+	                th:if="${currentPage < totalPages}">
+	                 &rarrb;
+	             </a>
+	             <span th:unless="${currentPage < totalPages}">&rarrb;</span>
+	         </div>
+        </div>
+        
+    </div>
+                    </div>      
+                    <p class="my-5"><a href="/admin/signUser" class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a></p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

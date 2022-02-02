@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<script>
+		function printDiv(divName) {
+		     var printContents = document.getElementById(divName).innerHTML;
+		     var originalContents = document.body.innerHTML;
+		
+		     document.body.innerHTML = printContents;
+		
+		     window.print();
+		
+		     document.body.innerHTML = originalContents;
+		}
+	</script>
+	
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Заказы в производстве</title>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
+    </head>
+
+  	<body>
+    		<div class="container-fluid">
+			<div id="printableArea">
+			<h2 class="my-5">Заказы в производстве за период:</h2>
+    			<table class="table table-striped table-responsive-md">
+
+    				<thead>
+					<tr>
+						<form action="#" th:action="@{/viewProcessingOrders}" th:object="${filter}" method="post">
+							<td>
+
+								<label for="dateS" class="col-form-label">Начало периода </label>
+									<input type="date" th:field="*{dateS}" />
+								
+								<label for="dateE" class="col-form-label">Окончание периода </label>
+									<input type="date" th:field="*{dateE}" />
+
+					    			<button type="submit" name="action" value="filter" class="btn btn-primary">Выбрать</button>
+							</td>
+						</form>
+					</tr>
+
+		          <tr>
+		            <th>Участок</th>
+		            <th>Выработано, кор.</th>
+		            	<th>Выработано, пар.</th>
+
+		          </tr>
+       			</thead>
+
+        			<tbody>
+					<tr th:each="orderMoveRep : ${orderMoveReps}">				
+					  <td th:text="${orderMoveRep.moveName}"></td>
+					  <td th:text="${orderMoveRep.box}"></td>
+					  <td th:text="${orderMoveRep.prod}"></td>
+					  <td><a th:target="_blank" th:href="@{/viewOrdersGroup/id/{id}/date/{date}(id=${orderMoveRep.moveId},date=${filter.dateS})}" class="btn btn-primary">Смотреть</a></td>
+					</tr>
+        			</tbody>
+
+      		</table>
+    			</div>
+		<input type="button" onclick="printDiv('printableArea')" class="btn btn-primary" value="Распечатать" />
+    </div>
+
+  </body>
+
+</html>

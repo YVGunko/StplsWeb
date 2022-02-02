@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>eMail from Stil-Plast.</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'/>
+
+    <!-- use the font -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+        }
+    </style>
+</head>
+ <body>
+    <h2 class="my-5">Это автоматическое оповещение о создании новой строки прайса: <span th:text="${name}"></span>. </h2>
+           <div th:switch="${pcRows}" class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 th:case="null">Содержимое отсутствует :(</h2>
+                    <div th:case="*">
+                        <h3 class="my-5"><span th:if="${sample}">Образец</span>. </h3>
+                        <h3 class="my-5">Тип прайса: <span th:text="${priceType}"></span>. </h3>
+                        
+                        <h3 class="my-5">Общие расходы: <span th:text="${costs}"></span>,руб. </h3>
+						<h3 class="my-5">Стоимость покраски: <span th:text="${paint}"></span>,руб. </h3>
+
+						<h3 class="my-5">Наличие ранта: <span th:text="${bRant} ? 'Да' : 'Нет'"></span>. </h3>
+						<h3 class="my-5">Стоимость ранта: <span th:text="${rant}"></span>,руб. </h3>
+
+						<h3 class="my-5">Наличие шпальта: <span th:text="${bLiner} ? 'Да' : 'Нет'"></span>. </h3>
+						<h3 class="my-5">Стоимость шпальта: <span th:text="${shpalt}"></span>,руб. </h3>
+						
+						<h3 class="my-5">Вес: <span th:text="${weight}"></span>,кг. </h3>
+						<h3 class="my-5">Количество в коробе: <span th:text="${number_per_box}"></span>,шт. </h3>
+                        
+                        <table border="1" class="table table-responsive-md text-nowrap">
+                            <thead class="thead-dark">
+                                <tr>
+			                        <th>Столбец</th>
+									<th>Себестоимость</th>
+									<th>Отп.цена</th>
+									<th>Наценка</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="p : ${pcRows}">
+				                    <td th:text="${p.priceType2Crude.crude.columnName}"></td>
+									<td align ="center" th:text="${p.columnCosts}"></td>
+									<td align ="center" th:text="${p.columnPrice}"></td>
+									<td align ="center" th:text="${p.columnPrice-p.columnCosts}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>                      
+                </div>
+            </div>
+           </div> 
+      <p>
+	      С уважением, <br />
+	      <em th:text="${sign}"></em>
+    </p>
+  </body>
+</html>

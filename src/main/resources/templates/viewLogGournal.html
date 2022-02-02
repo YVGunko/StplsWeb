@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<script>
+		function printDiv(divName) {
+			var css = '@page { size: landscape; }',
+    			head = document.head || document.getElementsByTagName('head')[0],
+    			style = document.createElement('style');
+
+			style.type = 'text/css';
+			style.media = 'print';
+			
+			if (style.styleSheet){
+			  style.styleSheet.cssText = css;
+			} else {
+			  style.appendChild(document.createTextNode(css));
+			}
+			
+			head.appendChild(style);
+		    window.print();
+		}
+	</script>
+	
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Журнал логирования</title>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
+    </head>
+
+  	<body>
+    		<div class="container-fluid">
+			<div id="printableArea">
+			<h2 class="my-5">Журнал логирования</h2>
+    			<table class="table table-striped table-responsive-md">
+
+    				<thead>
+					<tr>
+						<form action="#" th:action="@{/viewLogGournal}" th:object="${logGournalFilter}" method="post">
+							<td>
+
+								<label for="dateS" class="col-form-label">Дата начала</label>
+									<input type="date" th:field="*{dateS}" />
+							</td>
+							<td>
+								<label for="dateS" class="col-form-label">Дата окончания</label>
+									<input type="date" th:field="*{dateE}" />
+							</td>
+
+							<td>
+								<label for="source" class="col-form-label">Источник события</label>
+									<input type="text" th:field="*{source}"/>
+					    		</td>
+					    		<td>
+                                	<label for="device.name" class="col-form-label">Сканер Идент.</label>
+									<select  id="device" name="device" th:field="*{device.id}" >
+										<option th:each="device : ${devices}" th:value="${device.id}" th:utext="${device.name}"/>
+									</select>
+					    		</td>
+					    		<td>
+                                	<label for="user.name" class="col-form-label">Пользователь</label>
+									<select  id="user" name="user" th:field="*{user.id}" >
+										<option th:each="user : ${users}" th:value="${user.id}" th:utext="${user.name}"/>
+									</select>
+					    		</td>
+							<td>
+					    		<button type="submit" name="action" value="filter" class="btn btn-primary">Выбрать</button>
+							</td>
+						</form>
+					</tr>
+
+		          <tr>
+		            <th>Дата</th>
+		            <th>Источник события</th>
+		            	<th>Сканер Идент.</th>
+		            	<th>Пользователь</th>	
+		            	<th>Строк обработано</th>
+		          </tr>
+       			</thead>
+
+        			<tbody>
+					<tr th:each="order : ${logGournal}">				
+					  <td th:text="${order.sdate}"></td>
+					  <td th:text="${order.source}"></td>
+					  <td th:text="${order.deviceName}"></td>
+					  <td th:text="${order.userName}"></td>
+					  <td th:text="${order.recordsAffected}"></td>
+
+					  <td><a th:href="@{/viewOrderById/{id}(id=${order.id})}" class="btn btn-primary">Смотреть</a></td>
+					</tr>
+        			</tbody>
+
+      		</table>
+    			</div>
+		<input type="button" onclick="printDiv('printableArea')" class="btn btn-primary" value="Распечатать" />
+    </div>
+
+  </body>
+
+</html>

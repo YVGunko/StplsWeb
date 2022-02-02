@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Прайс.</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    </head>
+    <body>
+       <div th:switch="${price}" class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 th:case="null">Список пуст!</h2>
+                    <div th:case="*">
+                        <h2 class="my-5">Прайс. <span th:text="${priceFilter.sample} ? 'Образцы.' : 'Серия.'"></span></h2>
+                        <div class="row">
+                             <div class="col">
+                        		</div>
+                        		<div class="col">
+                        			<p><a href="/getCrude" class="btn btn-primary"><i class="fas fa-fill-drip ml-2" ></i>    Сырье и цены</a></p>
+                        		</div>
+                        		<div class="col">
+                        			<p><a href="/getPriceType" class="btn btn-primary"><i class="fas fa-money-check-alt ml-2" ></i>    Виды прайса</a></p>
+                        		</div>
+                        		<div class="col">
+                        			<th:block th:if="${priceRoots}">
+                        				<p><a href="/getPriceRoot" class="btn btn-primary"><i class="fas fa-calendar-alt ml-2" ></i>    История прайсов</a></p>
+                        			</th:block>
+                        		</div>
+                        </div>
+                        <hr>
+                        <form th:with="urlBuilder=${T(org.springframework.web.servlet.support.ServletUriComponentsBuilder).fromCurrentRequest()}" action="#" th:action="@{${urlBuilder.toUriString()}}" th:object="${priceFilter}" method="post">
+							<div class="form-inline">
+								<label for="sample"  class="form-control-sm">Образцы</label>
+								<input class="form-control-sm" type="checkbox" name="sample" th:field="*{sample}" th:value="${priceFilter.sample}" disabled="disabled" />
+								<input class="form-control-sm" type="hidden" name="sample" th:value="${priceFilter.sample}">
+							</div>
+                        		<div class="form-inline">
+	                               	<label for="priceType.name" class="form-control-sm"> Выбор прайса </label>
+									<select  id="priceType" class="form-control-sm" name="priceType" th:field="*{priceType.id}" >
+										<option th:each="priceType : ${priceTypes}" th:value="${priceType.id}" th:utext="${priceType.name}"/>
+									</select>
+						    			<button type="submit" name="action" value="filter" class="form-control-sm"> >> </button>
+
+								<th:block th:if="${priceRoots}">
+	                                	<label for="priceRoot.desc" class="form-control-sm"> Дата прайса </label>
+										<select  id="priceRoot" class="form-control-sm" name="priceRoot" th:field="*{priceRoot.id}" >
+											<option th:each="priceRoot : ${priceRoots}" th:value="${priceRoot.id}" th:utext="${priceRoot.desc}"/>
+										</select>
+									<button type="submit" name="action" value="filter" class="form-control-sm"> >> </button>
+					            </th:block>
+							</div>
+						<br>
+							<div class="form-inline">
+								<label for="name" class="form-control-sm" title ="Введите наименование для поиска"> Поиск </label>
+									<input type="text" class="form-control-sm" th:field="*{name}"/>
+					    				<a href="/signPrice2" class="btn btn-primary" role="button"><i title ="Добавить строку прайса"></i> + </a>
+
+					    			<label for="showSomeColumn" class="form-control-sm"> Показать все столбцы </label>
+					    			<input type="checkbox" class="form-control-sm" th:field="*{showSomeColumn}">
+
+					    			<button type="submit" name="action" value="filter" class="form-control-sm"> >> </button>									
+	                        </div>
+                        </form>
+                        <br>
+                        <table class="table table-striped table-responsive-md text-nowrap">
+                            <thead>
+                                <tr>
+			                        <th>Наименование</th>
+			                        <th>Рант</th>
+			                        <th>Подкл</th>
+			                        <th:block th:if="${priceFilter.showSomeColumn}">
+				                        <th>Рсх.общ</th>
+				                        <th>Рсх.крас</th>
+				                        <th>Рсх.рант</th>
+				                        <th>Рсх.шпал</th>
+				                        <th>Вес, кг</th>
+				                        <th>Пар в коробке</th>
+				                    </th:block>
+			                        <th:block th:if="${not #lists.isEmpty(price)}">
+				                        <th:block  th:each="pp : ${price[0].column}">
+					                        <th>Себ-сть</th>
+					                        <th>ОтпЦена</th>
+					                        <th>Нацен.</th>
+				                        </th:block>
+									</th:block>
+									<th>Прим</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="p : ${price}">
+				                    <td th:text="${#strings.toUpperCase(p.name)}"></td>
+				                    <td th:text="${p.bRant} ? 'Да' : ' '" />
+				                    <td th:text="${p.bLiner} ? 'Да' : ' '" />
+				                    <th:block th:if="${priceFilter.showSomeColumn}">
+					                    <td th:text="${p.costs}"></td>
+					                    <td th:text="${p.paint}"></td>
+					                    <td th:text="${p.rant}"></td>
+					                    <td th:text="${p.shpalt}"></td>
+					                    <td th:text="${p.weight}"></td>
+					                    <td th:text="${p.number_per_box}"></td>
+									</th:block>
+				                     <th:block  th:each="pc : ${p.column}">
+				                        <td th:text="${pc.columnCosts}"></td>
+				                        <td th:text="${pc.columnPrice}"></td>
+				                        <td th:text="${pc.columnPrice-pc.columnCosts}"></td>
+				                     </th:block>
+									<td th:text="${p.note}"></td>
+				                    <td><a th:href="@{/editPrice2/{id}(id=${p.id})}" class="btn btn-primary"><i class="fas fa-edit ml-2" title ="Редактировать строку прайса"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>                      
+                </div>
+            </div>
+            <input type="button" onclick="printDiv('printableArea')" class="btn btn-primary" value="Распечатать" />
+           </div> 
+
+    </body>
+</html>
