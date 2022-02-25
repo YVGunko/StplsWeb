@@ -10,7 +10,7 @@
     </head>
     <body>
        <div th:switch="${price}" class="container-fluid">
-
+			<p th:inline="text">Привет, [[${#httpServletRequest.remoteUser}]]!</p>
             <div class="row">
                 <div class="col-md-6">
                     <h2 th:case="null">Список пуст!</h2>

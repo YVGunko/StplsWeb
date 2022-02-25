@@ -26,7 +26,7 @@ public class LoggingInterceptor extends HandlerInterceptorAdapter {
     public void afterCompletion(
 			HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
-    		System.out.println("at : " + new Date()+" was requested : " + request.getRequestURI() +" with responce: " + response.getStatus() + "; took: "+ (System.currentTimeMillis()-this.start));
+    		System.out.println("at : " + new Date()+". URI : " + request.getRequestURI() +" with responce: " + response.getStatus() + "; took: "+ (System.currentTimeMillis()-this.start));
     		if (ex!=null) System.out.println(ex.getMessage());
     }
 }

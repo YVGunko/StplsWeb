@@ -27,7 +27,7 @@ public class BoxMove {
 	private String id;
 	
 	@JsonProperty("_Id_b")
-	@ManyToOne(optional = false, fetch = FetchType.LAZY)
+	@ManyToOne(optional = false)
 	private Box box;
 	
 	@JsonProperty("_Id_o")

@@ -1,18 +1,17 @@
 package hello.PartBox;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import hello.utils;
 import hello.Box.BoxRepository;
 import hello.BoxMoves.BoxMove;
 import hello.BoxMoves.BoxMovesRepository;
+import hello.BoxMoves.BoxMovesService;
 import hello.Controller.PartBoxReq;
 import hello.Department.Department;
 import hello.Department.DepartmentRepository;
@@ -38,25 +37,21 @@ public class PartBoxService {
 	}
 	
 	@Autowired
-	private PartBoxRepository partBoxRepository;
-	
+	private PartBoxRepository partBoxRepository;	
 	@Autowired
 	private EmployeeRepository employeeRepository;
-
 	@Autowired
-	private DepartmentRepository departmentRepository;
-	
+	private DepartmentRepository departmentRepository;	
 	@Autowired
-	private BoxMovesRepository boxMovesRepository;
-	
+	private BoxMovesRepository boxMovesRepository;	
 	@Autowired
 	private OutDocRepository outDocRepository;
-
 	@Autowired
-	private OutDocService oService;
-	
+	private OutDocService oService;	
 	@Autowired
-	private BoxRepository boxRepository;
+	private BoxRepository boxRepository;	
+	@Autowired
+	private BoxMovesService boxMovesService;
 	
 	public List<PartBox> save(List<PartBoxReq> partBoxReqList, Date currentDate) throws RuntimeException{
 		List<PartBox> toBeSavedPartBoxList = new ArrayList<>();
@@ -105,8 +100,23 @@ public class PartBoxService {
 				return true;
 			} else return false;
 		}
-		
-
+	}
+	//First of all, save partBox if is not null field Send..., then check if full box was received and save BoxMove if true.
+	// For operation=9999 (means dep != 0) boxMove should be saved always.
+	public void updSendToMasterDate (Date dateToSet, String bmId, long departmentId, int quantityBox) throws RuntimeException{
+		if (departmentId != 0) {
+			partBoxRepository.updateSentToMasterDateByBoxMoveIdAndDepartmentAndQuantity(dateToSet, bmId, departmentId, quantityBox);
+			Integer q = 
+					partBoxRepository.getQuantityByBoxMoveIdAndDepartmentAndQuantity(bmId, departmentId, quantityBox)
+					.orElse(Arrays.asList(0))
+					.stream().reduce(0,Integer::sum);
+					
+			if (q == quantityBox) boxMovesService.save(bmId); //BoxMove setSendToMaster... save
+		}
+		else {
+			partBoxRepository.updateSentToMasterDateByBoxMoveId(dateToSet, bmId);
+			boxMovesService.save(bmId); //BoxMove setSendToMaster... save
+		}
 	}
 	
 	public List<PartBox> selectByDateAndDivision (Date date, String division_code) throws RuntimeException{

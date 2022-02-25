@@ -3,17 +3,13 @@ package hello.Controller;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -23,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import hello.utils;
 import hello.Box.Box;
 import hello.Box.BoxRepository;
 import hello.Box.BoxService;
@@ -34,7 +29,6 @@ import hello.Department.Department;
 import hello.Department.DepartmentRepository;
 import hello.Device.Device;
 import hello.Device.DeviceService;
-import hello.LogGournal.LogGournal;
 import hello.LogGournal.LogGournalRepository;
 import hello.LogGournal.LogGournalService;
 import hello.MasterData.MasterData;
@@ -45,7 +39,6 @@ import hello.OutDoc.OutDocService;
 import hello.PartBox.PartBox;
 import hello.PartBox.PartBoxRepository;
 import hello.PartBox.PartBoxService;
-import hello.User.User;
 import hello.User.UserRepository;
 import hello.User.UserService;
 
@@ -55,43 +48,33 @@ public class BoxController {
 	private int pageSize = 3000;
 	
 	@Autowired
-	MasterDataRepository masterDataRepository;
-	
+	private MasterDataRepository masterDataRepository;	
 	@Autowired
-	MasterDataService masterDataService;
-	
+	private MasterDataService masterDataService;	
 	@Autowired
-	BoxMovesService boxMovesService;
+	private BoxMovesService boxMovesService;
 	@Autowired
 	private BoxMovesRepository boxMovesRepository;
-	
 	@Autowired
-	PartBoxService partBoxService;
-	
+	private PartBoxService partBoxService;	
 	@Autowired
-	BoxService boxService;
-	
+	private BoxService boxService;	
 	@Autowired
-	BoxRepository boxRepository;
-	
+	private BoxRepository boxRepository;	
 	@Autowired
 	private PartBoxRepository partBoxRepository;
-
 	@Autowired
-	private DepartmentRepository departmentRepository;
-	
+	private DepartmentRepository departmentRepository;	
 	@Autowired
-	private OutDocService Service;
-	
+	private OutDocService Service;	
 	@Autowired
-	UserService uService;	
-	
+	private UserService uService;		
 	@Autowired
 	private UserRepository userRepository;
 	@Autowired
 	private LogGournalService lgService;
 	@Autowired
-	DeviceService deviceService;	
+	private DeviceService deviceService;	
 	@Autowired
 	private LogGournalRepository lgRepository;
 	
@@ -278,7 +261,7 @@ public class BoxController {
 
 			Date date = new Date();
 			
-			MasterData md = masterDataRepository.getByOrderId(orderId);
+			MasterData md = masterDataRepository.getByOrderId(orderId).orElse(null);
 			if (md == null) {
 				throw new RuntimeException ("no such orderId in MasterData: " + orderId);
 			}
@@ -375,7 +358,7 @@ public class BoxController {
 			if (savedBoxMoveList == null) {			
 			}
 		};
-		for (BoxMove bm : savedBoxMoveList) {
+		for (BoxMove bm : savedBoxMoveList) {/*
 			if (bm.getOperation().getId() == 9999) {
 				int prodInBoxCount = bm.getBox().getQuantityBox();
 				List<String> boxMoveIdList = boxMovesRepository.findByBoxIdInAndOperationId(bm.getBox().getId(), (long)9999).stream().map(BoxMove::getId).collect(Collectors.toList());
@@ -398,21 +381,9 @@ public class BoxController {
 					if (md.isPresent()) md.get().setArchive(true);
 					masterDataRepository.save(md.get());
 				}
-			}
+			}*/
 			responce.movesReqList.add(new MoveReq(bm.getId(), bm.getBox().getId(), bm.getOperation().getId(), bm.getDate(), bm.getReceivedFromMobileDate()));
 		}
-		/*if (responce.boxReqList.size() !=0)
-			lgService.addLog(DeviceId, userId, responce.boxReqList.size(), responce.boxReqList.get(0).date, "partBox.addBox. Выгрузка коробок.");
-		else
-			lgService.addLog(DeviceId, userId, 0, currentDate, "partBox.addBox. Выгрузка коробок.");
-		if (responce.movesReqList.size() != 0)
-			lgService.addLog(DeviceId, userId, responce.movesReqList.size(), responce.movesReqList.get(0).date, "partBox.addBox. Выгрузка движений коробок.");
-		else
-			lgService.addLog(DeviceId, userId, 0, currentDate, "partBox.addBox. Выгрузка движений коробок.");
-		if (responce.partBoxReqList.size() != 0)
-			lgService.addLog(DeviceId, userId, responce.partBoxReqList.size(), responce.partBoxReqList.get(0).date, "partBox.addBox. Выгрузка подошвы.");
-		else
-			lgService.addLog(DeviceId, userId, 0, currentDate, "partBox.addBox. Выгрузка подошвы.");*/
 		
 		return responce;
 	}
@@ -456,76 +427,6 @@ public class BoxController {
 		return 0;
 	}
 	
-	@GetMapping("/serviceSetBoxMoveSentToMasterDate") 
-	public int serviceSetBoxMoveSentToMasterDate(@RequestParam(value="date", required=false) @DateTimeFormat(pattern="dd.MM.yyyy") Date orderDate) throws RuntimeException{
-		int count = 0;
-		int countBox = 0;
-		Date dt = null;
-		List<BoxMove> boxMoveList = boxMovesRepository.findBySentToMasterDateOrderByDate(null);
-		System.out.println("BoxMove records to be updated by PartBox - " + boxMoveList.size());
-		for (BoxMove boxMove:boxMoveList) {
-			List<Integer> partBoxQuantityList = partBoxRepository.findByBoxMoveIdAndSentToMasterDateIsNotNull(boxMove.getId()).stream().map(PartBox::getQuantity).collect(Collectors.toList());
-			List<Date> partBoxDateList = partBoxRepository.findByBoxMoveIdAndSentToMasterDateIsNotNull(boxMove.getId()).stream().map(PartBox::getDate).collect(Collectors.toList());
-			if (partBoxDateList.size()>0) dt = partBoxDateList.get(0);
-			if (partBoxQuantityList.size()>0) { //Если есть
-				int quantityBox = boxMove.getBox().getQuantityBox();
-				for (int i = 0; i < partBoxQuantityList.size(); i = i + 1 ) { 
-					quantityBox = quantityBox - partBoxQuantityList.get(i);
-				}
-				if (quantityBox==0) {
-					boxMove.setSentToMasterDate(dt);
-					boxMovesRepository.save(boxMove);
-					count = count + 1;
-					System.out.println("BoxMove updated by PartBox - " + count);
-				}
-			}			
-		}
-		System.out.println("Total BoxMove updated by PartBox - " + count);
-		List<Box> boxList = boxRepository.findBySentToMasterDateIsNotNullOrderByDate();
-		for (Box box:boxList) {
-			List<BoxMove> boxMoveList1 = boxMovesRepository.findByBoxIdAndSentToMasterDateIsNull(box.getId()).stream().collect(Collectors.toList());
-			if (boxMoveList1.size() >0) { //Если есть
-				dt = box.getSentToMasterDate();
-				for (int i = 0; i < boxMoveList1.size(); i = i + 1 ) { 
-					boxMoveList1.get(i).setSentToMasterDate(dt);
-					boxMovesRepository.saveAll(boxMoveList1);
-					countBox = countBox + 1;
-					System.out.println("BoxMove updated by Box - " + countBox);
-				}
-			}
-		}
-		boxList = boxRepository.findByArchiveOrderByDate(true);
-		System.out.println("BoxMove records to be updated by BoxArchive - " + boxList.size());
-		for (Box box:boxList) {
-			List<BoxMove> boxMoveList1 = boxMovesRepository.findByBoxIdAndOperationIdAndSentToMasterDateIsNull(box.getId(), 1).stream().collect(Collectors.toList());
-			if (boxMoveList1.size() >0) { //Если есть
-				dt = box.getReceivedFromMobileDate();
-				for (int i = 0; i < boxMoveList1.size(); i = i + 1 ) { 
-					boxMoveList1.get(i).setSentToMasterDate(dt);
-					boxMovesRepository.saveAll(boxMoveList1);
-					countBox = countBox + 1;
-					System.out.println("BoxMove updated by Box - " + countBox);
-				}
-			}
-		}
-		System.out.println("Total BoxMove updated by Box - " + countBox);
-		count = count + countBox;
-		System.out.println("Total BoxMove updated - " + count);
-		return count;
-	}
-
-	@GetMapping("/service1") 
-	public int service1(@RequestParam(value="date", required=false) @DateTimeFormat(pattern="dd.MM.yyyy") Date orderDate) throws RuntimeException{
-		int count = 0;
-		Date dt = null;
-		List<BoxMoveBoxAndQuantityDTO> boxMoveList = boxMovesRepository.getIdAndBoxQuantity(PageRequest.of(0, pageSize)); //BoxMove.id, Box.id, Box.boxQuantity
-		
-				
-		System.out.println("Total BoxMove updated by PartBox - " + boxMoveList.size());
-
-		return count;
-	}
-
 	@GetMapping("/serverUpdateTime") 
 	public Timestamp getServerUpdateTime() throws RuntimeException{
 		return new Timestamp(System.currentTimeMillis());

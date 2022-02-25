@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 @Configuration
@@ -50,19 +51,28 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.OPTIONS).permitAll()
 				.antMatchers("/", "/favicon.ico").permitAll()
 				//Доступ к регистрации только админ
-                //.antMatchers("/admin/registration").hasRole("ADMIN")
 				.antMatchers("/admin/**").hasRole("ADMIN")
 				.antMatchers("/viewPrice").hasAnyRole("ADMIN","TOP","USER")
 				.antMatchers("/viewPrice2").hasAnyRole("ADMIN","TOP")
-				.antMatchers("/login/**").hasAnyRole("ADMIN", "TOP", "EXTERNAL", "INTERNAL")
+				.antMatchers("/login/**").hasAnyRole("ADMIN", "TOP", "EXTERNAL")
+				.and().exceptionHandling().accessDeniedPage("/403")
 			.and()
 				.formLogin()
+				.failureHandler(authenticationFailureHandler())
 			.and()
 				.httpBasic()
-			.and()
-				.logout().logoutSuccessUrl("/index.html").permitAll().and().csrf()
-			.disable();
+			.and().logout().permitAll().and().csrf().disable()
+			.logout()                                                                
+            .logoutUrl("/logout")                                                 
+            .logoutSuccessUrl("/index")                                                                       
+            .invalidateHttpSession(true)                                                                                     
+            .clearAuthentication(true).deleteCookies("SESSION");
+
 	}
+    @Bean
+    public AuthenticationFailureHandler authenticationFailureHandler() {
+        return new WebAuthenticationFailureHandler();
+    }
     @Autowired
     protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());

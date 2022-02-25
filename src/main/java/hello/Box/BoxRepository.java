@@ -4,6 +4,7 @@ package hello.Box;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,6 +21,7 @@ public interface BoxRepository extends JpaRepository<Box,String>{
 	List<Box> findByMasterDataId(long id);
 	List<Box> findByMasterDataIdIn(List<Long> id);
 	Box findByMasterDataIdAndNumBox(long id, int NumBox) ;
+	Optional<Box> getByMasterDataIdAndNumBox(long id, int NumBox) ;
 	List<Box> findByArchive(Boolean archive);
 	List<Box> findByDateGreaterThan(Date date);
 	List<Box> findBySentToMasterDateIsNotNull ();

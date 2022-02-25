@@ -38,8 +38,6 @@ public class OutDocService {
     public List<OutDoc> saveOrUpdate(List<OutDocReq> outDocList, Date currentDate, String DeviceId) throws Exception {
 		System.out.println("OutDoc saveOrUpdate records number: " + (outDocList.size()));
 		
-		//Device device = deviceService.saveAndGet(DeviceId);
-		
 		List<OutDoc> toBesavedBoxList = new ArrayList<>();
 		for (OutDocReq odReq: outDocList) {
 			Optional<OutDoc> outdoc = cRepository.findById(odReq.id);
@@ -57,11 +55,6 @@ public class OutDocService {
 		}
 
 		List<OutDoc> savedBoxList = cRepository.saveAll(toBesavedBoxList);
-		
-		/*if (!savedBoxList.isEmpty())	{
-			LogGournal lg = new LogGournal((long)0, savedBoxList.get(0).getUser(), device, currentDate, savedBoxList.size(), "OutDocService.saveOrUpdate");
-			if (lg != null) lgRepository.save(lg);
-		}	*/
 		
 		return savedBoxList;
 	}

@@ -3,8 +3,12 @@ package hello.Price;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +20,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import hello.TableRelation.PriceUser;
+import hello.User.User;
+import hello.User.UserRepository;
 
 @Controller
 public class PriceWebController {
@@ -35,6 +43,8 @@ public class PriceWebController {
 	PriceRootRepository priceRootRepository;
 	@Autowired
 	PriceRootService priceRootService;
+	@Autowired
+	UserRepository userRepository;
 	
 	//								<label for="price.priceRoot.desc" class="col-form-label" th:field="*{priceRoot.id}" th:utext="${price.priceRoot.desc}"></label>
 	@ModelAttribute("priceTypes")
@@ -164,16 +174,13 @@ public class PriceWebController {
 	    try {
 			e.setCosts(ptService.repository.getOne(e.getPriceType().getId()).getDef_costs());
 			e.setPaint(ptService.repository.getOne(e.getPriceType().getId()).getDef_paint());
-		    	//e.setRant(e.bRant ? ptService.repository.getOne(e.getPriceType().getId()).getDef_rant() : (double)0);
-			//e.setShpalt(e.bLiner ? ptService.repository.getOne(e.getPriceType().getId()).getDef_shpalt() : (double)0);
-			//e.setPriceRoot(priceRootService.repository.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(e.getPriceType().getId(), ViewPriceController.staticPriceFilter.getSample()));
-		    	e.setRant(e.bRant ? ptService.repository.getOne(ViewPrice2Controller.staticPriceFilter.getPriceType().getId()).getDef_rant() : (double)0);
+	    	e.setRant(e.bRant ? ptService.repository.getOne(ViewPrice2Controller.staticPriceFilter.getPriceType().getId()).getDef_rant() : (double)0);
 			e.setShpalt(e.bLiner ? ptService.repository.getOne(ViewPrice2Controller.staticPriceFilter.getPriceType().getId()).getDef_shpalt() : (double)0);
 			e.setPriceRoot(priceRootService.repository.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(e.getPriceType().getId(), ViewPrice2Controller.staticPriceFilter.getSample()));
-	    		id = priceService.save(e).getId();
-	    	    if (id == 0) return "addPrice2";	    	    
-	    	    model.addAttribute("priceColumns", priceColumnService.calcAndSave(id, e));
-	    	    model.addAttribute("prices", populatePrices(e.getPriceType().getId()));
+    		id = priceService.save(e).getId();
+    	    if (id == 0) return "addPrice2";	    	    
+    	    model.addAttribute("priceColumns", priceColumnService.calcAndSave(id, e));
+    	    model.addAttribute("prices", populatePrices(e.getPriceType().getId()));
         } catch(Exception ex) {
             model.addAttribute("errorData", ex.getMessage());
         }
@@ -206,15 +213,26 @@ public class PriceWebController {
 
     @PostMapping("/updPrice2/{id}")
     public String updatePrice2(@PathVariable("id") Integer id, @Valid Price e, 
-      BindingResult result, Model model) throws Exception {
+      BindingResult result, Model model, 
+      final HttpServletRequest request, final HttpServletResponse response) throws Exception {
         if (result.hasErrors()) {
             e.setId(id);
             return "updPrice2";
         }
-		        e.setDateOfLastChange(new Date());
-        e.setPriceRoot(priceRootService.repository.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(e.getPriceType().getId(), ViewPrice2Controller.staticPriceFilter.getSample()));        if (priceService.save(e).getId() == 0) return "updPrice2";
+        response.setHeader("Cache-Control", "no-cache");
+        System.out.println(userRepository.findOneByName(request.getRemoteUser()));
+        Price p = repository.findById(e.getId()).orElse(null);
+        if (!e.equals(p))
+        {
+    		e.setDateOfLastChange(new Date());
+            e.setPriceRoot(priceRootService.repository.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(e.getPriceType().getId(), ViewPrice2Controller.staticPriceFilter.getSample()));        
+        	e.setPriceUsers(new PriceUser(userRepository.findOneByName(request.getRemoteUser())
+        			, "Изменено: "+priceService.getListOfDifference(p, e).stream().map(Object::toString).collect(Collectors.joining(","))));
+	        if (priceService.save(e).getId() == 0) return "updPrice2";
+        }
+        
         model.addAttribute("prices", populatePrices(e.getPriceType().getId()));
-        //model.addAttribute("priceColumns", populateColumns(e.getId()));
+                
         return "redirect:"+referer;
     }
     

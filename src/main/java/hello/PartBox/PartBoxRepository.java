@@ -5,11 +5,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import javax.transaction.Transactional;
@@ -58,4 +60,22 @@ public interface PartBoxRepository extends JpaRepository<PartBox,String>{
 	List<Integer> findQuantityByOutDocId(String id);
 
 	List<PartBox> deleteByBoxMoveId(String id);
+	
+	@Query ("SELECT quantity FROM PartBox WHERE boxMove.id=?1 AND sentToMasterDate IS NOT NULL")
+	List<Integer> getQuantityByBoxMoveId(String id);
+	@Query ("SELECT quantity FROM PartBox WHERE boxMove.id=?1 AND department.id = ?2 AND quantity = ?3 AND sentToMasterDate IS NOT NULL")
+	Optional<List<Integer>> getQuantityByBoxMoveIdAndDepartmentAndQuantity(String bmId, Long departmentId, Integer Quantity);
+	
+	@Modifying(clearAutomatically = true)
+	@Transactional
+    @Query(value="update part_box set sent_to_master_date= ?1  \n"+
+	" where box_move = ?2 and sent_to_master_date is null", nativeQuery=true)
+    void updateSentToMasterDateByBoxMoveId(Date dateToSet, String bmId);
+	
+	@Modifying(clearAutomatically = true)
+	@Transactional
+    @Query(value="update part_box set sent_to_master_date= ?1  \n"+
+	" where box_move = ?2 and department = ?3 and quantity = ?4 \n"+
+	" and sent_to_master_date is null", nativeQuery=true)
+    void updateSentToMasterDateByBoxMoveIdAndDepartmentAndQuantity(Date dateToSet, String bmId, Long departmentId, Integer Quantity);
 }

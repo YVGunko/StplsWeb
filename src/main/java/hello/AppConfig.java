@@ -25,7 +25,7 @@ import hello.PartBox.PartBox;
 import hello.User.User;
 
 @Configuration
-public class AppConfig extends WebMvcConfigurerAdapter {
+public class AppConfig {
 	
 	@Autowired
 	LoggingInterceptor loggingInterceptor;
@@ -48,4 +48,5 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         };
 
     }
+    
 }

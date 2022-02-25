@@ -4,10 +4,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import javax.transaction.Transactional;
@@ -42,6 +44,7 @@ public interface BoxMovesRepository extends JpaRepository<BoxMove,String>{
 	List<BoxMove> findBySentToMasterDate (Date sent);
 	
 	BoxMove findByOperationIdAndBoxId(long OperId, String BoxId);
+	Optional<BoxMove> getByOperationIdAndBoxId(long OperId, String BoxId);
 
 	List<BoxMove> findByBoxMasterDataDivisionCodeAndOperationIdAndSentToMasterDate(String code, long operationId, Date sent);
 
@@ -96,14 +99,26 @@ public interface BoxMovesRepository extends JpaRepository<BoxMove,String>{
 
 	List<BoxMove> findByOperationIdAndDateBetweenOrderByDateAsc(Long operationId, Date atStartOfDay, Date atEndOfDay);
 
-	List<BoxMove> findTop5000BySentToMasterDate(Object object);
-
 	List<BoxMove> findBySentToMasterDateOrderByDate(Object object);
 
 	@Query("SELECT new hello.Controller.BoxMoveBoxAndQuantityDTO( m.id, b.id, b.quantityBox) \n"+
 			" FROM Box b, BoxMove m \n"+
-			" WHERE m.sentToMasterDate IS NULL and b.id = m.box  \n"+
-			" ORDER BY m.date ")
-    List<BoxMoveBoxAndQuantityDTO> getIdAndBoxQuantity(Pageable pageable);
+			" WHERE m.sentToMasterDate IS NULL and b.id = m.box ")
+	Page<BoxMoveBoxAndQuantityDTO> getIdAndBoxQuantityPageable(Pageable pageable);
+	
+	@Query("SELECT new hello.Controller.BoxMoveBoxAndQuantityDTO( m.id, b.id, b.quantityBox) \n"+
+			" FROM Box b, BoxMove m \n"+
+			" WHERE m.sentToMasterDate IS NULL and b.id = m.box ")
+	List<BoxMoveBoxAndQuantityDTO> getIdAndBoxQuantity();
+	
+	@Modifying
+    @Query("UPDATE BoxMove SET sentToMasterDate=?1 WHERE id=?2")
+	void setSentToMasterDate(Date date, String bmId);
+	
+	@Modifying(clearAutomatically = true)
+	@Transactional
+    @Query(value="update box_move set sent_to_master_date= ?1 where id = ?2", nativeQuery=true)
+    void updateSentToMasterDate(Date dateToSet, String bmId);
+
 
 }

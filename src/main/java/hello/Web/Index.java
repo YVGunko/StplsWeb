@@ -17,4 +17,11 @@ public class Index {
          
         return "signin";
     }
+    
+    @GetMapping("403")
+    public String page403() {
+        // custom logic before showing login page...
+         
+        return "403";
+    }
 }

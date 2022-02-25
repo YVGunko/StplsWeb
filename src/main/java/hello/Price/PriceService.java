@@ -1,12 +1,14 @@
 package hello.Price;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import javafx.util.Pair;
 
 import javax.mail.MessagingException;
 import javax.validation.Valid;
@@ -195,6 +197,54 @@ public class PriceService {
 			price = repository.findByPriceTypeIdAndPriceRootIdOrderByName (priceFilter.getPriceType().getId(),
 					priceFilter.getPriceRoot().getId());
 		return price;
+    }
+    
+    public List<String> getListOfDifference(Price s1, Price s2) throws IllegalAccessException {       
+    	final Map<String,String> FIELDS = new HashMap<String,String>(){
+			private static final long serialVersionUID = 5159637266691074146L;
+
+		{
+    		put("priceType", "Тип прайса");
+    		put("name", "Наименование");
+    		put("priceType", "Тип прайса");
+    		put("name", "Наименование");
+    		put("paint", "Расх.крас");
+    		put("rant", "Расх.рант");
+    		put("shpalt", "Расх.шпальт");
+	        put("weight", "Вес");
+	        put("bRant", "Рант");
+	        put("bLiner", "Подкл/Шпал");   
+	        put("number_per_box", "Пар/кор");
+        }}; 
+        
+        List<String> res = new ArrayList<>();
+        
+        for (Field f : s1.getClass().getFields())         	
+            if (!f.get(s1).equals(f.get(s2)))             			
+            	try {
+            		Object value = s1.getClass().getDeclaredField(f.getName()).get(s1);
+	            	if(value instanceof PriceType && 
+	            			(((PriceType) value).getId() == s2.getPriceType().getId()))
+	            		continue;
+	            	else 
+	            		if(FIELDS.containsKey(f.getName())) {
+							
+							if (value instanceof PriceType) {
+								value = ((PriceType) value).getName();
+							} else
+							if (value instanceof Boolean) {
+								value = ((Boolean) value).equals(Boolean.TRUE) ? "Да" : "Нет";
+							}
+							res.add(FIELDS.get(f.getName())+"="+value.toString());           			
+            		}            		
+				} catch (NoSuchFieldException e) {
+					e.printStackTrace();
+					continue;
+				} catch (SecurityException e) {
+					e.printStackTrace();
+					continue;
+				}
+        return res;
     }
 }
 

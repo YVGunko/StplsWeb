@@ -1,10 +1,12 @@
 package hello.MasterData;
 
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.hibernate.annotations.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -56,7 +58,8 @@ public interface MasterDataRepository extends JpaRepository<MasterData,Long>{
 	List<MasterData> findByOrderIdNotIn(ArrayList<String> orderId);
 	List<MasterData> findByid1C(String id1c);
 	void deleteByid1CIn(ArrayList<String> id1c);
-	MasterData getByOrderId(@Param(value = "orderId") String orderId);
+
+	Optional<MasterData> getByOrderId(@Param(value = "orderId") String orderId);
 	MasterData findOneByOrderId(@Param(value = "orderId") String orderId);
 	MasterData getByid1C(String id1c);
 	List<MasterData> findDistinctByOrderTextAndCustomerAndDt(String orderText,String customer,String dt);
@@ -89,15 +92,6 @@ public interface MasterDataRepository extends JpaRepository<MasterData,Long>{
     		"	GROUP BY customer\n" + 
     		"	ORDER BY COUNT(orderText) DESC")
 	List<MasterData>findCountOrders();
-	
-	
-	/*@Query ("SELECT \n" + 
-    		"        new hello.MasterData.MasterData(id, orderText, customer, nomenklature, attrib, countProdInOrder, CAST(dt AS date) as dt ) \n" + 
-    		"    FROM MasterData a\n" + 
-    		"    WHERE\n" + 
-    		"        division_code = ? \n" + 
-    		"    ORDER BY dt")
-	List<MasterData>findNoteBookHeader(String division_code);*/
 	
 	@Query ("SELECT new hello.MasterData.MasterData(a.orderText, a.customer, CAST(a.dt AS date) as dt ) \n" + 
     		"FROM MasterData a, Box b, BoxMove m \n" + 
@@ -148,5 +142,8 @@ public interface MasterDataRepository extends JpaRepository<MasterData,Long>{
 
 	List<MasterData> findByArchiveAndDtLessThan(boolean b, Date orderDate);
 	
+	@Query(value="select id from master_data \n"+
+			" where order_id = ?1", nativeQuery=true)
+		    Optional<BigInteger> selectIdByOrderId(String Id);
 
 }

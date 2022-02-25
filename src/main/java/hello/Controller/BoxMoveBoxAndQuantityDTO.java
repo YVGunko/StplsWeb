@@ -7,6 +7,9 @@ public class BoxMoveBoxAndQuantityDTO {
 		this.boxId = boxId;
 		this.quantityBox = quantityBox;
 	}
+	public BoxMoveBoxAndQuantityDTO() {
+		// TODO Auto-generated constructor stub
+	}
 	private String bmId;
 	private String boxId;
 	private Integer quantityBox;
