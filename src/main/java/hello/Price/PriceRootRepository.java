@@ -1,6 +1,7 @@
 package hello.Price;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -10,7 +11,7 @@ public interface PriceRootRepository extends JpaRepository<PriceRoot, Integer>{
 	public PriceRoot findOneById(Integer Id);
 	public List<PriceRoot> findBySampleOrderByDateOfChangeDesc(Boolean sample);
 	public List<PriceRoot> findBySampleOrderByIdAsc(Boolean sample);
-	public PriceRoot findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(Integer id, Boolean sample);
+	public Optional<PriceRoot> findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(Integer id, Boolean sample);
 	public List<PriceRoot> findByPriceTypeIdAndSampleOrderByDateOfChangeDesc(Integer pt, Boolean sample);
 	public PriceRoot findOneByPriceTypeIdAndSampleOrderByDateOfChangeDesc(Integer pt, Boolean sample);
 	

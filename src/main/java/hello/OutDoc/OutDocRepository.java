@@ -24,10 +24,4 @@ public interface OutDocRepository extends JpaRepository<OutDoc,String>{
 			Date atStartOfDay, Date atEndOfDay);
 	List<OutDoc> findByOperationIdAndUserIdAndDateBetweenOrderByDate(Long id, Long id2, Date atStartOfDay,
 			Date atEndOfDay);
-	List<OutDoc> findByIdAndOperationIdAndDateBetweenOrderByDate(List<String> lsOutDoc, Long id, Date atStartOfDay,
-			Date atEndOfDay);
-	List<OutDoc> findByIdAndDivisionCodeAndOperationIdAndDateBetweenOrderByDate(List<String> lsOutDoc, String code,
-			Long id, Date atStartOfDay, Date atEndOfDay);
-
-	//boolean exists(@NotNull String id);
 }

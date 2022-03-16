@@ -9,13 +9,13 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     </head>
     <body>
-        <div th:switch="${crudes}" class="container p-3 my-5">
+        <div th:switch="${crudes}" class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
                     <h2 th:case="null">Список пуст!</h2>
                     <div th:case="*">
                         <h2 class="my-5">Наименование и стоимость сырья.</h2>
-                        <table class="table table-striped table-responsive-md text-nowrap">
+                        <table class="table table-striped table-responsive-md ">
                             <thead>
                                 <tr>
 			                        <th>Наименование сырья</th>
@@ -23,7 +23,11 @@
 			                        <th>Расценка,руб/кг</th>
 			                        <th>Наценка на себестоимость,руб</th>
 			                        <th>Наценка на отпуск.цену,руб</th>
-			                        <th>Дата изменения</th>
+			                        <th>Прямые расходы,руб</th>
+			                        <th>Изменение расходов,руб</th>
+			                        <th>Изменение отпускной цены,руб</th>
+			                        <th>Изменение стоимости ранта,руб</th>
+			                        <th class="text-nowrap"> Дата изменения</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -33,6 +37,10 @@
 				                    <td th:text="${crude_.crudeCost}"></td>
 				                    <td th:text="${crude_.crudePlus}"></td>
 				                    <td th:text="${crude_.crudeExtra}"></td>
+				                    <td th:text="${crude_.directCosts}"></td>
+				                    <td th:text="${crude_.copyAddCosts}"></td>
+				                    <td th:text="${crude_.copyAddPrice}"></td>
+				                    <td th:text="${crude_.copyAddRant}"></td>				                    
 				                    <td th:text="${#dates.format(crude_.dateOfLastChange, 'dd-MM-yyyy HH:mm:ss')}"></td>
 				                    <td><a th:href="@{/editCrude/{id}(id=${crude_.id})}" class="btn btn-primary"><i class="fas fa-edit ml-2"></i></a></td>
                                 </tr>

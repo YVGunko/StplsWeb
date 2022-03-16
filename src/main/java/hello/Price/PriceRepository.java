@@ -19,7 +19,7 @@ public interface PriceRepository extends JpaRepository<Price, Integer> {
 	public Optional<Price> findOneByNameAndPriceTypeId (String name, Integer priceTypeId);
 	public List<Price> findByPriceTypeIdAndPriceRootIdAndNameStartingWithOrderByName(Integer id, Integer id2,
 			String name);
-	public List<Price> findByPriceTypeIdAndPriceRootIdOrderByName(Integer id, Integer id2);
+	public List<Price> findByPriceTypeIdAndPriceRootIdOrderByName(Integer ptId, Integer prId);
 	public List<Price> findByPriceRootIdAndNameStartingWithOrderByName(Integer id, String name);
 	public Optional<Price> findOneByNameAndPriceTypeIdAndPriceRootId(@NotNull String name, Integer id, Integer id2);
 

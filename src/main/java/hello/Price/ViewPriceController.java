@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import javax.servlet.http.HttpSession;
 
@@ -71,27 +72,12 @@ public class ViewPriceController {
 			
 			if (priceFilter.getSample() == null) priceFilter.setSample(false);
 			if (priceFilter.getName() == null) priceFilter.setName("");
-			priceFilter.setPriceType(servicePT.checkForNullAndReplaceWithTop(priceFilter.getPriceType()));
+			priceFilter.setPriceType(servicePT.checkForNullAndReplaceWithTop(priceFilter.getPriceType(), false));
 			
-			if (prevPriceTypeId == null) {//предыдущего значения нет, значит первый раз загружается страница.
-				pr = repositoryPR.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(priceFilter.getPriceType().getId(), priceFilter.getSample());
-				if (pr == null) priceFilter.setPriceRoot(new PriceRoot());
-				else 	priceFilter.setPriceRoot(pr);
-			}else {
-				if (prevPriceTypeId == priceFilter.getPriceType().getId()) {			//тип прайса не менялся
-					if (prevSample == priceFilter.getSample()) {						//образец не менялся
-						if (servicePR.checkForNull(priceFilter.getPriceRoot())) priceFilter.setPriceRoot(new PriceRoot()); 
-						else priceFilter.setPriceRoot(repositoryPR.findOneById(priceFilter.getPriceRoot().getId()));
-					}else { 			//Образец изменился, получите максимальную дату прайса
-						if (servicePR.checkForNull(priceFilter.getPriceRoot())) priceFilter.setPriceRoot(new PriceRoot()); 
-						else priceFilter.setPriceRoot(repositoryPR.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(priceFilter.getPriceType().getId(), priceFilter.getSample()));	
-					}
-				}else {							//тип прайса изменялся
-					pr = repositoryPR.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(priceFilter.getPriceType().getId(), priceFilter.getSample());
-					if (pr == null) priceFilter.setPriceRoot(new PriceRoot());
-					else 	priceFilter.setPriceRoot(pr);
-				}
-			}
+			pr = repositoryPR.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc
+					(priceFilter.getPriceType().getId(), priceFilter.getSample())
+					.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot."));
+			priceFilter.setPriceRoot(pr);
 			
 			if (!priceFilter.getName().equals("")) 
 				price = repositoryPrice.findByPriceTypeIdAndPriceRootIdAndNameStartingWithOrderByName (priceFilter.getPriceType().getId(),

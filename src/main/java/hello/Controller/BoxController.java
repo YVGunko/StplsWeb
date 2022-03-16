@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
@@ -270,10 +271,12 @@ public class BoxController {
 				throw new RuntimeException ("no such masterDataId in Box: " + md.getId().toString());
 			}
 			try {
-				BoxMove bm = boxMovesRepository.findByOperationIdAndBoxId (operationId, box.getId());
+				/*BoxMove bm = boxMovesRepository.getByOperationIdAndBoxId (operationId, box.getId()).orElse(null);
 				if (bm == null) {
 					throw new RuntimeException ("no such boxId in BoxMove: " + box.getId().toString());
-				}
+				}*/
+				BoxMove bm = boxMovesRepository.getByOperationIdAndBoxId (operationId, box.getId())
+						.orElseThrow(() -> new NoSuchElementException("BoxMove. No such record. OperationId: "+operationId+", BoxId: "+box.getId()));
 				if (!partBoxService.updateSendToMasterDate(date, bm.getId(), depId, quantityBox)) {
 					System.out.println("Didn't update partBoxService.updateSendToMasterDate " + Qrd.get(i));
 					}

@@ -129,11 +129,20 @@ public class UserWebController {
 	        		"?sort-field="+pageAttributeMap.get("sortField")+
 	        		"&sort-dir="+pageAttributeMap.get("sortDir");
 	    }
-	 
+
+	    @SuppressWarnings("unchecked")
+		private User getUserFromModel(long id, Model model) {
+
+			ArrayList<User> arrayOfUsers = (ArrayList<User>) model.asMap().get("users");
+			User user = arrayOfUsers.stream().filter(u -> u.getId().equals(id)).findFirst()
+					.orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+
+			return user;	    	
+	    }
 	    @GetMapping("/admin/editUser/{id}")
 	    public String showUpdateForm(@PathVariable("id") long id, Model model) {
-	    		User user = getUserFromModel(id, model);
-	    		model.addAttribute("roles", populateUserRoles(user));
+    		User user = getUserFromModel(id, model);
+    		model.addAttribute("roles", populateUserRoles(user));
 	        model.addAttribute("user", user);
 	        return "update-user";
 	    }
@@ -168,15 +177,6 @@ public class UserWebController {
 		    		"&sort-dir="+pageAttributeMap.get("sortDir");
 	    }
 
-	    private User getUserFromModel(long id, Model model) {
-	    	
-			@SuppressWarnings("unchecked")
-			ArrayList<User> arrayOfUsers = (ArrayList<User>) model.asMap().get("users");
-			Optional <User> optionalUser = arrayOfUsers.stream().filter(user -> user.getId().equals(id)).findFirst();
-			User user = optionalUser
-					.orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-			return user;	    	
-	    }
 	    private List<RoleChecked> populateUserRoles(User user) {
 			List<Role> rList = roleRepository.findAll();
 			List<RoleChecked> rpList = new ArrayList<RoleChecked>();

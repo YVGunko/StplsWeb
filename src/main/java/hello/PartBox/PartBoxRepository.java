@@ -78,4 +78,11 @@ public interface PartBoxRepository extends JpaRepository<PartBox,String>{
 	" where box_move = ?2 and department = ?3 and quantity = ?4 \n"+
 	" and sent_to_master_date is null", nativeQuery=true)
     void updateSentToMasterDateByBoxMoveIdAndDepartmentAndQuantity(Date dateToSet, String bmId, Long departmentId, Integer Quantity);
+	
+	@Query(value="SELECT CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code) \n"+
+	"FROM master_data o, box b, box_move m, part_box p, department d \n"+
+	"WHERE o.id=b.master_data_id and b.id = m.box_id and m.id = p.box_move \n"+
+	"and p.department=d.id and (p.sent_to_master_date is null) \n"+
+	"and (m.sent_to_master_date is null) and m.operation_id = 1", nativeQuery=true)
+    Optional<ArrayList<String>> selectDataForService3();
 }

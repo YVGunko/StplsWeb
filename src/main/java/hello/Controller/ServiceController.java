@@ -3,6 +3,7 @@ package hello.Controller;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
@@ -37,15 +38,16 @@ public class ServiceController {
 	@Autowired
 	private BoxMovesRepository boxMovesRepository;
 	@Autowired
-	private PartBoxService partBoxService;
-	@Autowired
 	private PartBoxRepository partBoxRepository;
 	@Autowired
 	private BoxRepository boxRepository;
-
-	
+/*
+	public boolean containsName(final List<Object> list, final String name){
+		return list.stream().filter(o -> o.getName().equals(name)).findFirst().isPresent();
+	}
+	*/
 	@PostMapping("/setSendToMasterDateInParallel")
-	@Transactional
+	//@Transactional
 	public boolean setSendToMasterDateInParallel(@RequestBody ArrayList<String> Qrd, 
 			@RequestParam(value="operation", required=true) long operationId) throws Exception{
 		//[	    "712000100000014545.13.0.50.14.3;000000028",
@@ -64,21 +66,12 @@ public class ServiceController {
 		return true;
 	}
 	@GetMapping("/service3") 
-	public int service3() throws RuntimeException{
-		long start = System.currentTimeMillis();
-		Holder<Integer> runCount = new Holder<>(0);
-		runCount.value = 0;
+	public ArrayList<String> service3() throws RuntimeException{
 
-		List<BoxMoveBoxAndQuantityDTO> boxMoveList = boxMovesRepository.getIdAndBoxQuantity(); //BoxMove.id, Box.id, Box.boxQuantity
-		if (boxMoveList == null) return 0;
-		System.out.println("BoxMove records to be updated by PartBox - " + boxMoveList.size());
-		
-		boxMoveList
-			.parallelStream()
-				.forEach(bm -> { boxMovesService.doCompareAndSaveIfEqual(bm.getBmId(),bm.getQuantityBox()); runCount.value++; });
+		ArrayList<String>  result =partBoxRepository.selectDataForService3().orElseThrow(() -> new NoSuchElementException("service3 return no rows"));
+		 result.forEach(System.out::println);
+		 return result;
 
-		System.out.println("service3 run took: " + (System.currentTimeMillis() - start));
-		return runCount.value;
 	}
 	@GetMapping("/service2") 
 	public int service2(@RequestParam(value="pages", required=false) Integer totalPages) throws RuntimeException{

@@ -20,6 +20,9 @@
                             <div class="form-group col-md-6">
 								<label for="priceType2Crude.crude.columnName" class="col-form-label">Наименование столбца прайса</label>
 								<input type="text" th:field="*{priceType2Crude.crude.columnName}"  readonly/>
+								
+								<label for="priceType2Crude.crude.directCosts" class="col-form-label">Прямые расходы, руб</label>
+								<input type="text" th:field="*{priceType2Crude.crude.directCosts}"  readonly/>
 
                                 <label for="columnCosts" class="col-form-label">Себестоимость, руб</label>
                                 <input type="text" th:field="*{columnCosts}" class="form-control" id="columnCosts" placeholder="Себестоимость, руб">

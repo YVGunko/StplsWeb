@@ -41,6 +41,26 @@
                                 <input type="text" th:field="*{crudeExtra}" class="form-control" id="crudeExtra" placeholder="Наценка, руб">
                                 <span th:if="${#fields.hasErrors('crudeExtra')}" th:errors="*{crudeExtra}" class="text-danger"></span>
                             </div>
+                            <div class="form-group col-md-6">
+                                <label for="crudeExtra" class="col-form-label">Пр.расходы, руб</label>
+                                <input type="text" th:field="*{directCosts}" class="form-control" id="directCosts" placeholder="Пр.расходы, руб">
+                                <span th:if="${#fields.hasErrors('directCosts')}" th:errors="*{directCosts}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="copyAddCosts" class="col-form-label">Изм.расходов, руб</label>
+                                <input type="text" th:field="*{copyAddCosts}" class="form-control" id="copyAddCosts" placeholder="Изм.расходов, руб">
+                                <span th:if="${#fields.hasErrors('copyAddCosts')}" th:errors="*{copyAddCosts}" class="text-danger"></span>
+                            </div>
+                                                        <div class="form-group col-md-6">
+                                <label for="copyAddPrice" class="col-form-label">Изм.отпускной цены, руб</label>
+                                <input type="text" th:field="*{copyAddPrice}" class="form-control" id="copyAddPrice" placeholder="Изм.отпускной цены, руб">
+                                <span th:if="${#fields.hasErrors('copyAddPrice')}" th:errors="*{copyAddPrice}" class="text-danger"></span>
+                            </div>
+                                                        <div class="form-group col-md-6">
+                                <label for="copyAddRant" class="col-form-label">Изм.стоимости ранта, руб</label>
+                                <input type="text" th:field="*{copyAddRant}" class="form-control" id="copyAddRant" placeholder="Изм.стоимости ранта, руб">
+                                <span th:if="${#fields.hasErrors('copyAddRant')}" th:errors="*{copyAddRant}" class="text-danger"></span>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mt-5">

@@ -23,6 +23,13 @@ public class ViewPriceFilter {
 	private String name ;
 	private Boolean showSomeColumn = false;
 	private Boolean sample = false;
+	private Boolean editable = false;
+	public Boolean getEditable() {
+		return editable;
+	}
+	public void setEditable(Boolean editable) {
+		this.editable = editable;
+	}
 	private PriceRoot priceRoot ;
 	
 	public PriceRoot getPriceRoot() {
@@ -37,5 +44,4 @@ public class ViewPriceFilter {
 	public void setSample(Boolean sample) {
 		this.sample = sample;
 	}
-
 }

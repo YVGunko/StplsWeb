@@ -3,12 +3,14 @@ package hello.Price;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import hello.TableRelation.PriceUser;
 import hello.User.User;
@@ -27,7 +31,7 @@ import hello.User.UserRepository;
 
 @Controller
 public class PriceWebController {
-	String referer;
+	private String referer;
 	
 	@Autowired
 	PriceColumnRepository priceColumnRepository;
@@ -77,7 +81,9 @@ public class PriceWebController {
     		referer = ((request.getHeader("Referer")==null)?"/viewPrice?sample=".concat(ViewPriceController.staticPriceFilter.getSample().toString()) : request.getHeader("Referer"));
 		if ((ViewPriceController.staticPriceFilter != null)) {
 			e.setPriceType(ViewPriceController.staticPriceFilter.getPriceType());
-			e.setPriceRoot(priceRootRepository.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(e.getPriceType().getId(), ViewPriceController.staticPriceFilter.getSample()));
+			e.setPriceRoot(priceRootRepository
+					.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(e.getPriceType().getId(), ViewPriceController.staticPriceFilter.getSample())
+					.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot.")));
 			e.setName(ViewPriceController.staticPriceFilter.getName());
 			e.setCosts(ptService.repository.getOne(ViewPriceController.staticPriceFilter.getPriceType().getId()).getDef_costs());
 			e.setPaint(ptService.repository.getOne(ViewPriceController.staticPriceFilter.getPriceType().getId()).getDef_paint());
@@ -102,7 +108,9 @@ public class PriceWebController {
 		e.setPaint(ptService.repository.getOne(e.getPriceType().getId()).getDef_paint());
 	    	e.setRant(e.bRant ? ptService.repository.getOne(e.getPriceType().getId()).getDef_rant() : (double)0);
 		e.setShpalt(e.bLiner ? ptService.repository.getOne(e.getPriceType().getId()).getDef_shpalt() : (double)0);
-		e.setPriceRoot(priceRootService.repository.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(e.getPriceType().getId(), ViewPriceController.staticPriceFilter.getSample()));
+		e.setPriceRoot(priceRootService.repository
+				.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(e.getPriceType().getId(), ViewPriceController.staticPriceFilter.getSample())
+				.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot.")));
 		//e.setSample(ViewPriceController.staticPriceFilter.getSample());
 		//e.setPriceRoot(priceRootRepository.findFirstByDateOfChangeBeforeAndPriceTypeIdOrderByDateOfChangeDesc(new Date(), e.getPriceType().getId()));
 
@@ -149,7 +157,8 @@ public class PriceWebController {
 			e.setPriceType(ViewPrice2Controller.staticPriceFilter.getPriceType());
 			e.setPriceRoot(priceRootService.repository.
 					findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(e.getPriceType().getId(), 
-							ViewPrice2Controller.staticPriceFilter.getSample()));
+							ViewPrice2Controller.staticPriceFilter.getSample())
+					.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot.")));
 			//e.setPriceRoot(ViewPrice2Controller.staticPriceFilter.getPriceRoot());
 			e.setName(ViewPrice2Controller.staticPriceFilter.getName());
 			e.setCosts(ptService.repository.getOne(ViewPrice2Controller.staticPriceFilter.getPriceType().getId()).getDef_costs());
@@ -176,7 +185,9 @@ public class PriceWebController {
 			e.setPaint(ptService.repository.getOne(e.getPriceType().getId()).getDef_paint());
 	    	e.setRant(e.bRant ? ptService.repository.getOne(ViewPrice2Controller.staticPriceFilter.getPriceType().getId()).getDef_rant() : (double)0);
 			e.setShpalt(e.bLiner ? ptService.repository.getOne(ViewPrice2Controller.staticPriceFilter.getPriceType().getId()).getDef_shpalt() : (double)0);
-			e.setPriceRoot(priceRootService.repository.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(e.getPriceType().getId(), ViewPrice2Controller.staticPriceFilter.getSample()));
+			e.setPriceRoot(priceRootService.repository
+					.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(e.getPriceType().getId(), ViewPrice2Controller.staticPriceFilter.getSample())
+					.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot.")));
     		id = priceService.save(e).getId();
     	    if (id == 0) return "addPrice2";	    	    
     	    model.addAttribute("priceColumns", priceColumnService.calcAndSave(id, e));
@@ -189,10 +200,18 @@ public class PriceWebController {
     @GetMapping("/editPrice2/{id}")
     public String showUpdateForm2(@PathVariable("id") Integer id, Model model, 
     		HttpServletRequest request) throws Exception {
-    		referer = "/viewPrice2" ;
+    	
+    	referer = "/viewPrice2" ;
+    	ServletRequestAttributes attributes = 
+		        (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+		HttpSession session = attributes.getRequest().getSession(true);
+		if (session.getAttribute("referer") != null) 
+			referer = (String) session.getAttribute("referer");
+		if (session.getAttribute("prevSample") != null) 
+			referer = referer+"?sample=".concat( String.valueOf((Boolean) session.getAttribute("prevSample")));
+    		
     		Price e = repository.findOneById(id);
-    		if (e != null) {
-        		referer = "/viewPrice2?sample=".concat(ViewPrice2Controller.staticPriceFilter.getSample().toString());
+    		if (e != null) {        		
     			model.addAttribute("price", e);
     			List<PriceColumn> pc = this.priceColumnRepository.findByPriceId(id);
     			int index = 0;
@@ -219,16 +238,29 @@ public class PriceWebController {
             e.setId(id);
             return "updPrice2";
         }
+    	ServletRequestAttributes attributes = 
+		        (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+		HttpSession session = attributes.getRequest().getSession(true);
+		ViewPriceFilter priceFilter = new ViewPriceFilter();
+		if (session.getAttribute("viewPriceFilter") != null) 			
+			priceFilter = (ViewPriceFilter) session.getAttribute("viewPriceFilter");
+		
         response.setHeader("Cache-Control", "no-cache");
         System.out.println(userRepository.findOneByName(request.getRemoteUser()));
         Price p = repository.findById(e.getId()).orElse(null);
         if (!e.equals(p))
         {
-    		e.setDateOfLastChange(new Date());
-            e.setPriceRoot(priceRootService.repository.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(e.getPriceType().getId(), ViewPrice2Controller.staticPriceFilter.getSample()));        
-        	e.setPriceUsers(new PriceUser(userRepository.findOneByName(request.getRemoteUser())
-        			, "Изменено: "+priceService.getListOfDifference(p, e).stream().map(Object::toString).collect(Collectors.joining(","))));
-	        if (priceService.save(e).getId() == 0) return "updPrice2";
+        	String strOfDifference = priceService.getListOfDifference(p, e).stream().map(Object::toString).collect(Collectors.joining(","));
+        	if (!strOfDifference.equals("")) {
+	    		e.setDateOfLastChange(new Date());
+	            e.setPriceRoot(priceRootService.repository
+	            		.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(e.getPriceType().getId()
+	            				, priceFilter.getSample())
+	            		.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot.")));        
+	        	e.setPriceUsers(new PriceUser(userRepository.findOneByName(request.getRemoteUser())
+	        			, "Изменено: "+strOfDifference));
+		        if (priceService.save(e).getId() == 0) return "updPrice2";
+        	}
         }
         
         model.addAttribute("prices", populatePrices(e.getPriceType().getId()));
@@ -251,7 +283,7 @@ public class PriceWebController {
             e.setId(id);
             return "updPrice2";
         }
-        
+        //TODO calc with directPrice column of the Crude entity
 		model.addAttribute("priceColumns", priceColumnService.calcAndSave(id, e));
 		List<PriceRoot> pr =  new ArrayList<>();
 		e.setPriceRoot(priceRootRepository.findOneById(e.getPriceRoot().getId()));
@@ -264,7 +296,7 @@ public class PriceWebController {
     public String deletePriceRowGet(@PathVariable("id") Integer id, @Valid Price e, 
     	      BindingResult result, Model model, 
       		HttpServletRequest request) throws Exception {
-    		referer = "/viewPrice2?sample=".concat(ViewPriceController.staticPriceFilter.getSample().toString()) ;
+    		//referer = "/viewPrice2?sample=".concat(ViewPriceController.staticPriceFilter.getSample().toString()) ;
     		return "updPrice2";
 
     }

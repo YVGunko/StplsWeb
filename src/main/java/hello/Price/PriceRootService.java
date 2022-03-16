@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -35,13 +36,14 @@ public class PriceRootService {
 	@Autowired
 	PriceColumnService priceColumnService;
 
-
+//TODO нужно изменить priceRoot. Связать с priceType и делать изменения для каждого Crude
 	public void save(@Valid PriceRoot newPriceRoot, int i) throws Exception {
 		// Выбрать предыдущий прайс для тех же разделов прайса. Может быть разный для разных разделов.
 		PriceRoot oldPriceRoot = new PriceRoot();
 		// Для PriceType ищем PriceRoot с самой новой датой.
-		oldPriceRoot = repository.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(i, newPriceRoot.getSample());
-	
+		oldPriceRoot = repository.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(i, newPriceRoot.getSample())
+				.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot."));
+
 		List<Price> oldPrice = new ArrayList<>();
     		// Сохранить, чтобы было на что ссылаться.
 		newPriceRoot.setPriceType(repositoryPT.getOne(i));
@@ -49,6 +51,7 @@ public class PriceRootService {
     		// Скопировать все Price из выбранных разделов со ссылкой на PriceRoot и PriceColumn с увеличением цен
 
 		if (oldPriceRoot != null) {
+			//get price's rows as source  
 			oldPrice = repositoryPrice.findByPriceTypeIdAndPriceRootIdOrderByName(i, ((oldPriceRoot.getId() == newPriceRoot.id) ? 0 : oldPriceRoot.getId()));
 			if (oldPrice != null) {
 				for (Price price : oldPrice) servicePrice.copyOne(price, newPriceRoot);
@@ -116,7 +119,8 @@ public class PriceRootService {
 		if (pt != null) {
 			if (pt == 0) responce.addAll(repository.findBySampleOrderByDateOfChangeDesc(sample));
 			else {
-				responceOne = repository.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(pt, sample);
+				responceOne = repository.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(pt, sample)
+						.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot."));
 				if (responceOne == null) {
 					responceOne = new PriceRoot();
 					responceOne.setId(0);

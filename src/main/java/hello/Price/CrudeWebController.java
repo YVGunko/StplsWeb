@@ -1,7 +1,9 @@
 package hello.Price;
 
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -24,7 +26,8 @@ public class CrudeWebController {
 	
 		@ModelAttribute("crudes")
 		public List<Crude> populateCrudes() {
-		    return this.repository.findByIdGreaterThanOrderById(0);
+		    return this.repository.findByIdGreaterThanOrderById(0).stream()
+		    		.sorted(Comparator.comparing(Crude::getColumnName)).collect(Collectors.toList());
 		}
 		
 	    @GetMapping("/getCrude")

@@ -32,7 +32,7 @@ public class PriceTypeService {
 		return ptWeb;
 	}
 
-	public PriceType checkForNullAndReplaceWithTop(PriceType ptOne)
+	public PriceType checkForNullAndReplaceWithTop(PriceType ptOne, Boolean editable)
 	{
 		PriceType responce = new PriceType();
 		if (ptOne != null) {
@@ -40,9 +40,9 @@ public class PriceTypeService {
 				responce = repository.findOneById(ptOne.getId());
 			}catch (Exception ex) {
 				System.out.println("Exception. PriceType. checkForNullAndReplaceWithZero: "+ex); 
-				responce = repository.findTopByIdGreaterThanOrderByName(0);
+				responce = repository.findTopByIdGreaterThanOrderByName((editable) ? -1 : 0);
 				}
-		} else responce = repository.findTopByIdGreaterThanOrderByName(0);
+		} else responce = repository.findTopByIdGreaterThanOrderByName((editable) ? -1 : 0);
 		if (responce == null) responce = new PriceType();
 		return responce;		
 	}

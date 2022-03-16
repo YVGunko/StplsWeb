@@ -129,7 +129,7 @@ public class OutDocController {
 				}
 		return responce;
 	}
-	
+	/*
 	@GetMapping("/outDocSyncPageableCount") 
 	public int getPartBoxCount(@RequestParam(value="date", required=false) @DateTimeFormat(pattern="dd.MM.yyyy HH:mm:ss") Date date) throws RuntimeException{
 		int		page = 0;
@@ -138,7 +138,7 @@ public class OutDocController {
 		page = (int)Math.ceil(recNumber/(double)pageSize); 
 		System.out.println("Data syncronize... boxSyncPageableCount pages : " + page);
 		return page;
-	}
+	}*/
 	
 	@PostMapping("/outDocSync") 
 	public OutDocWithBoxWithMovesWithPartsRequest outDocSync(@RequestBody @Valid ArrayList<String> outDocId) throws Exception{

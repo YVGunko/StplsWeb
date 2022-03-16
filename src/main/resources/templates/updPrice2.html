@@ -48,8 +48,8 @@
                             		<input type="checkbox" name="bLiner" th:field="*{bLiner}" />
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="costs" class="col-form-label">Расх.общ</label>
-                                <input type="number" min="0" step="1" th:field="*{costs}" class="form-control" id="costs" placeholder="Расх.общие">
+                                <label for="costs" class="col-form-label">Расх.общ (Не использ.)</label>
+                                <input type="number" min="0" step="1" th:field="*{costs}" class="form-control" id="costs" placeholder="Расх.общие" readonly>
                                 <span th:if="${#fields.hasErrors('costs')}" th:errors="*{costs}" class="text-danger"></span>
                             </div>
                             <div class="form-group col-md-6">
@@ -99,6 +99,7 @@
                             <thead>
                                 <tr>
                                 	<th>Наименование</th>
+                                	<th>Прямые расходы, руб</th>
 			                        <th>Себестоимость, руб</th>
 			                        <th>Отп. цена, руб</th>
 			                        <th>Наценка, руб</th>
@@ -107,6 +108,7 @@
                             <tbody>
                                 <tr th:each="p : ${priceColumns}">
                                 	<td th:text="${p.priceType2Crude.crude.columnName}"></td>
+                                	<td th:text="${p.priceType2Crude.crude.directCosts}"></td>
 				                    <td th:text="${p.columnCosts}"></td>
 				                    <td th:text="${p.columnPrice}"></td>
 				                    <td th:text="${p.columnPrice-p.columnCosts}"></td>

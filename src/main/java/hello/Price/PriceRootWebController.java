@@ -1,7 +1,10 @@
 package hello.Price;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import hello.utils;
+import hello.Web.Order.OrderGroupReq;
 
 @Controller
 public class PriceRootWebController {
@@ -25,16 +29,33 @@ public class PriceRootWebController {
 	PriceRootService service;
 	@Autowired
 	PriceTypeRepository repositoryPT;
+	@Autowired
+	CrudeRepository crudeRepository;
 
+	public CrudeChangeDTO showCreateForm() {
+	    List<Crude> books = new ArrayList<>();
+	    crudeRepository.findAll().iterator().forEachRemaining(books::add);
+	    return new CrudeChangeDTO(books);
+	}
 	//TODO 
 		@ModelAttribute("priceRoots")
 		public List<PriceRoot> populatePR() {
-		    return this.repository.findAll();
+		    return this.repository.findAll()
+		    		.stream()
+		    		.sorted(Comparator.comparing(PriceRoot::getDateOfChange).reversed())
+		    		.collect(Collectors.toList());		
 		}
 		
 		@ModelAttribute("priceTypes")
 		public List<PriceType> populatePT() {
 		    return this.repositoryPT.findByIdGreaterThanOrderByName(0);
+		}
+		
+		@ModelAttribute("crudeList")
+		public List<Crude> populateCrudes() {
+		    return this.crudeRepository.findAll()
+		    		.stream()
+		    		.sorted(Comparator.comparing(Crude::getColumnName)).collect(Collectors.toList());
 		}
 		
 	    @GetMapping("/getPriceRoot")
@@ -43,17 +64,18 @@ public class PriceRootWebController {
 	    }
 	    
 	    @GetMapping("/signPriceRoot")
-	    public String signUpPriceRoot(PriceRoot e) {
-	    		e.setDateOfChange(utils.getStartOfDay(new Date()));
-	    		e.setNote("...");
-	    		e.setPlusValue(10);
-	    		e.setSample(false);
-	    		//System.out.println("/signPriceRoot date: " + e.getDateOfChange());
+	    public String signUpPriceRoot(PriceRoot e, Model model) {
+    		e.setDateOfChange(utils.getStartOfDay(new Date()));
+    		e.setNote("");
+    		e.setPlusValue(0);
+    		e.setSample(false);
+    		//model.addAttribute("crudeList", populateCrudes());
 	        return "addPriceRoot";
 	    }
 	    
 	    @PostMapping("/addPriceRoot")
-	    public String addPriceRoot(@Valid PriceRoot e, @RequestParam(value = "pts" , required = false) int[] pts, BindingResult result, Model model) throws Exception {
+	    public String addPriceRoot(@Valid PriceRoot e, @RequestParam(value = "pts" , required = false) int[] pts, 
+	    		BindingResult result, Model model, @ModelAttribute ArrayList<Crude> crudes) throws Exception {
 	        if (result.hasErrors()) {
 	            return "addPriceRoot";
 	        }
@@ -61,6 +83,7 @@ public class PriceRootWebController {
 	        for (int i = 0; i < pts.length; i++) {
 	        		service.save(new PriceRoot(e.id,e.dateOfChange,e.note,e.plusValue,e.priceType,e.getSample()), pts[i]);
 	        }
+	        //model.addAttribute("crudeList", populateCrudes());
 	        model.addAttribute("priceRoots", populatePR());
 	        return "redirect:/getPriceRoot";
 	    }

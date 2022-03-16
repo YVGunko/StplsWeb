@@ -19,7 +19,8 @@ import hello.utils;
 @Entity
 public class Crude {
 	public Crude(Integer id, String crudeName, String columnName, Double crudeCost,
-			Date dateOfLastChange, Double crudeExtra, Double crudePlus) {
+			Date dateOfLastChange, Double crudeExtra, Double crudePlus, Double directCosts,
+			Double copyAddCosts, Double copyAddPrice, Double copyAddRant) {
 		super();
 		this.id = id;
 		this.crudeName = crudeName;
@@ -27,6 +28,10 @@ public class Crude {
 		this.crudeCost = crudeCost;
 		this.crudeExtra = crudeExtra;
 		this.crudePlus = crudePlus;
+		this.directCosts = directCosts;
+		this.copyAddCosts = copyAddCosts;
+		this.copyAddPrice = copyAddPrice;
+		this.copyAddRant = copyAddRant;
 		this.dateOfLastChange = dateOfLastChange;
 	}
 
@@ -97,6 +102,14 @@ public class Crude {
 	public Double crudeExtra;
 	@JsonProperty("crudePlus")
 	public Double crudePlus;
+	@JsonProperty("directCosts")
+	public Double directCosts;
+	@JsonProperty("copyAddCosts")
+	public Double copyAddCosts;
+	@JsonProperty("copyAddPrice")
+	public Double copyAddPrice;
+	@JsonProperty("copyAddRant")
+	public Double copyAddRant;
 	
 	public Double getCrudeExtra() {
 		return crudeExtra;
@@ -113,6 +126,38 @@ public class Crude {
 	
 	public String getStringDateOfLastChange() {
 		return utils.toString(utils.toLocalDate(dateOfLastChange));
+	}
+
+	public Double getDirectCosts() {
+		return directCosts;
+	}
+
+	public void setDirectCosts(Double directCosts) {
+		this.directCosts = directCosts;
+	}
+
+	public Double getCopyAddCosts() {
+		return copyAddCosts;
+	}
+
+	public void setCopyAddCosts(Double copyAddCosts) {
+		this.copyAddCosts = copyAddCosts;
+	}
+
+	public Double getCopyAddPrice() {
+		return copyAddPrice;
+	}
+
+	public void setCopyAddPrice(Double copyAddPrice) {
+		this.copyAddPrice = copyAddPrice;
+	}
+
+	public Double getCopyAddRant() {
+		return copyAddRant;
+	}
+
+	public void setCopyAddRant(Double copyAddRant) {
+		this.copyAddRant = copyAddRant;
 	}
 	
 }

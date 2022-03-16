@@ -39,15 +39,6 @@ public class BoxMovesService {
 	@Autowired
 	private PartBoxService partBoxService;
 	
-	public int doCompareAndSaveIfEqual (String bmId, Integer quantityToCheck){
-		Integer partBoxQuantity = partBoxRepository.getQuantityByBoxMoveId(bmId).stream().reduce(0,(x,y)->x+y);
-
-		if (quantityToCheck == partBoxQuantity) {
-			save(bmId); //BoxMove setSendToMaster... save
-			return 1;
-		}
-		return 0;					
-	}
 	public void setSendToMasterDate(String qrd, long operationId) {
 		long depId = 0;
 		String orderId = null;
@@ -72,7 +63,7 @@ public class BoxMovesService {
 		
 		orderId = orderId.substring(0, orderId.lastIndexOf("."));
 		final Integer quantityBox = Integer.valueOf(orderId.substring(orderId.lastIndexOf(".")+1,orderId.length()));
-		if (quantityBox == null  || quantityBox == 0) return; 
+		if (quantityBox == null  || quantityBox == 0) return; //кол-во в коробке
 		
 		final String ordId = orderId.substring(0, orderId.lastIndexOf("."));
 		if (ordId == null || ordId.isEmpty()) return;
@@ -83,14 +74,22 @@ public class BoxMovesService {
 		final String boxId = boxRepository.getByMasterDataIdAndNumBox (mdId, boxNum)
 				.map(box -> box.getId())
 				.orElseThrow(() -> new NoSuchElementException("Order: "+ordId+", Box: "+boxNum));
-		
+		//
 		BoxMove bm = boxMovesRepository.getByOperationIdAndBoxId (operationId, boxId)
 				.orElseThrow(() -> new NoSuchElementException("BoxMove. No such record. OperationId: "+operationId+", BoxId: "+boxId));
 		//Write Date to field Send... of PartBox table and also BoxMove if quantity match 
 		partBoxService.updSendToMasterDate(dateToSet, bm.getId(), depId, quantityBox);
 	}
+	public int doCompareAndSaveIfEqual (String bmId, Integer quantityToCheck){
+		if (partBoxRepository.getQuantityByBoxMoveId(bmId).stream().reduce(0,(x,y)->x+y).compareTo(quantityToCheck) == 0) {
+			save(bmId); //BoxMove setSendToMaster... save
+			return 1;
+		}
+		return 0;					
+	}
 	//Save with native query with goal of reduce time consumption
 	public void save(String boxMoveId) {
+		//System.out.println("boxMovesRepository.updateSentToMasterDate with params: "+new Date()+", "+boxMoveId);
 		//TODO save by native Query
 		boxMovesRepository.updateSentToMasterDate(new Date(),boxMoveId);
 	}

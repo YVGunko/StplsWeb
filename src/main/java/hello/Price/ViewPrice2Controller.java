@@ -3,6 +3,7 @@ package hello.Price;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -75,12 +76,13 @@ public class ViewPrice2Controller {
 		
 		if (priceFilter.getSample() == null) priceFilter.setSample(false);
 		if (priceFilter.getName() == null) priceFilter.setName("");
-		priceFilter.setPriceType(servicePT.checkForNullAndReplaceWithTop(priceFilter.getPriceType()));
+		priceFilter.setPriceType(servicePT.checkForNullAndReplaceWithTop(priceFilter.getPriceType(), false));
 		
 		if (prevPriceTypeId == null) {//предыдущего значения нет, значит первый раз загружается страница.
-			pr = repositoryPR.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(priceFilter.getPriceType().getId(), priceFilter.getSample());
-			if (pr == null) priceFilter.setPriceRoot(new PriceRoot());
-			else 	priceFilter.setPriceRoot(pr);
+			pr = repositoryPR.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc
+					(priceFilter.getPriceType().getId(), priceFilter.getSample())
+					.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot."));
+			priceFilter.setPriceRoot(pr);
 		}else {
 			if (prevPriceTypeId == priceFilter.getPriceType().getId()) {			//тип прайса не менялся
 				if (prevSample == priceFilter.getSample()) {						//образец не менялся
@@ -88,12 +90,18 @@ public class ViewPrice2Controller {
 					else priceFilter.setPriceRoot(repositoryPR.findOneById(priceFilter.getPriceRoot().getId()));
 				}else { 			//Образец изменился, получите максимальную дату прайса
 					if (servicePR.checkForNull(priceFilter.getPriceRoot())) priceFilter.setPriceRoot(new PriceRoot()); 
-					else priceFilter.setPriceRoot(repositoryPR.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(priceFilter.getPriceType().getId(), priceFilter.getSample()));	
+					else {							//тип прайса изменялся
+						pr = repositoryPR.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc
+								(priceFilter.getPriceType().getId(), priceFilter.getSample())
+								.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot."));
+						priceFilter.setPriceRoot(pr);
+					}	
 				}
 			}else {							//тип прайса изменялся
-				pr = repositoryPR.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(priceFilter.getPriceType().getId(), priceFilter.getSample());
-				if (pr == null) priceFilter.setPriceRoot(new PriceRoot());
-				else 	priceFilter.setPriceRoot(pr);
+				pr = repositoryPR.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc
+						(priceFilter.getPriceType().getId(), priceFilter.getSample())
+						.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot."));
+				priceFilter.setPriceRoot(pr);
 			}
 		}
 		
@@ -114,6 +122,9 @@ public class ViewPrice2Controller {
 		
 		session.setAttribute("priceTypeId", priceFilter.getPriceType().getId());
 		session.setAttribute("prevSample", priceFilter.getPriceRoot().getSample());
+		session.setAttribute("referer", "/viewPrice2");
+		session.setAttribute("viewPriceFilter", priceFilter);
+		
 		mv.addObject("sample", priceFilter.getSample());
 		mv.addObject("price", priceWeb);
 		mv.addObject("priceRoots", populatePriceRoots(priceFilter.getPriceType().getId()));
@@ -122,30 +133,3 @@ public class ViewPrice2Controller {
 		return mv;
 	}
 }
-
-/*
- *                         		<div class="col">
-                             	<label for="priceRoot.dateOfChange" class="col-form-label">Дата прайса: </label>
-								<select  id="priceRoot" name="priceRoot" th:field="*{priceRoot.id}" >
-									<option th:each="priceRoot : ${priceRoot}" th:value="${priceRoot.id}" th:utext="${priceRoot.dateOfChange}"/>
-								</select>
-                        		</div>
-                        		
-                        					List<PriceRoot> priceRoots = populatePriceRoots();
-			if (priceRoots != null) {
-			    ServletRequestAttributes attributes = 
-			        (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-			    HttpSession session = attributes.getRequest().getSession(true);
-			    session.setAttribute("priceRoots", priceRoots);
-			    mv.addObject("command", new PriceRoot());
-			}
-                        		
-                        										<th:block th:if="${priceRoots}">
-
-	                                	<label for="command.dateOfChange" class="form-inline"> Дата  </label>
-										<select  id="command" name="command" th:field="*{command.id}" >
-											<option th:each="command : ${priceRoots}" th:value="${command.id}" th:utext="${command.dateOfChange}"/>
-										</select>
-
-					            </th:block>
- * */

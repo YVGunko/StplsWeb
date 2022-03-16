@@ -31,7 +31,6 @@ public interface BoxMovesRepository extends JpaRepository<BoxMove,String>{
 	
 	List<BoxMove> findByBoxId(String boxId);
 	
-	List<BoxMove> findByBoxIdInAndOperationId(String boxId, long operId);
 	List<BoxMove> findByBoxIdInAndOperationId(List<String> boxIdList, long operId);
 	
 	List<BoxMove> findByBoxIdAndOperationIdAndSentToMasterDateIsNull(String id, long operId);
@@ -43,7 +42,6 @@ public interface BoxMovesRepository extends JpaRepository<BoxMove,String>{
 	
 	List<BoxMove> findBySentToMasterDate (Date sent);
 	
-	BoxMove findByOperationIdAndBoxId(long OperId, String BoxId);
 	Optional<BoxMove> getByOperationIdAndBoxId(long OperId, String BoxId);
 
 	List<BoxMove> findByBoxMasterDataDivisionCodeAndOperationIdAndSentToMasterDate(String code, long operationId, Date sent);

@@ -59,7 +59,7 @@ public class PriceColumnService {
 		}
 		return result;		
 	}
-
+//TODO calc with directCosts from Crude
 	List<PriceColumn> calcAndSave (Integer id, Price e){
 		List<PriceColumn> pc = this.priceColumnRepository.findByPriceId(id);
 		int i = -1;
@@ -72,7 +72,7 @@ public class PriceColumnService {
 			b.columnCosts = (double) Math.round(
 					((b.priceType2Crude.crude.crudeCost == null)? 0 : b.priceType2Crude.crude.crudeCost)*
 					((e.weight == null)? 0 : e.weight)+
-					((e.costs == null)? 0 : e.costs)+
+					((b.priceType2Crude.crude.directCosts == null)? 0 : b.priceType2Crude.crude.directCosts)+
 					((e.paint == null)? 0 : e.paint)+
 					(e.bRant ? ( (e.rant == null)? 0 : e.rant ) : 0)+
 					(e.bLiner ? ( (e.shpalt == null)? 0 : e.shpalt ) : 0));

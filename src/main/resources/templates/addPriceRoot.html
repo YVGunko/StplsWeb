@@ -20,16 +20,16 @@
             <h2 class="mb-5"> Создать новый прайс </h2>
               <form action="#" th:action="@{/addPriceRoot}" th:object="${priceRoot}" method="post">
                 <fieldset>
-						<div class="form-group col-md-2">
+						<div class="form-group col-md-4">
 							<label for="sample"  class="col-form-label">Образцы</label>
 							<input class="form-control" type="checkbox" name="sample" th:field="*{sample}" />
 						</div>
-                        <div class="form-group col-md-2">
+                        <div class="form-group col-md-4">
                             <label for="dateOfChange" class="col-form-label"> Дата начала действия </label>
                             <input type="date" th:field="*{dateOfChange}" class="form-control" id="dateOfChange" placeholder="Дата начала действия">
                             <span th:if="${#fields.hasErrors('dateOfChange')}" th:errors="*{dateOfChange}" class="text-danger"></span>
                         </div>
-                        <div class="form-group col-md-2">
+                        <div class="form-group col-md-4">
                             <label for="plusValue" class="col-form-label"> Увеличение цен </label>
                             <input type="number" th:field="*{plusValue}" class="form-control" id="plusValue" placeholder="Увеличение цен">
                             <span th:if="${#fields.hasErrors('plusValue')}" th:errors="*{plusValue}" class="text-danger"></span>
@@ -55,6 +55,28 @@
 					        		<td th:text="${pt.name}"> </td>
 								<td><input type="checkbox" name="pts" th:value="${pt.id}"/></td>
 					        </tr>
+					    </tbody>
+					</table>
+					<table>
+					    <thead>
+					        <tr>
+					            <th> Сырье </th>
+					            <th> Изм.расходов </th>
+					            <th> Изм.отпускной цены </th>
+					            <th> Изм.стоимости ранта </th>
+					        </tr>
+					    </thead>
+					    <tbody>
+							<tr th:if="${crudeList.empty}">
+					            <td colspan="4"> Нет доступных разделов </td>
+
+					        <tr th:each="crude : ${crudeList}">
+			                    <td th:text = "${crude.columnName}"	></td>
+			                    <td th:text = "${crude.copyAddCosts}"></td>
+			                    <td th:text = "${crude.copyAddPrice}"></td>
+			                    <td th:text = "${crude.copyAddRant}"	></td>
+			                </tr>
+
 					    </tbody>
 					</table>
                    <div class="row">

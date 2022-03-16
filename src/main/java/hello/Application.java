@@ -45,6 +45,7 @@ public class Application implements CommandLineRunner{
         return filter;
     }
     
+    
     /*@Bean
     public JavaMailSender getJavaMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();

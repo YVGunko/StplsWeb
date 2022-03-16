@@ -101,19 +101,25 @@ public class PartBoxService {
 			} else return false;
 		}
 	}
-	//First of all, save partBox if is not null field Send..., then check if full box was received and save BoxMove if true.
+	// First of all, save partBox if is not null field Send..., then check if full box was received and save BoxMove if true.
 	// For operation=9999 (means dep != 0) boxMove should be saved always.
 	public void updSendToMasterDate (Date dateToSet, String bmId, long departmentId, int quantityBox) throws RuntimeException{
 		if (departmentId != 0) {
+			//System.out.println("partBoxRepository.updateSentToMasterDateByBoxMoveIdAndDepartmentAndQuantity with params: "
+		//+dateToSet+", "+bmId+", "+departmentId+", "+quantityBox);
 			partBoxRepository.updateSentToMasterDateByBoxMoveIdAndDepartmentAndQuantity(dateToSet, bmId, departmentId, quantityBox);
-			Integer q = 
+			Integer q = //quantityBox;
 					partBoxRepository.getQuantityByBoxMoveIdAndDepartmentAndQuantity(bmId, departmentId, quantityBox)
 					.orElse(Arrays.asList(0))
 					.stream().reduce(0,Integer::sum);
 					
+			//System.out.println("partBoxRepository.compare quantities with params: "
+			//		+q+", "+quantityBox);
 			if (q == quantityBox) boxMovesService.save(bmId); //BoxMove setSendToMaster... save
 		}
 		else {
+			//System.out.println("partBoxRepository.updateSentToMasterDateByBoxMoveId with params: "
+			//		+dateToSet+", "+bmId);
 			partBoxRepository.updateSentToMasterDateByBoxMoveId(dateToSet, bmId);
 			boxMovesService.save(bmId); //BoxMove setSendToMaster... save
 		}

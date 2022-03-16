@@ -11,6 +11,7 @@
     <body>
        <div th:switch="${price}" class="container-fluid">
 			<p th:inline="text">Привет, [[${#httpServletRequest.remoteUser}]]!</p>
+
             <div class="row">
                 <div class="col-md-6">
                     <h2 th:case="null">Список пуст!</h2>
@@ -18,25 +19,34 @@
                         <h2 class="my-5">Прайс. <span th:text="${priceFilter.sample} ? 'Образцы.' : 'Серия.'"></span></h2>
                         <hr>
                         <form action="#" th:action="@{__${#httpServletRequest.requestURI}__}" th:object="${priceFilter}" method="post">
-                        		<div class="form-row col-md-auto">
+                        	<th:block th:if="${#httpSession.getAttribute('allowedUser') == true}">
+	                        	<div class="form-row col-md-auto">
+									<label for="editable"  class="form-control-sm">Редактируемая форма</label>
+									<input class="form-control-sm" type="checkbox" name="editable" th:field="*{editable}" th:value="${priceFilter.editable}"/>
+									<button type="submit" name="action" value="filter" class="form-control-sm"> >> </button>
+								</div>
+							</th:block>
+                        	<div class="form-row col-md-auto">
 								<label for="sample"  class="form-control-sm">Образцы</label>
 								<input class="form-control-sm" type="checkbox" name="sample" th:field="*{sample}" th:value="${priceFilter.sample}"/>
 								<button type="submit" name="action" value="filter" class="form-control-sm"> >> </button>
 							</div>
-                        		<div class="form-row col-md-auto">
+                        	<div class="form-row col-md-auto">
                                	<label for="priceType.name" class="form-control-sm"> Выбор прайса </label>
 								<select  id="priceType" class="form-control-sm" name="priceType" th:field="*{priceType.id}" >
 									<option th:each="priceType : ${priceTypes}" th:value="${priceType.id}" th:utext="${priceType.name}"/>
 								</select>
 					    			<button type="submit" name="action" value="filter" class="form-control-sm"> >> </button>
 					    		</div>
-							<div class="form-row col-md-auto">
-                                	<label for="priceRoot.desc" class="form-control-sm"> Дата прайса </label>
-								<select  id="priceRoot" class="form-control-sm" name="priceRoot" th:field="*{priceRoot.id}" >
-									<option th:each="priceRoot : ${priceRoots}" th:value="${priceRoot.id}" th:utext="${priceRoot.desc}"/>
-								</select>
-								<button type="submit" name="action" value="filter" class="form-control-sm"> >> </button>
-							</div>
+					    	<th:block th:if="${not #lists.isEmpty(priceRoots)}">
+								<div class="form-row col-md-auto">
+	                                	<label for="priceRoot.desc" class="form-control-sm"> Дата прайса </label>
+									<select  id="priceRoot" class="form-control-sm" name="priceRoot" th:field="*{priceRoot.id}" >
+										<option th:each="priceRoot : ${priceRoots}" th:value="${priceRoot.id}" th:utext="${priceRoot.desc}"/>
+									</select>
+									<button type="submit" name="action" value="filter" class="form-control-sm"> >> </button>
+								</div>
+							</th:block>
 							<div class="form-row col-md-auto">
 								<label for="name" class="form-control-sm" title ="Поиск"> Поиск </label>
 								<input type="text" class="form-control-sm" th:field="*{name}"/>
@@ -51,10 +61,17 @@
 			                        <th>Наименование</th>
 			                        <th>Рант</th>
 			                        <th>Подкл/Шпал</th>
-			                        <th:block th:if="${not #lists.isEmpty(price)}">
-				                        <th:block  th:each="pp : ${price[0].strHeader}">
-					                        <th th:text="${pp}">
-				                        </th:block>
+			                        <th:block th:if="${priceFilter.editable == false}">
+				                        <th:block th:if="${not #lists.isEmpty(price)}">
+					                        <th:block  th:each="pp : ${price[0].strHeader}">
+						                        <th th:text="${pp}">
+					                        </th:block>
+										</th:block>
+									</th:block>
+									<th:block th:if="${priceFilter.editable == true}">
+										<th>Тип прайса.</th>
+										<th>Дата прайса.</th>
+										<th>Редакт.</th>
 									</th:block>
                                 </tr>
                             </thead>
@@ -63,9 +80,16 @@
 				                    <td th:text="${#strings.toUpperCase(p.name)}"></td>
 				                    <td th:text="${p.rant}"></td>
 				                    <td th:text="${p.shpalt}"></td>
+				                    <th:block th:if="${priceFilter.editable == false}">
 				                        <th:block  th:each="pc : ${p.column}">
 					                        <td th:text="${pc.columnPrice}"></td>
 				                        </th:block>
+				                    </th:block>
+				                    <th:block th:if="${priceFilter.editable == true}">
+				                    	<td th:text="${p.note}"></td>
+										<td th:text="${#dates.format(p.prDateOfChange, 'dd-MM-yyyy')}"></td>
+										<td><a th:href="@{/editPrice2/{id}(id=${p.id})}" class="btn btn-primary"><i class="fas fa-edit ml-2" title ="Редактировать строку прайса"></i></a></td>
+									</th:block>
                                 </tr>
                             </tbody>
                         </table>

@@ -7,8 +7,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Optional;
-import javafx.util.Pair;
 
 import javax.mail.MessagingException;
 import javax.validation.Valid;
@@ -121,6 +121,7 @@ public class PriceService {
 			Double rant, Double shpalt, Double number_per_box, Double weight, Date dateOfLastChange, Boolean bRant,
 			Boolean bLiner, String note, PriceRoot priceRoot)*/
 		// Создаем копию объекта иначе не запишется в таблицу
+		// p.costs should be change to crude.directCosts 02.03.22
 		Price result = new Price(null, p.name, p.priceType, p.costs, p.paint, p.rant, p.shpalt, p.number_per_box, p.weight, p.dateOfLastChange, 
 				p.bRant, p.bLiner, p.note, newPr);
 		Price newPrice = repository.save(result);
@@ -133,7 +134,7 @@ public class PriceService {
 					Double columnPrice, Double columnCosts)*/
 			// Создаем копию объекта иначе не запишется в таблицу
 			PriceColumn newPcOne = new PriceColumn(null, oldPcOne.getDateOfLastChange(), newPrice, oldPcOne.getPriceType2Crude(), 
-					oldPcOne.getColumnPrice()+newPr.plusValue, oldPcOne.getColumnCosts());
+					oldPcOne.getColumnPrice()+newPr.plusValue, oldPcOne.getColumnCosts()+newPr.plusValue); //changed 02.03.22
 			priceColumnRepository.save(newPcOne);
 		}
 		//return result;
@@ -168,41 +169,10 @@ public class PriceService {
 	    mail.setProps(model);
 	    emailService.sendEmail(mail, "mailPrice");
     }
-    public List<Price> getPriceByFilter (ViewPriceFilter priceFilter, Integer prevPriceTypeId, Boolean sample) {
-    		List<Price> price = new ArrayList<>();
-    		PriceRoot pr = new PriceRoot();
-		if (priceFilter.getSample() == null) priceFilter.setSample(false);
-		if (priceFilter.getName() == null) priceFilter.setName("");
-		priceFilter.setPriceType(servicePT.checkForNullAndReplaceWithTop(priceFilter.getPriceType()));
-		if (prevPriceTypeId == null) {//предыдущего значения нет, значит первый раз загружается страница.
-			pr = repositoryPR.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(priceFilter.getPriceType().getId(), sample);
-			if (pr == null) priceFilter.setPriceRoot(repositoryPR.findOneById(0));
-			else 	priceFilter.setPriceRoot(pr);
-		}else {
-			if (prevPriceTypeId == priceFilter.getPriceType().getId()) {//тип прайса не менялся
-				if (servicePR.checkForNull(priceFilter.getPriceRoot())) priceFilter.setPriceRoot(repositoryPR.findOneById(0)); 
-				else priceFilter.setPriceRoot(repositoryPR.findOneById(priceFilter.getPriceRoot().getId()));
-			}else {
-				pr = repositoryPR.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(priceFilter.getPriceType().getId(), sample);
-				if (pr == null) priceFilter.setPriceRoot(repositoryPR.findOneById(0));
-				else 	priceFilter.setPriceRoot(pr);
-			}
-		}
-		
-		if (!priceFilter.getName().equals("")) 
-			price = repository.findByPriceTypeIdAndPriceRootIdAndNameStartingWithOrderByName (priceFilter.getPriceType().getId(),
-					priceFilter.getPriceRoot().getId(),
-					priceFilter.getName());
-		else 
-			price = repository.findByPriceTypeIdAndPriceRootIdOrderByName (priceFilter.getPriceType().getId(),
-					priceFilter.getPriceRoot().getId());
-		return price;
-    }
     
     public List<String> getListOfDifference(Price s1, Price s2) throws IllegalAccessException {       
     	final Map<String,String> FIELDS = new HashMap<String,String>(){
 			private static final long serialVersionUID = 5159637266691074146L;
-
 		{
     		put("priceType", "Тип прайса");
     		put("name", "Наименование");
@@ -217,9 +187,9 @@ public class PriceService {
 	        put("number_per_box", "Пар/кор");
         }}; 
         
-        List<String> res = new ArrayList<>();
-        
-        for (Field f : s1.getClass().getFields())         	
+        List<String> res = new ArrayList<>();        
+        try {
+        for (Field f : s1.getClass().getFields())    
             if (!f.get(s1).equals(f.get(s2)))             			
             	try {
             		Object value = s1.getClass().getDeclaredField(f.getName()).get(s1);
@@ -228,7 +198,6 @@ public class PriceService {
 	            		continue;
 	            	else 
 	            		if(FIELDS.containsKey(f.getName())) {
-							
 							if (value instanceof PriceType) {
 								value = ((PriceType) value).getName();
 							} else
@@ -244,6 +213,9 @@ public class PriceService {
 					e.printStackTrace();
 					continue;
 				}
+			} catch (NullPointerException e) {
+				System.out.println("getListOfDifference. NPE.");
+			}
         return res;
     }
 }

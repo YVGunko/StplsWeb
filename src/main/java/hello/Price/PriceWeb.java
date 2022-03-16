@@ -1,5 +1,6 @@
 package hello.Price;
 
+import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -50,6 +51,15 @@ public class PriceWeb {
 		this.strHeader = strHeader;
 		this.rant = rant;
 		this.shpalt = shpalt;
+	}
+	public PriceWeb(Integer id, String name, Double rant, Double shpalt, Date prDateOfChange, String note, Boolean sample) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.note = note;
+		this.rant = rant;
+		this.shpalt = shpalt;
+		this.prDateOfChange = prDateOfChange;
 	}
 
 	public Integer getId() {
@@ -113,10 +123,23 @@ public class PriceWeb {
 	public void setStrHeader(List<String> strHeader) {
 		this.strHeader = strHeader;
 	}
-	public Integer id;
-	public Integer priceRootId;
-	public String name;	
-	public String note;
+	private Integer id;
+	private Integer priceRootId;
+	private Date prDateOfChange;
+	private String name;	
+	private String note;
+	private Double costs;	
+	private Double paint;	
+	private Double rant;	
+	private Double shpalt;	
+	private Double number_per_box;	
+	private Double weight;	
+	private List <PriceColumn> column;
+	private List <String> strHeader;	
+	private Boolean bRant=false;
+	private Boolean bLiner=false;
+	private Boolean sample=false;
+
 	public String getNote() {
 		return note;
 	}
@@ -124,18 +147,6 @@ public class PriceWeb {
 	public void setNote(String note) {
 		this.note = note;
 	}
-	public Double costs;	
-	public Double paint;	
-	public Double rant;	
-	public Double shpalt;	
-	public Double number_per_box;	
-	public Double weight;	
-	public List <PriceColumn> column;
-	public List <String> strHeader;	
-	public Boolean bRant=false;
-	public Boolean bLiner=false;
-	public Boolean sample=false;
-	
 	public Boolean getbRant() {
 		return bRant;
 	}
@@ -166,6 +177,14 @@ public class PriceWeb {
 
 	public void setSample(Boolean sample) {
 		this.sample = sample;
+	}
+
+	public Date getPrDateOfChange() {
+		return prDateOfChange;
+	}
+
+	public void setPrDateOfChange(Date prDateOfChange) {
+		this.prDateOfChange = prDateOfChange;
 	}
 
 }
