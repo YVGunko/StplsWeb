@@ -642,6 +642,8 @@ public class OrderController {
 		    		}
 
 	    		}
+	    		
+	    		/*
 	    		result.sort(new Comparator<OrderGroupReq>() {
 	    	        DateFormat f = new SimpleDateFormat("dd-MM-yyyy");
 
@@ -654,8 +656,11 @@ public class OrderController {
 	    	            }
 				}
 	    	    });
-	    		System.out.println("order records number: " + (result.size()));
-	    		return result;
+	    		System.out.println("order records number: " + (result.size()));*/
+	    		
+	    		return result.stream()
+	    				.sorted(Comparator.comparing(OrderGroupReq::getSdate)
+	    						.thenComparing(OrderGroupReq::getCustomer)).collect(Collectors.toList());
 	    }
 }
 
