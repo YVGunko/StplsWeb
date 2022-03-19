@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 @Configuration
 @EnableWebSecurity
@@ -24,6 +25,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
+/*
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.inMemoryAuthentication().passwordEncoder(passwordEncoder)
+				.withUser("user").password(passwordEncoder.encode("serverqr")).roles("USER")
+				.and()
+				.withUser("extUser")	.password(passwordEncoder.encode("macRoExternaL")).roles("EXTERNAL")
+				.and()
+				.withUser("intUser")	.password(passwordEncoder.encode("stInternaL")).roles("INTERNAL")
+				.and()
+				.withUser("admin").password(passwordEncoder.encode("serverQrp")).roles("USER", "INTERNAL", "EXTERNAL", "ADMIN");
+	}
+*/
+/*	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+*/
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {

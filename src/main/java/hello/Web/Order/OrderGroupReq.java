@@ -34,24 +34,6 @@ public class OrderGroupReq {
 	public String divisionName;
 	public Division division ;
 	public Client client ;
-	public String getSdate() {
-		return sdate;
-	}
-	public void setSdate(String sdate) {
-		this.sdate = sdate;
-	}
-	public Client getClient() {
-		return client;
-	}
-	public void setClient(Client client) {
-		this.client = client;
-	}
-	public String getCustomer() {
-		return customer;
-	}
-	public void setCustomer(String customer) {
-		this.customer = customer;
-	}
 	
 	//public String getDateS() {
 	//	return new SimpleDateFormat("yyyy-MM-dd",Locale.getDefault()).format(DateS);
