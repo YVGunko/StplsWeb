@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Добавить новый прайс</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    </head>
+
+	<body>
+
+        <div class="container my-5">
+        		<div class="col-sm-12 d-flex justify-content-start">
+	         <span><a class="btn custom-smile-btn-back mr-1 ml-1" onclick="history.go(-1)"><span class="icon"> <i
+	                         class="fas fa-angle-double-left mr-2"></i></span><span
+	                     class="text">Назад</span></a></span>
+	    		</div>
+            <h2 class="mb-5"> Создать новый прайс </h2>
+              <form action="#" th:action="@{/addPriceRoot}" th:object="${priceRoot}" method="post">
+                <fieldset>
+						<div class="form-group col-md-4">
+							<label for="sample"  class="col-form-label">Образцы</label>
+							<input class="form-control" type="checkbox" name="sample" th:field="*{sample}" />
+						</div>
+                        <div class="form-group col-md-4">
+                            <label for="dateOfChange" class="col-form-label"> Дата начала действия </label>
+                            <input type="date" th:field="*{dateOfChange}" class="form-control" id="dateOfChange" placeholder="Дата начала действия">
+                            <span th:if="${#fields.hasErrors('dateOfChange')}" th:errors="*{dateOfChange}" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="plusValue" class="col-form-label"> Увеличение цен </label>
+                            <input type="number" th:field="*{plusValue}" class="form-control" id="plusValue" placeholder="Увеличение цен">
+                            <span th:if="${#fields.hasErrors('plusValue')}" th:errors="*{plusValue}" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="note" class="col-form-label"> Описание изменений </label>
+                            <input type="text" th:field="*{note}" class="form-control" id="note" placeholder="Описание изменений">
+                            <span th:if="${#fields.hasErrors('note')}" th:errors="*{note}" class="text-danger"></span>
+                        </div>
+
+                   <table>
+					    <thead>
+					        <tr>
+					            <th> Отметьте разделы прайса </th>
+					            <th>  </th>
+					        </tr>
+					    </thead>
+					    <tbody>
+							<tr th:if="${priceTypes.empty}">
+					            <td colspan="2"> Нет доступных разделов </td>
+					        </tr>
+					        <tr th:each="pt : ${priceTypes}">
+					        		<td th:text="${pt.name}"> </td>
+								<td><input type="checkbox" name="pts" th:value="${pt.id}"/></td>
+					        </tr>
+					    </tbody>
+					</table>
+					<table>
+					    <thead>
+					        <tr>
+					            <th> Сырье </th>
+					            <th> Изм.расходов </th>
+					            <th> Изм.отпускной цены </th>
+					            <th> Изм.стоимости ранта </th>
+					        </tr>
+					    </thead>
+					    <tbody>
+							<tr th:if="${crudeList.empty}">
+					            <td colspan="4"> Нет доступных разделов </td>
+
+					        <tr th:each="crude : ${crudeList}">
+			                    <td th:text = "${crude.columnName}"	></td>
+			                    <td th:text = "${crude.copyAddCosts}"></td>
+			                    <td th:text = "${crude.copyAddPrice}"></td>
+			                    <td th:text = "${crude.copyAddRant}"	></td>
+			                </tr>
+
+					    </tbody>
+					</table>
+                   <div class="row">
+                       <div class="col-md-2 mt-5">
+                           <input type="submit" id="submitButton" class="btn btn-primary" value="Сохранить">
+                       </div>
+                   </div>
+                  </fieldset>    
+               </form>
+         </div>
+	</body>
+</html>

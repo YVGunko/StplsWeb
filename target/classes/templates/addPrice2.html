@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Создание новой строки прайса.</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    </head>
+
+	<body>
+        <div class="container">
+            <h2 class="md-5">Новая строка прайса.</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <form action="#" th:action="@{/addPrice2}" th:object="${price}" method="post">
+                        <div class="row">
+                        		<div class="form-group col-md-6">
+								<label for="priceRoot" class="col-form-label">Дата прайса</label>  
+								<select  id="priceRoot" class="form-control" name="priceRoot" th:field="*{priceRoot.id}" >
+									<option th:each="priceRoot : ${priceRoots}" th:value="${priceRoot.id}" th:utext="${priceRoot.desc}"/>
+								</select>
+							</div>	
+							<div class="form-group col-md-6">
+						  		<label for="sample"  class="col-form-label">Образeц</label>
+						  		<input type="checkbox" name="sample" th:field="*{priceRoot.sample}" th:value="${priceRoot.sample}" disabled="disabled"/>
+								<input type="hidden" name="sample" th:field="*{priceRoot.sample}" th:value="${priceRoot.sample}">
+							</div>	
+                            <div class="form-group col-md-6">
+                                <label for="name" class="col-form-label">Наименование</label>
+                                <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Наименование подошвы" autofocus>
+                                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="priceType.name" class="col-form-label">Вид прайса</label>
+								<select  class="form-control" id="priceType" name="priceType" th:field="*{priceType.id}" >
+								<option  class="form-control" th:each="priceType : ${priceTypes}" th:value="${priceType.id}" th:utext="${priceType.name}"/>
+								</select>
+                            </div>
+                            <div class="form-group col-md-6">
+                            		<label for="bRant" class="col-form-label">Рант</label>
+                            		<input type="checkbox" name="bRant" th:field="*{bRant}" />
+                            </div>
+                            <div class="form-group col-md-6">
+                            		<label for="bLiner" class="col-form-label">Подкл/Шпал</label>
+                            		<input type="checkbox" name="bLiner" th:field="*{bLiner}" />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="costs" class="col-form-label">Расх.общие</label>
+                                <input type="number" min="0" step="1" th:field="*{costs}" class="form-control" id="costs" placeholder="Расх.общие">
+                                <span th:if="${#fields.hasErrors('costs')}" th:errors="*{costs}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="paint" class="col-form-label">Расх.краск</label>
+                                <input type="number" min="0" step="1" th:field="*{paint}" class="form-control" id="paint" placeholder="Расх.краск">
+                                <span th:if="${#fields.hasErrors('paint')}" th:errors="*{paint}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="rant" class="col-form-label">Расх.рант</label>
+                                <input type="number" min="0" step="1" th:field="*{rant}" class="form-control" id="rant" placeholder="Расх.рант">
+                                <span th:if="${#fields.hasErrors('rant')}" th:errors="*{rant}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="shpalt" class="col-form-label">Расх.шпальт</label>
+                                <input type="number" min="0" step="1" th:field="*{shpalt}" class="form-control" id="shpalt" placeholder="Расх.шпальт">
+                                <span th:if="${#fields.hasErrors('shpalt')}" th:errors="*{shpalt}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="weight" class="col-form-label">Вес</label>
+                                <input type="number" min="0.001" step="0.001" th:field="*{weight}" class="form-control" id="weight" placeholder="0.001">
+                                <span th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="number_per_box" class="col-form-label">Пар в коробке</label>
+                                <input type="number" min="1" step="1" th:field="*{number_per_box}" class="form-control" id="number_per_box" >
+                                <span th:if="${#fields.hasErrors('number_per_box')}" th:errors="*{number_per_box}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="note" class="col-form-label">Примечание</label>
+                                <input type="text" th:field="*{note}" class="form-control" id="note" placeholder="Примечание">
+                                <span th:if="${#fields.hasErrors('note')}" th:errors="*{note}" class="text-danger"></span>
+                            </div>  
+						<table class="table table-striped table-responsive-md text-nowrap">
+                            <thead>
+                                <tr>
+                                		<th>Наименование</th>
+			                        <th>Себестоимость, руб</th>
+			                        <th>Отп. цена, руб</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="p : ${priceColumns}">
+                                		<td th:text="${p.priceType2Crude.crude.columnName}"></td>
+				                    <td th:text="${p.columnCosts}"></td>
+				                    <td th:text="${p.columnPrice}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mt-5">
+                                <input type="submit" class="btn btn-primary" value="Сохранить">                       
+                            </div>
+                        </div>    
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+	</body>
+</html>

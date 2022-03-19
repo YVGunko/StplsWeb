@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Виды прайсов.</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    </head>
+    <body>
+        <div th:switch="${pricetypes}" class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 th:case="null">Список пуст!</h2>
+                    <div th:case="*">
+                        <h2 class="my-5">Виды прайсов.</h2>
+                        <table class="table table-striped table-responsive-md text-nowrap">
+                            <thead>
+                                <tr>
+			                        <th>Наименование</th>
+			                        <th>Столбцы прайса</th>
+			                        <th>Общие расходы, руб</th>
+			                        <th>Стоимость окраски, руб</th>
+			                        <th>Стоимость ранта, руб</th>
+			                        <th>Стоимость шпальта, руб</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="pt : ${pricetypes}">
+				                    <td th:text="${pt.name}"></td>
+				                    <td th:text="${pt.priceColumns}"></td>
+				                    <td th:text="${pt.def_costs}"></td>
+				                    <td th:text="${pt.def_paint}"></td>
+				                    <td th:text="${pt.def_rant}"></td>
+				                    <td th:text="${pt.def_shpalt}"></td>
+				                    
+				                    <td><a th:href="@{/editPriceType/{id}(id=${pt.id})}" class="btn btn-primary"><i class="fas fa-edit ml-2" title ="Редактировать столбцы прайса"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>                      
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

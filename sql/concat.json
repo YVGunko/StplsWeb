@@ -1,0 +1,1916 @@
+[
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "810600020000052947.237.0.10.10.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802100050000015072.0.0.30.30.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "810600020000039273.237.0.10.10.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300770000014483.345.0.12.12.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "810600020000052946.237.0.10.10.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207330000020388.127.0.100.25.2;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "811800010000052525.1.0.3.3.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203320000041471.343.0.50.50.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300710000031945.56.0.1.1.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207370000035545.189.0.100.25.3;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "806700030000010119.0.0.60.10.2;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300770000014482.345.0.24.4.2;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300710000031947.56.0.1.1.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027162.1.0.160.20.7;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802100050000015067.0.0.30.30.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207330000020388.127.0.100.25.3;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207370000035545.189.0.100.25.4;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300710000031529.56.0.1.1.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800500030000050245.0.0.10.10.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300760000028748.346.0.132.12.7;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038103.0.0.240.40.5;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207330000020391.127.0.100.25.2;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802100050000015070.0.0.60.30.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300760000033433.346.0.44.20.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802100050000015066.0.0.30.30.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300760000033433.346.0.44.4.3;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207370000035561.189.0.100.25.3;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207370000035546.189.0.100.25.4;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802100050000015068.0.0.60.30.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207330000020391.127.0.100.25.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207370000035546.189.0.100.25.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "810600010000052941.1.0.10.10.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300770000014480.345.0.12.12.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207330000020389.127.0.100.25.3;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027161.1.0.160.20.8;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207330000020388.127.0.100.25.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207370000035633.189.0.200.25.8;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207370000035546.189.0.100.25.3;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207370000035561.189.0.100.25.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207370000035545.189.0.100.25.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027162.1.0.160.20.8;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800202780000041512.0.0.50.25.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "806700030000010115.0.0.30.30.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027161.1.0.160.20.7;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802100050000015069.0.0.60.30.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207330000020389.127.0.100.25.4;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207440000036806.195.0.100.20.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300710000031946.56.0.1.1.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800202780000041513.0.0.20.20.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207370000035633.189.0.200.25.7;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207370000035545.189.0.100.25.2;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206350000052392.4.0.60.30.2;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207370000035546.189.0.100.25.2;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800202780000037536.0.0.50.25.2;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207370000035633.189.0.200.25.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207370000035561.189.0.100.25.2;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800500030000050243.0.0.5.5.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300770000014481.345.0.24.4.2;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207370000035561.189.0.100.25.4;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802100060000015067.0.0.20.20.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802100050000015071.0.0.30.30.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300770000014482.345.0.24.20.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207370000035633.189.0.200.25.2;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802100060000015070.0.0.20.20.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "810600010000052942.1.0.10.10.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802100050000015068.0.0.60.30.2;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300760000033432.346.0.44.4.3;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207330000020390.127.0.100.25.4;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800202780000041501.0.0.20.20.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207330000020388.127.0.100.25.4;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800202780000041512.0.0.50.25.2;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800202780000041503.0.0.50.25.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802100060000015071.0.0.20.20.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038103.0.0.240.40.6;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800202780000037536.0.0.50.25.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207330000020390.127.0.100.25.3;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207330000020391.127.0.100.25.4;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300710000031944.56.0.1.1.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207330000020390.127.0.100.25.2;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300760000033432.346.0.44.20.2;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207330000020391.127.0.100.25.3;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207330000020389.127.0.100.25.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800202780000041514.0.0.20.20.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800500030000050242.0.0.5.5.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300760000033433.346.0.44.20.2;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206350000052392.4.0.60.30.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207330000020390.127.0.100.25.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300710000031948.56.0.1.1.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207330000020389.127.0.100.25.2;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300770000014484.345.0.12.12.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038102.0.0.240.40.1;000000001"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "806700030000010118.0.0.60.50.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038102.0.0.240.40.3;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027160.1.0.100.20.5;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038103.0.0.240.40.5;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300760000033430.346.0.88.20.3;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "810600020000052945.237.0.10.10.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038096.0.0.240.40.4;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027160.1.0.100.20.4;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "801300080000001312.25.0.120.30.3;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027161.1.0.160.20.3;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "801200270000051867.118.0.78.40.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "811800010000052524.1.0.3.3.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027034.1.0.200.20.9;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027163.1.0.100.20.4;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "811200010000053075.277.0.10.10.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300760000033430.346.0.88.8.5;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027161.1.0.160.20.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "806700030000010119.0.0.60.50.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038103.0.0.240.40.4;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203320000041471.343.0.50.50.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027034.1.0.200.20.5;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038097.0.0.240.40.2;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027161.1.0.160.20.6;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300760000028748.346.0.132.20.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027034.1.0.200.20.3;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203100000053199.0.0.30.30.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300760000028748.346.0.132.20.5;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206340000052385.6.0.60.30.2;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038101.0.0.240.40.3;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038103.0.0.240.40.2;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038097.0.0.240.40.4;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027162.1.0.160.20.4;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038098.0.0.240.40.5;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038096.0.0.240.40.3;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038100.0.0.240.40.5;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038097.0.0.240.40.3;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203270000040943.273.0.50.25.2;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "810600020000052944.237.0.10.10.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027163.1.0.100.20.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "806700030000010116.0.0.30.30.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "801300080000001311.25.0.120.30.4;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027034.1.0.200.20.8;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "801300080000001312.25.0.120.30.2;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038100.0.0.240.40.4;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "806700030000010117.0.0.60.10.2;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038100.0.0.240.40.3;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038098.0.0.240.40.4;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "801200270000051867.118.0.78.38.2;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300760000033446.346.0.88.20.3;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038100.0.0.240.40.6;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "810600020000052943.237.0.10.10.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300670000040915.63.0.72.22.3;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300770000014478.345.0.36.20.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300760000033430.346.0.88.20.2;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027163.1.0.100.20.5;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038097.0.0.240.40.5;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800202850000011601.0.0.30.30.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038096.0.0.240.40.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203320000041472.343.0.50.50.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "811200010000051561.277.0.10.10.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203270000036061.273.0.50.25.2;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038095.0.0.240.40.2;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038102.0.0.240.40.5;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038101.0.0.240.40.4;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "806700030000010120.0.0.30.30.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038095.0.0.240.40.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "810600010000052938.1.0.10.10.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027160.1.0.100.20.3;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027162.1.0.160.20.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207310000011338.0.0.150.30.4;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300760000028748.346.0.132.20.3;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038101.0.0.240.40.5;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206350000046938.4.0.60.30.2;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027034.1.0.200.20.7;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206350000052391.4.0.60.30.2;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203320000041476.343.0.50.50.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038095.0.0.240.40.6;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "809400030000046186.21.0.20.20.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802100060000015069.0.0.30.30.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038095.0.0.240.40.3;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "801300080000001311.25.0.120.30.3;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038096.0.0.240.40.6;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027163.1.0.100.20.3;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300760000033430.346.0.88.20.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802600050000040026.187.0.20.20.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038097.0.0.240.40.6;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300760000028748.346.0.132.20.2;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "806700030000010118.0.0.60.10.2;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300760000028748.346.0.132.20.4;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203320000041473.343.0.70.50.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038098.0.0.240.40.3;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "810600010000036827.1.0.10.10.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "810600010000052939.1.0.10.10.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207310000009516.0.0.150.30.5;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "811200010000053071.277.0.10.10.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038100.0.0.240.40.2;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038096.0.0.240.40.2;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038101.0.0.240.40.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300770000014478.345.0.36.16.2;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027162.1.0.160.20.2;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207310000011337.0.0.150.30.4;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027161.1.0.160.20.2;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038098.0.0.240.40.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027161.1.0.160.20.5;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038102.0.0.240.40.2;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038098.0.0.240.40.6;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "801300080000001312.25.0.120.30.4;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802100060000015068.0.0.30.30.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207310000009516.0.0.150.30.4;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027034.1.0.200.20.6;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038101.0.0.240.40.2;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203320000043608.343.0.25.25.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027161.1.0.160.20.4;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038097.0.0.240.40.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300760000033429.346.0.44.4.3;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203270000035829.273.0.50.25.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207440000042345.195.0.200.20.5;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "806700030000010121.0.0.30.30.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300760000033430.346.0.88.20.4;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027162.1.0.160.20.6;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300760000033432.346.0.44.20.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "809400030000046187.21.0.20.20.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027162.1.0.160.20.3;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206340000052386.6.0.60.30.2;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027034.1.0.200.20.10;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300760000028748.346.0.132.20.6;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800500030000050244.0.0.10.10.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206350000052391.4.0.60.30.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203100000053195.0.0.30.30.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203100000053196.0.0.30.30.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203320000041474.343.0.50.50.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038101.0.0.240.40.6;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "811200010000053079.277.0.10.10.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027160.1.0.100.20.2;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203270000035829.273.0.50.25.2;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038095.0.0.240.40.4;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027162.1.0.160.20.5;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206350000052390.4.0.30.30.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203320000041475.343.0.50.50.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206350000046938.4.0.60.30.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038102.0.0.240.40.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027162.1.0.160.20.7;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027160.1.0.100.20.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206340000052384.6.0.30.30.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "807600100000044816.297.0.215.20.8;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300770000014481.345.0.24.20.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203100000053194.0.0.30.30.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "809400030000046188.21.0.20.20.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038095.0.0.240.40.5;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206340000052388.6.0.60.30.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027034.1.0.200.20.4;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "811200010000053077.277.0.10.10.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "810600010000052940.1.0.10.10.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027163.1.0.100.20.2;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038100.0.0.240.40.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038102.0.0.240.40.6;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "811200010000053080.277.0.10.10.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207440000042345.195.0.200.20.4;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038098.0.0.240.40.2;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "806700030000010117.0.0.60.50.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038102.0.0.240.40.4;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802600050000040091.187.0.20.20.1;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300760000033429.346.0.44.20.2;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038096.0.0.240.40.5;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207310000011337.0.0.150.30.5;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206340000052387.6.0.60.30.2;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038103.0.0.240.40.3;000000004"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802600050000040029.187.0.20.20.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "801200270000051867.118.0.78.40.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800202780000041503.0.0.50.25.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203270000036060.273.0.50.25.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300670000040914.63.0.72.25.2;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "801300080000001314.25.0.60.30.2;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300670000033792.63.0.48.23.2;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "809400030000046188.21.0.20.20.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802100050000015069.0.0.60.30.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800202850000011598.0.0.30.30.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800202850000011601.0.0.30.30.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027034.1.0.200.20.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "801300080000001309.25.0.60.30.2;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "801300080000001311.25.0.120.30.2;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203270000036061.273.0.50.25.2;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800202850000011600.0.0.30.30.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207370000035633.189.0.200.25.5;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802100050000015068.0.0.60.30.2;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038103.0.0.240.40.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203270000035994.273.0.50.25.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206340000046940.6.0.60.30.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203270000036061.273.0.50.25.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038102.0.0.240.40.5;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300670000040915.63.0.72.25.2;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300670000045973.63.0.72.25.2;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "801300080000001313.25.0.60.30.2;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207440000042346.195.0.100.20.3;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206340000046940.6.0.60.30.2;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203100000053196.0.0.30.30.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "801300080000001310.25.0.60.30.2;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300760000033429.346.0.44.20.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207370000035633.189.0.200.25.4;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800202850000011599.0.0.30.30.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "809400030000046185.21.0.24.24.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300670000045973.63.0.72.25.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203270000040943.273.0.50.25.2;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206340000052388.6.0.60.30.2;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300670000040913.63.0.24.24.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300670000040914.63.0.72.25.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300670000040915.63.0.72.22.3;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203270000040822.273.0.50.25.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206340000052385.6.0.60.30.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207370000035633.189.0.200.25.8;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207440000036806.195.0.100.20.3;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "801300080000001313.25.0.60.30.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300670000033792.63.0.48.25.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "809400030000046186.21.0.20.20.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "809400030000046187.21.0.20.20.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203270000040943.273.0.50.25.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800202850000011597.0.0.30.30.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "809400030000046183.21.0.20.20.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "801300080000001310.25.0.60.30.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802600050000040027.187.0.20.20.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802600050000040030.187.0.20.20.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "801300080000001311.25.0.120.30.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "801300080000001311.25.0.120.30.4;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038103.0.0.240.40.2;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203270000033810.273.0.50.25.2;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206340000052389.6.0.30.30.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802600050000040028.187.0.20.20.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802100050000015070.0.0.60.30.2;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207440000042346.195.0.100.20.2;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "801300080000001314.25.0.60.30.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206340000052386.6.0.60.30.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207440000042345.195.0.200.20.2;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203270000036060.273.0.50.25.2;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203270000040822.273.0.50.25.2;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203270000033810.273.0.50.25.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "801300080000001312.25.0.120.30.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300670000040914.63.0.72.22.3;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802100050000015072.0.0.30.30.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206340000052387.6.0.60.30.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "801300080000001312.25.0.120.30.2;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800202780000041503.0.0.50.25.2;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "801300080000001309.25.0.60.30.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802100050000015070.0.0.60.30.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203100000046939.0.0.30.30.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207310000011338.0.0.150.30.2;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300670000040915.63.0.72.25.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "812800010000038101.0.0.240.40.5;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "809400030000046184.21.0.22.22.1;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300670000045973.63.0.72.22.3;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "815500040000052163.514.0.1350.25.50;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203270000035829.273.0.50.25.2;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802100050000015069.0.0.60.30.2;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203270000035994.273.0.50.25.2;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207370000035633.189.0.200.25.6;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206810000027034.1.0.200.20.2;000000007"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "011300070000078709.5515.0.40.20.1;000000010"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "211600170000091914.12.0.90.20.1;000000010"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "214200160000082691.0.0.107.25.3;000000010"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "211600310000087331.7585.0.100.25.2;000000010"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204201560000049266.0.0.40.20.2;000000010"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "211600180000091918.12.0.130.20.4;000000010"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204201760000092109.0.0.120.15.3;000000010"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204201560000049255.0.0.40.20.2;000000010"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "229800150000061219.0.0.290.25.11;000000010"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "232800100000090119.0.0.50.25.2;000000010"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "211600180000091920.12.0.130.20.2;000000010"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "114001680000083834.0.0.200.15.7;000000010"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "229800150000061220.0.0.280.25.11;000000010"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "114001710000092105.4412.0.30.15.1;000000010"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "211600320000062271.7147.0.160.20.3;000000010"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "114001710000092107.4412.0.30.15.2;000000010"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "214200160000082690.0.0.87.25.2;000000010"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204700040000091452.0.0.44.20.2;000000010"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "226300120000079466.7602.0.140.16.1;000000010"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "229800150000055441.0.0.290.25.11;000000010"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204700030000091453.0.0.122.20.5;000000010"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "248700060000074466.4412.0.180.25.6;000000010"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "248700060000066579.4412.0.180.25.7;000000010"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "214200160000070850.0.0.90.25.2;000000010"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "214200160000070849.0.0.108.25.3;000000010"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204500520000028317.12.0.30.25.1;000000010"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "211600170000091912.12.0.90.20.1;000000010"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "214200160000070848.0.0.118.25.3;000000010"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "231200750000070099.0.0.64.16.2;000000011"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204201880000084967.0.0.280.20.2;000000011"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "231201170000061834.0.0.80.25.1;000000011"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "231000410000079676.0.0.60.20.2;000000011"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204201880000089108.0.0.140.20.2;000000011"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204201880000089111.0.0.140.20.2;000000011"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "231000420000080475.0.0.60.20.3;000000011"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "211200100000059695.0.0.100.20.3;000000011"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "229800180000074365.0.0.210.25.2;000000011"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "229800180000074368.0.0.60.25.1;000000011"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "229800180000074366.0.0.220.25.2;000000011"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "231000410000079673.0.0.60.20.3;000000011"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "231201170000064403.0.0.40.25.1;000000011"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204201880000090388.0.0.80.20.2;000000011"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204201880000089109.0.0.280.20.2;000000011"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "104212160000007312.0.0.200.25.8;000000011"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "229800180000074363.0.0.70.25.2;000000011"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204500570000063761.0.0.80.25.1;000000011"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "231000220000079672.0.0.60.20.2;000000011"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "229800180000074367.0.0.120.25.2;000000011"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204201880000089110.0.0.140.20.2;000000011"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204201880000089107.0.0.140.20.2;000000011"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204500570000065582.0.0.60.25.1;000000011"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "248700060000066009.4412.0.90.25.3;000000012"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "229800150000061219.0.0.290.25.7;000000012"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "114001680000083834.0.0.200.15.4;000000012"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "229800150000061221.0.0.170.20.7;000000012"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204201560000049257.0.0.40.20.2;000000012"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "277600020000083237.4412.0.60.20.3;000000012"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "248700060000066580.4412.0.90.15.4;000000012"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204201860000092105.0.0.120.15.8;000000012"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "248700060000066578.4412.0.90.25.3;000000012"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "245800270000062270.7594.0.40.20.2;000000012"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "248700060000066581.4412.0.90.15.4;000000012"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "114001680000092111.0.0.175.15.1;000000012"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "229800150000061220.0.0.280.25.7;000000012"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "229800150000055441.0.0.290.25.7;000000012"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "214200160000082692.0.0.117.25.2;000000012"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204201860000092107.0.0.120.15.8;000000012"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "248700060000066579.4412.0.180.25.4;000000012"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204700030000091453.0.0.122.20.3;000000012"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "232800100000090120.0.0.50.25.2;000000012"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "218000180000071547.12.0.50.25.2;000000012"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204500520000027995.12.0.60.25.2;000000012"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "114001680000092109.0.0.100.15.4;000000012"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "214200160000070847.0.0.118.25.4;000000012"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "214200160000070851.0.0.90.25.3;000000012"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "211600350000091912.12.0.50.20.2;000000012"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "277600020000083238.4412.0.60.20.3;000000012"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "248700060000074466.4412.0.180.25.3;000000012"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "211600350000091914.12.0.50.20.2;000000012"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204500520000028315.12.0.60.25.2;000000012"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206920000045022.133.0.200.25.4;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300820000052703.196.0.240.20.4;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300820000033255.196.0.247.20.8;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "251600010000083754.0.0.1000.16.44;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300820000052703.196.0.240.20.1;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500210000051115.265.0.68.18.3;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500200000051710.278.0.68.18.3;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300840000053049.0.0.3.3.1;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203030000034927.0.0.75.25.2;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203030000039562.0.0.75.25.3;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300820000033255.196.0.247.7.13;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300820000052703.196.0.240.20.6;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203030000039502.0.0.75.25.1;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802700090000048778.240.0.13.13.1;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300820000052703.196.0.240.20.2;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300820000033255.196.0.247.20.9;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300820000039402.196.0.486.20.2;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300840000053048.0.0.6.6.1;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800103480000013587.0.0.20.20.111;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203030000039502.0.0.75.25.3;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203030000039501.0.0.75.25.3;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800202860000011681.0.0.30.30.1;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802700090000048776.240.0.14.14.1;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300820000033255.196.0.247.20.12;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800600020000053123.0.0.20.20.1;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203030000039562.0.0.75.25.1;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203030000039717.0.0.75.25.3;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300820000033255.196.0.247.20.10;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500200000050317.278.0.37.12.2;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500210000051115.265.0.68.25.2;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300790000029532.296.0.6.6.1;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203030000034927.0.0.75.25.3;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203030000039717.0.0.75.25.1;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203030000034927.0.0.75.25.1;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300820000052703.196.0.240.20.3;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206920000045022.133.0.200.25.7;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "251600010000083753.0.0.1000.16.40;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300820000033255.196.0.247.20.11;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206920000045022.133.0.200.25.4;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203030000039501.0.0.75.25.1;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203030000039560.0.0.75.25.2;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203030000039561.0.0.75.25.2;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203030000039560.0.0.75.25.1;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203030000039717.0.0.75.25.2;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300840000053042.0.0.3.3.1;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500210000051115.265.0.68.25.1;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300750000044854.283.0.13.13.1;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203030000039502.0.0.75.25.2;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206920000045026.133.0.100.25.4;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500200000050317.278.0.37.25.1;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500210000053090.265.0.38.25.1;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203030000039561.0.0.75.25.1;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300820000052703.196.0.240.20.5;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500190000052662.177.0.37.25.1;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300790000029536.296.0.7.7.1;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203030000039560.0.0.75.25.3;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500210000053090.265.0.38.13.2;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500190000052662.177.0.37.12.2;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300840000053043.0.0.6.6.1;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500200000051710.278.0.68.25.2;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203030000039501.0.0.75.25.2;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300820000033255.196.0.247.20.7;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203030000039562.0.0.75.25.2;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300700000029534.296.0.3.3.1;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800202860000011682.0.0.30.30.1;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800203030000039561.0.0.75.25.3;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800600020000053118.0.0.20.20.1;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300690000040984.0.0.2.2.1;000000014"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300820000033255.196.0.247.20.5;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300690000040969.0.0.2.2.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300700000029533.296.0.1.1.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800600020000053123.0.0.20.20.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206920000041593.133.0.300.25.8;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300840000053046.0.0.9.9.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500210000053087.265.0.10.10.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300590000053017.56.0.3.3.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500200000051155.278.0.10.10.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300590000053015.56.0.3.3.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500190000052660.177.0.68.25.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500190000052660.177.0.68.18.3;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206920000041593.133.0.300.25.7;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300700000029532.296.0.1.1.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500190000052663.177.0.3.3.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "814900120000056619.0.0.50.10.2;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "807100060000056464.0.0.85.20.4;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800600020000053119.0.0.20.20.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300700000029536.296.0.3.3.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300690000040968.0.0.4.4.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300590000050515.56.0.3.3.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500210000053089.265.0.39.14.2;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802700090000035349.240.0.15.15.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500200000050315.278.0.39.14.2;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300590000053016.56.0.3.3.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802900110000025547.0.0.500.16.30;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500200000051710.278.0.68.25.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800600020000053120.0.0.20.20.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800600020000053122.0.0.20.20.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802700090000048779.240.0.18.18.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300790000029535.296.0.10.10.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "231500030000052052.5591.0.145.50.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300590000053013.56.0.3.3.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500200000050318.278.0.3.3.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500200000050315.278.0.39.25.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500190000052661.177.0.38.13.2;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802700090000048775.240.0.18.18.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500190000052660.177.0.68.25.2;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500210000053089.265.0.39.25.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500200000050314.278.0.39.25.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300690000040954.0.0.2.2.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500200000050314.278.0.39.14.2;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500190000052661.177.0.38.25.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300790000029100.296.0.11.11.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300790000029533.296.0.8.8.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802700090000048777.240.0.15.15.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800600020000053121.0.0.20.20.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300820000033255.196.0.247.20.7;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500190000049142.177.0.10.10.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300840000053044.0.0.9.9.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500200000051710.278.0.68.25.2;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300590000053014.56.0.3.3.1;000000016"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500200000050316.278.0.38.13.2;000000018"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300820000052703.196.0.240.20.11;000000018"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207470000039402.196.0.200.20.8;000000018"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300820000033255.196.0.247.20.1;000000018"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800600020000053117.0.0.20.20.1;000000018"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500190000052659.177.0.39.25.1;000000018"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "800202860000011686.0.0.30.30.1;000000018"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300750000044853.283.0.7.7.1;000000018"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300790000029534.296.0.14.14.1;000000018"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300750000044851.283.0.6.6.1;000000018"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300820000039402.196.0.486.20.22;000000018"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500210000051115.265.0.68.18.3;000000018"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300820000039402.196.0.486.20.10;000000018"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500190000052660.177.0.68.25.1;000000018"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207470000039402.196.0.200.20.5;000000018"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500190000052658.177.0.39.25.1;000000018"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500200000050316.278.0.38.25.1;000000018"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500190000052659.177.0.39.14.2;000000018"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300750000044850.283.0.3.3.1;000000018"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300820000052703.196.0.240.20.8;000000018"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804207470000039402.196.0.200.20.7;000000018"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300820000052703.196.0.240.20.7;000000018"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "804206920000041593.133.0.300.25.1;000000018"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300820000039402.196.0.486.16.24;000000018"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802500190000052658.177.0.39.14.2;000000018"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300820000033255.196.0.247.20.2;000000018"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300820000052703.196.0.240.20.10;000000018"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300820000052703.196.0.240.20.9;000000018"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "802300750000044852.283.0.7.7.1;000000018"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204201860000092106.0.0.60.15.4;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204700030000091448.0.0.122.20.2;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "229800150000061221.0.0.170.25.2;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204201860000092105.0.0.120.15.1;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204700020000091453.0.0.532.20.24;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "229800150000061219.0.0.290.25.3;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "200201030000070487.0.0.90.15.6;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "200300020000064910.0.0.20.20.1;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "230200080000083834.0.0.91.15.3;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "114001680000092112.0.0.175.15.9;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "211600350000091915.12.0.50.20.2;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "230200080000092111.0.0.75.15.4;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "229800150000061220.0.0.280.25.3;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "211600350000077495.12.0.100.20.4;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204201140000070240.0.0.50.25.1;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "200201030000070486.0.0.90.15.6;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "211600350000091917.12.0.50.20.2;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "229800150000055441.0.0.290.25.3;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "278300010000079806.0.0.20.15.1;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204900280000090340.4741.0.53.25.1;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204201870000064839.0.0.120.30.4;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204900280000086364.4741.0.301.25.10;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204900280000090343.4741.0.297.25.10;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "200201030000070464.0.0.90.15.4;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "006500550000070824.0.0.129.25.2;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "229800150000061222.0.0.60.25.2;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "229800150000061218.0.0.110.25.3;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204900280000090342.4741.0.186.25.6;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204201860000092107.0.0.120.15.1;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "200201030000067977.0.0.60.15.2;000000023"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "127800020000080277.5972.0.154.20.1;000000024"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "100700050000064743.5744.0.75.15.2;000000024"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "209200050100001692.3620.0.60.25.2;000000024"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "100700050000064743.5744.0.75.15.2;000000024"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204201850000051750.0.0.200.20.9;000000031"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "211200090000061821.0.0.300.20.15;000000031"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "211200090000061822.0.0.400.20.11;000000031"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204201850000051511.0.0.200.20.9;000000031"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "211200100000061817.0.0.100.20.4;000000031"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "231200650000064905.0.0.60.25.2;000000039"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204201850000051749.0.0.200.20.6;000000039"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "118901010000072184.0.0.700.25.9;000000039"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "231000370000077989.0.0.60.20.2;000000039"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "132600070000062446.0.0.6000.20.266;000000039"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "200700330000090429.6885.0.146.20.6;000000039"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "211200090000061822.0.0.400.20.6;000000039"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204201850000051511.0.0.200.20.4;000000039"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "231000230000083398.0.0.210.15.14;000000039"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "204201850000051750.0.0.200.20.3;000000039"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "211200090000061821.0.0.300.20.10;000000039"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "132600070000062447.0.0.6000.20.264;000000039"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "211200090000061823.0.0.400.20.18;000000039"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "231000060000081790.0.0.40.20.2;000000039"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "200200880000067097.0.0.175.25.1;000000039"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "132600070000062438.0.0.6000.20.290;000000039"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "132600070000062448.0.0.6000.20.180;000000039"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "132600070000062447.0.0.6000.20.269;000000040"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "118901010000072185.0.0.700.25.25;000000040"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "203500240000061374.0.0.80.20.1;000000040"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "132600070000062448.0.0.6000.20.186;000000040"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "132600070000062446.0.0.6000.20.271;000000040"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "118901010000072184.0.0.700.25.13;000000040"
+	},
+	{
+		"CONCAT(o.order_id, '.', b.quantity_box, '.', b.num_box, ';', d.code)" : "132600070000062438.0.0.6000.20.295;000000040"
+	}
+]
