@@ -8,9 +8,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PriceTypeRepository extends JpaRepository<PriceType, Integer>{
-	public PriceType findOneById(Integer Id);
+	public Optional<PriceType> findOneById(Integer Id);
 	public List<PriceType> findByIdGreaterThanOrderByName(Integer Id);
 	public PriceType findTopByIdGreaterThanOrderByName(Integer Id);
 	public Optional<List<PriceType>> findAllByIdGreaterThan(Integer Id);
+	public Optional<PriceType> getOneById(Integer Id);
 	
 }

@@ -44,7 +44,7 @@ public class PriceTypeWebController {
 	    }
 	    @GetMapping("/editPriceType/{id}")
 	    public String showUpdateForm(@PathVariable("id") Integer id, Model model) throws Exception {
-	    		PriceType e = repository.findOneById(id);
+	    		PriceType e = repository.findOneById(id).orElse(null);
 	    		if (e != null) {
 	    			model.addAttribute("pricetypes", e);
 	        return "updPriceType";}

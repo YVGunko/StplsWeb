@@ -1,2 +1,4 @@
 *.log
-
+serverqr.*
+target/*.jar
+target/*.original

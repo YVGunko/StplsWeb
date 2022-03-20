@@ -2,6 +2,8 @@ package hello.Price;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.function.Supplier;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,10 +39,10 @@ public class PriceTypeService {
 		PriceType responce = new PriceType();
 		if (ptOne != null) {
 			try {
-				responce = repository.findOneById(ptOne.getId());
+				responce = repository.findOneById(ptOne.getId())
+						.orElseGet(() -> repository.findTopByIdGreaterThanOrderByName((editable) ? -1 : 0));
 			}catch (Exception ex) {
 				System.out.println("Exception. PriceType. checkForNullAndReplaceWithZero: "+ex); 
-				responce = repository.findTopByIdGreaterThanOrderByName((editable) ? -1 : 0);
 				}
 		} else responce = repository.findTopByIdGreaterThanOrderByName((editable) ? -1 : 0);
 		if (responce == null) responce = new PriceType();

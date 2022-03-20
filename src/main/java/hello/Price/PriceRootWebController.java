@@ -79,9 +79,14 @@ public class PriceRootWebController {
 	        if (result.hasErrors()) {
 	            return "addPriceRoot";
 	        }
-	        //TODO Сохранить выбранные разделы
+	        //Сохранить выбранные разделы
 	        for (int i = 0; i < pts.length; i++) {
-	        		service.save(new PriceRoot(e.id,e.dateOfChange,e.note,e.plusValue,e.priceType,e.getSample()), pts[i]);
+	        	//Выбрать наименования priceType и подставить их перед e.note чтобы было видно раздел
+	        	String priceTypeName = repositoryPT.getOneById(pts[i])
+	        			.map(PriceType::getName)
+	        			.orElse("").concat(e.note);
+
+	        	service.save(new PriceRoot(e.id,e.dateOfChange,priceTypeName,e.plusValue,e.priceType,e.getSample()), pts[i]);
 	        }
 	        //model.addAttribute("crudeList", populateCrudes());
 	        model.addAttribute("priceRoots", populatePR());
