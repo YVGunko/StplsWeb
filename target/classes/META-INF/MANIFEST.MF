@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
-Build-Jdk-Spec: 16
-Main-Class: com.hello.Application
+Built-By: yg
+Build-Jdk: 16.0.1
+Implementation-Title: serverqr
+Implementation-Version: 1.1.0
+Implementation-Vendor-Id: org.springframework
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/serverqr
 Created-By: Maven Integration for Eclipse
 
