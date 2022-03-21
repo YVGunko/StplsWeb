@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
-import org.springframework.hateoas.Resource;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,13 +21,14 @@ public class MasterDataController {
 	MasterDataRepository masterDataRepository;
 
     @PostMapping(path="masterDatas")
-    public @ResponseBody MasterData saveOrUpdate(@RequestBody Resource<MasterData> masterData) throws Exception {
+    public @ResponseBody MasterData saveOrUpdate(@RequestBody EntityModel<MasterData> masterData) throws Exception {
     		return service.saveOrUpdate(masterData.getContent());
     }
-	/*@PostMapping("/archiveOrders") 
-	public List<String> getArchiveOrders(@RequestBody ArrayList<String> orderId) throws RuntimeException{
-		return masterDataRepository.findByOrderIdInAndArchive(orderId, true).stream().map(MasterData::getOrderId).collect(Collectors.toList());
-	}*/
+	/* spring-boot 2.0.4
+	 *    @PostMapping(path="masterDatas")
+    public @ResponseBody MasterData saveOrUpdate(@RequestBody Resource<MasterData> masterData) throws Exception {
+    		return service.saveOrUpdate(masterData.getContent());
+    }*/
     @PostMapping(path="masterDatas/Delete")
     public @ResponseBody void deleteByid1C(@RequestBody ArrayList<String> id1C) throws Exception {
     		service.delete(id1C);
