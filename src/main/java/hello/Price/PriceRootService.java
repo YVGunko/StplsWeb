@@ -26,6 +26,8 @@ public class PriceRootService {
 	@Autowired
 	PriceService servicePrice;
 	@Autowired
+	PriceRootService servicePR;
+	@Autowired
 	PriceTypeRepository repositoryPT;
 	@Autowired
 	PriceRootRepository repository;
@@ -63,17 +65,31 @@ public class PriceRootService {
 		}		
 	}
 
-	public PriceRoot findActualPriceRootByPriceTypeIdAndSample (@NotNull PriceType priceType, PriceRoot priceRoot, Boolean sample) {
-		PriceRoot responce = repository.findOneById(0);
-		if (checkForNull(priceRoot)) priceRoot = checkForNullAndReplaceWithZero(priceRoot); //id = 0
-		else  //не нулл, тогда если 0, то был установлен пользователем
-			if (priceRoot.getId() != 0) responce = repository.findOneById(priceRoot.getId());
-			/*if (priceType.getId() > 0){ //тайп выбран
-				if (priceRoot.getId() == 0) responce = repository.findFirstByDateOfChangeBeforeAndPriceTypeIdOrderByDateOfChangeDesc(new Date(), priceType.getId());
-				else responce = repository.findOneById(priceRoot.getId());
-			} else responce = repository.findOneById(0);*/
-
-		if (responce == null) responce = repository.findOneById(0);
+	public PriceRoot findActualPriceRootByPriceTypeIdAndSample (PriceType priceType, 
+			Integer prevPriceTypeId,
+			PriceRoot priceRoot,
+			Integer prevPriceRootId,
+			Boolean sample,
+			Boolean prevSample) {
+		
+		PriceRoot responce = new PriceRoot();
+		//предыдущего значения нет, значит первый раз загружается страница || тип прайса изменился
+		if (prevPriceTypeId == null || prevPriceTypeId != priceType.getId()) {
+			responce = repository.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc
+					(priceType.getId(), sample)
+					.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot."));
+		} else {
+			if (prevPriceTypeId == priceType.getId() & !checkForNull(priceRoot)) {			//тип прайса не менялся & priceRoot not null
+				if (prevSample == sample) {						//образец не менялся
+					responce = repository.findOneById(priceRoot.getId());
+				}else { 			//Образец изменился, получите максимальную дату прайса
+					responce = repository.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc
+							(priceType.getId(), sample)
+								.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot."));
+					}	
+				}
+			}
+		if (responce == null) responce = new PriceRoot();
 		return responce;		
 	}
 	public Boolean checkForNull(PriceRoot ptOne)

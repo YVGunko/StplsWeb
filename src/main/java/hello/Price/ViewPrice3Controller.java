@@ -84,14 +84,14 @@ public class ViewPrice3Controller {
 		List<PriceRoot> prList = new ArrayList<>();
 		List<PriceType> ptList = new ArrayList<>();
 		Boolean editable = false;
-		PriceRoot pr = new PriceRoot();
+		//PriceRoot pr = new PriceRoot();
 		
 		ServletRequestAttributes attributes = 
 		        (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
 		HttpSession session = attributes.getRequest().getSession(true);
-		//final Integer prevPriceTypeId = (Integer) session.getAttribute("priceTypeId");
-		//final Boolean prevSample = (Boolean) session.getAttribute("prevSample");
-		//final Boolean editable = (Boolean) session.getAttribute("editable");
+		final Integer prevPriceTypeId = (Integer) session.getAttribute("priceTypeId");
+		final Boolean prevSample = (Boolean) session.getAttribute("prevSample");
+		final Integer prevPriceRootId = (Integer) session.getAttribute("priceRootId");
 		
 		if (priceFilter.getEditable() == null) priceFilter.setEditable(false); 
 		else editable = priceFilter.getEditable();
@@ -101,10 +101,12 @@ public class ViewPrice3Controller {
 		priceFilter.setPriceType(servicePT.checkForNullAndReplaceWithTop(priceFilter.getPriceType(), priceFilter.getEditable()));
 		
 		if (!editable) { //priceFilter.setPriceRoot
-				pr = repositoryPR.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc
-						(priceFilter.getPriceType().getId(), priceFilter.getSample())
-						.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot."));
-				priceFilter.setPriceRoot(pr);
+				priceFilter.setPriceRoot(servicePR.findActualPriceRootByPriceTypeIdAndSample(priceFilter.getPriceType(),
+						prevPriceTypeId,
+						priceFilter.getPriceRoot(),
+						prevPriceRootId,
+						priceFilter.getSample(),
+						prevSample));
 		} //if editable PriceRoot should not be set.
 		
 		if (!editable) { //select price by priceRoot and possible filter by name
@@ -163,7 +165,8 @@ public class ViewPrice3Controller {
 			}
 		
 		}
-		//session.setAttribute("priceTypeId", priceFilter.getPriceType().getId());
+		session.setAttribute("priceTypeId", priceFilter.getPriceType().getId());
+		session.setAttribute("priceRootId", priceFilter.getPriceRoot().getId());
 		session.setAttribute("prevSample", priceFilter.getSample());
 		session.setAttribute("editable", editable);
 		session.setAttribute("referer", "/login/viewPrice3");

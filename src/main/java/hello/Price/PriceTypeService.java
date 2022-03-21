@@ -42,7 +42,7 @@ public class PriceTypeService {
 				responce = repository.findOneById(ptOne.getId())
 						.orElseGet(() -> repository.findTopByIdGreaterThanOrderByName((editable) ? -1 : 0));
 			}catch (Exception ex) {
-				System.out.println("Exception. PriceType. checkForNullAndReplaceWithZero: "+ex); 
+				System.out.println("Exception. PriceType. checkForNullAndReplaceWithTop: "+ex); 
 				}
 		} else responce = repository.findTopByIdGreaterThanOrderByName((editable) ? -1 : 0);
 		if (responce == null) responce = new PriceType();
