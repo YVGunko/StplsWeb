@@ -91,7 +91,7 @@ public class ViewPrice3Controller {
 		HttpSession session = attributes.getRequest().getSession(true);
 		final Integer prevPriceTypeId = (Integer) session.getAttribute("priceTypeId");
 		final Boolean prevSample = (Boolean) session.getAttribute("prevSample");
-		final Integer prevPriceRootId = (Integer) session.getAttribute("priceRootId");
+		//final Integer prevPriceRootId = (Integer) session.getAttribute("priceRootId");
 		
 		if (priceFilter.getEditable() == null) priceFilter.setEditable(false); 
 		else editable = priceFilter.getEditable();
@@ -104,7 +104,6 @@ public class ViewPrice3Controller {
 				priceFilter.setPriceRoot(servicePR.findActualPriceRootByPriceTypeIdAndSample(priceFilter.getPriceType(),
 						prevPriceTypeId,
 						priceFilter.getPriceRoot(),
-						prevPriceRootId,
 						priceFilter.getSample(),
 						prevSample));
 		} //if editable PriceRoot should not be set.
@@ -166,7 +165,7 @@ public class ViewPrice3Controller {
 		
 		}
 		session.setAttribute("priceTypeId", priceFilter.getPriceType().getId());
-		session.setAttribute("priceRootId", priceFilter.getPriceRoot().getId());
+		//if (!editable) session.setAttribute("priceRootId", priceFilter.getPriceRoot().getId());
 		session.setAttribute("prevSample", priceFilter.getSample());
 		session.setAttribute("editable", editable);
 		session.setAttribute("referer", "/login/viewPrice3");

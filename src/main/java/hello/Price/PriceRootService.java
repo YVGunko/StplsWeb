@@ -68,7 +68,6 @@ public class PriceRootService {
 	public PriceRoot findActualPriceRootByPriceTypeIdAndSample (PriceType priceType, 
 			Integer prevPriceTypeId,
 			PriceRoot priceRoot,
-			Integer prevPriceRootId,
 			Boolean sample,
 			Boolean prevSample) {
 		

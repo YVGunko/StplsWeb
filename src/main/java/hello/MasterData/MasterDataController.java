@@ -5,7 +5,8 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
-import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Resource; //spring-boot 2.0.4
+//import org.springframework.hateoas.EntityModel; //spring-boot 2.2.4
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,16 +20,17 @@ public class MasterDataController {
     MasterDataService service;
 	@Autowired
 	MasterDataRepository masterDataRepository;
-
+	
+	/* spring-boot 2.2.4
     @PostMapping(path="masterDatas")
     public @ResponseBody MasterData saveOrUpdate(@RequestBody EntityModel<MasterData> masterData) throws Exception {
     		return service.saveOrUpdate(masterData.getContent());
-    }
-	/* spring-boot 2.0.4
-	 *    @PostMapping(path="masterDatas")
+    }*/
+	//spring-boot 2.0.4    
+	@PostMapping(path="masterDatas")
     public @ResponseBody MasterData saveOrUpdate(@RequestBody Resource<MasterData> masterData) throws Exception {
     		return service.saveOrUpdate(masterData.getContent());
-    }*/
+    }
     @PostMapping(path="masterDatas/Delete")
     public @ResponseBody void deleteByid1C(@RequestBody ArrayList<String> id1C) throws Exception {
     		service.delete(id1C);

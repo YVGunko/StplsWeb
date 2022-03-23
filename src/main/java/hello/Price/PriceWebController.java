@@ -253,7 +253,7 @@ public class PriceWebController {
         	String strOfDifference = priceService.getListOfDifference(p, e).stream().map(Object::toString).collect(Collectors.joining(","));
         	if (!strOfDifference.equals("")) {
 	    		e.setDateOfLastChange(new Date());
-	            e.setPriceRoot(priceRootService.repository
+	            if (e.getPriceRoot().getId() == null) e.setPriceRoot(priceRootService.repository
 	            		.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(e.getPriceType().getId()
 	            				, priceFilter.getSample())
 	            		.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot.")));        

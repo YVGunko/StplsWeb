@@ -30,16 +30,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import hello.OutDoorOrder.OutDoorOrderService;
 import hello.OutDoorOrderRow.OutDoorOrderRow;
 import hello.OutDoorOrderRow.OutDoorOrderRowRepository;
 import hello.EmailSenderService;
 import hello.Mail;
 import hello.utils;
 import hello.Client.ClientRepository;
-import hello.OutDoorOrder.OutDoorOrder;
-import hello.OutDoorOrder.OutDoorOrderRepository;
-import hello.OutDoorOrder.OutDoorOrderReq;
 import hello.Defaults.DefaultsRepository;
 
 
@@ -268,7 +264,7 @@ public class OutDoorOrderController {
     
 	@GetMapping("/fixDifDiv") 
 	public List<String> fixDifDiv() throws Exception{
-		List<String> result = new ArrayList();
+		List<String> result = new ArrayList<>();
 		OutDoorOrder newRec = new OutDoorOrder();
 		Iterable<OutDoorOrder> iterable = repository.fixDifDiv();
 		for (OutDoorOrder itr:iterable) {
