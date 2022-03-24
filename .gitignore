@@ -1,3 +1,4 @@
+secret-file
 *.log
 serverqr.*
 target/*.jar
