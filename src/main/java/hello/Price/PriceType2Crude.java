@@ -42,11 +42,12 @@ public class PriceType2Crude {
 		super();
 	}
 
-	public PriceType2Crude(@NotNull Integer id, @NotNull PriceType priceType, @NotNull Crude crude) {
+	public PriceType2Crude(@NotNull Integer id, @NotNull PriceType priceType, @NotNull Crude crude, @NotNull Pt2CrudeRoot pt2CrudeRoot) {
 		super();
 		this.id = id;
 		this.priceType = priceType;
 		this.crude = crude;
+		this.pt2CrudeRoot = pt2CrudeRoot;
 	}
 
 	@Access(AccessType.PROPERTY)
@@ -66,4 +67,9 @@ public class PriceType2Crude {
 	@ManyToOne(optional = false, fetch = FetchType.EAGER)
 	@ColumnDefault("0")
 	public Crude crude ;
+	
+	@JsonProperty("pt2CrudeRoot_id")
+	@NotNull
+	@ManyToOne(optional = false, fetch = FetchType.EAGER)
+	public Pt2CrudeRoot pt2CrudeRoot ;
 }

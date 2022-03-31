@@ -2,11 +2,12 @@ package hello.Price;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.function.Supplier;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import hello.utils;
 
 @Service
 public class PriceTypeService {
@@ -22,7 +23,7 @@ public class PriceTypeService {
 		
 		pt = repository.findByIdGreaterThanOrderByName(0);
 		if (pt != null) for (PriceType b : pt) {
-			pt2C = repository2.findByPriceTypeId(b.getId());
+			pt2C = repository2.findByPriceTypeId(b.getId(), utils.getStartOfDay(new Date()));
 			String pt2C1 = "|";
 			if (pt2C != null) for (PriceType2Crude p : pt2C) {
 				pt2C1 = pt2C1 + " " + p.getCrude().getColumnName() +" |";

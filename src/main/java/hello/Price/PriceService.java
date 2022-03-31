@@ -1,18 +1,17 @@
 package hello.Price;
 
 import java.io.IOException;
+import java.util.NoSuchElementException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.sql.SQLException;
 
 import javax.mail.MessagingException;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,21 +27,15 @@ public class PriceService {
 	@Autowired
 	PriceRepository repository;
 	@Autowired
-	PriceTypeRepository repositoryPT;
-	@Autowired
-	PriceTypeService servicePT;
-	@Autowired
-	PriceRootRepository repositoryPR;
-	@Autowired
-	PriceRootService servicePR;
-	@Autowired
-	PriceType2CrudeRepository repositoryPT2C;
-	@Autowired
 	PriceColumnRepository priceColumnRepository;
+	@Autowired
+	PriceRootRepository priceRootRepository;
 	@Autowired
 	PriceColumnService priceColumnService;
 	@Autowired
     private EmailSenderService emailService;
+	@Autowired
+	PriceTypeRepository repositoryPT;
 
 	public Boolean delete (Integer id) throws Exception {
 		Boolean result = false;
@@ -116,7 +109,7 @@ public class PriceService {
 		return result;		
 	}
 
-	public void copyOne (Price p, PriceRoot newPr) throws Exception {
+	public void copyOne (Price p, PriceRoot newPr, Boolean copy) throws Exception {
 		/*Price(Integer id, String name, PriceType priceType, Double costs, Double paint,
 			Double rant, Double shpalt, Double number_per_box, Double weight, Date dateOfLastChange, Boolean bRant,
 			Boolean bLiner, String note, PriceRoot priceRoot)*/
@@ -125,21 +118,46 @@ public class PriceService {
 		Price result = new Price(null, p.name, p.priceType, p.costs, p.paint, p.rant, p.shpalt, p.number_per_box, p.weight, p.dateOfLastChange, 
 				p.bRant, p.bLiner, p.note, newPr);
 		Price newPrice = repository.save(result);
-		if (newPrice == null) throw new Exception("ERROR: Price copyOne. Price save error.");
+		if (newPrice == null) throw new NoSuchElementException("ERROR: Price copyOne. Price save error.");
 
-		List<PriceColumn> oldPcList = priceColumnService.getPriceColumns (p);
-		if (oldPcList == null) throw new Exception("ERROR: Price copyOne. priceColumnService.getPriceColumns (p) return null.");
-		for (PriceColumn oldPcOne : oldPcList) {
-			/*PriceColumn(Integer id, Date dateOfLastChange, @NotNull Price price, @NotNull PriceType2Crude priceType2Crude,
-					Double columnPrice, Double columnCosts)*/
-			// Создаем копию объекта иначе не запишется в таблицу
-			PriceColumn newPcOne = new PriceColumn(null, oldPcOne.getDateOfLastChange(), newPrice, oldPcOne.getPriceType2Crude(), 
-					oldPcOne.getColumnPrice()+newPr.plusValue, oldPcOne.getColumnCosts()+newPr.plusValue); //changed 02.03.22
-			priceColumnRepository.save(newPcOne);
+		if (copy == null) copy = false;
+		
+		if (copy) {// Скопировать все Price из выбранных разделов со ссылкой на PriceRoot и PriceColumn с увеличением цен
+			List<PriceColumn> oldPcList = priceColumnService.getPriceColumns (p);
+			if (oldPcList == null) throw new NoSuchElementException("ERROR: Price copyOne. priceColumnService.getPriceColumns (p) return null.");
+			for (PriceColumn oldPcOne : oldPcList) {
+				/*PriceColumn(Integer id, Date dateOfLastChange, @NotNull Price price, @NotNull PriceType2Crude priceType2Crude,
+						Double columnPrice, Double columnCosts)*/
+				// Создаем копию объекта иначе не запишется в таблицу
+				PriceColumn newPcOne = new PriceColumn(null, oldPcOne.getDateOfLastChange(), newPrice, oldPcOne.getPriceType2Crude(), 
+						oldPcOne.getColumnPrice()+newPr.plusValue, oldPcOne.getColumnCosts()+newPr.plusValue); //changed 02.03.22
+				priceColumnRepository.save(newPcOne);
+			}
+		}else { //create new price by coping old price rows and create and calc columns by PriceColumns
+			priceColumnService.getPriceColumns(newPrice);
 		}
-		//return result;
+	}
+	/* */
+	public void reCalcPrice(Integer rootId) {
+		List<Price> oldPrice = new ArrayList<>();
+		
+		Integer typeId = priceRootRepository.findOneById(rootId).getPriceType().getId();
+		
+		if (typeId != null) {
+			oldPrice = repository
+					.findByPriceTypeIdAndPriceRootId(typeId, rootId)
+					.orElseThrow(() -> new NoSuchElementException("Price not found exception. PriceType="+typeId+", newPriceRoot="+rootId));
+			
+			for (Price price : oldPrice) priceColumnService.calcAndSave(price.getId(), price) ; 
+		}else {
+			throw new NoSuchElementException("PriceType not found exception. PriceType="+typeId+", PriceRoot="+rootId);
+		}
 	}
 	
+	public void copyPricePaint(Integer rootId, Double value) {
+
+		 repository.updatePricePaint(rootId, value);
+	}
     public void sendMail(@Valid Price e, String Subject) throws MessagingException, IOException { 
     	
     		Mail mail = new Mail();
@@ -206,13 +224,11 @@ public class PriceService {
 							}
 							res.add(FIELDS.get(f.getName())+"="+value.toString());           			
             		}            		
-				} catch (NoSuchFieldException e) {
+				} catch (NoSuchFieldException | SecurityException e) {
+					System.err.println (e);
 					e.printStackTrace();
 					continue;
-				} catch (SecurityException e) {
-					e.printStackTrace();
-					continue;
-				}
+				} 
 			} catch (NullPointerException e) {
 				System.out.println("getListOfDifference. NPE.");
 			}

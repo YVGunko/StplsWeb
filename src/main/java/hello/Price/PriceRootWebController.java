@@ -28,6 +28,8 @@ public class PriceRootWebController {
 	@Autowired
 	PriceRootService service;
 	@Autowired
+	PriceService priceService;
+	@Autowired
 	PriceTypeRepository repositoryPT;
 	@Autowired
 	CrudeRepository crudeRepository;
@@ -74,7 +76,8 @@ public class PriceRootWebController {
 	    }
 	    
 	    @PostMapping("/addPriceRoot")
-	    public String addPriceRoot(@Valid PriceRoot e, @RequestParam(value = "pts" , required = false) int[] pts, 
+	    public String addPriceRoot(@Valid PriceRoot e, @RequestParam(value = "pts" , required = true) int[] pts,
+	    		@RequestParam(value = "copy" , required = false) Boolean copy,
 	    		BindingResult result, Model model, @ModelAttribute ArrayList<Crude> crudes) throws Exception {
 	        if (result.hasErrors()) {
 	            return "addPriceRoot";
@@ -86,7 +89,7 @@ public class PriceRootWebController {
 	        			.map(PriceType::getName)
 	        			.orElse("").concat(e.note);
 
-	        	service.save(new PriceRoot(e.id,e.dateOfChange,priceTypeName,e.plusValue,e.priceType,e.getSample()), pts[i]);
+	        	service.save(new PriceRoot(e.id,e.dateOfChange,priceTypeName,e.plusValue,e.priceType,e.getSample()), pts[i], copy);
 	        }
 	        //model.addAttribute("crudeList", populateCrudes());
 	        model.addAttribute("priceRoots", populatePR());
@@ -109,8 +112,20 @@ public class PriceRootWebController {
 	            e.setId(id);
 	            return "updPriceRoot";
 	        }
-	        repository.save(e);
+	        //repository.save(e);
 	        model.addAttribute("priceRoots", populatePR());
 	        return "redirect:/getPriceRoot";
+	    }
+	    
+	    @PostMapping("/calcPriceRoot/{id}")
+	    public String calcAll(@PathVariable("id") Integer id, @Valid PriceRoot pr, 
+	      BindingResult result, Model model) {
+	        if (result.hasErrors()) {
+	            pr.setId(id);
+	            return "updPriceRoot";
+	        }
+	        priceService.reCalcPrice(pr.getId());
+	        model.addAttribute("priceRoots", populatePR());
+	        return "updPriceRoot";
 	    }
 }

@@ -1,26 +1,16 @@
 package hello.Price;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.NoSuchElementException;
-import java.util.Optional;
-
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import hello.Defaults.DefaultsRepository;
-
 @Service
 public class PriceRootService {
-	@Autowired
-	DefaultsRepository defaultsRepository;
+
 	@Autowired
 	PriceRepository repositoryPrice;
 	@Autowired
@@ -31,38 +21,28 @@ public class PriceRootService {
 	PriceTypeRepository repositoryPT;
 	@Autowired
 	PriceRootRepository repository;
-	@Autowired
-	PriceType2CrudeRepository repositoryPT2C;
-	@Autowired
-	PriceColumnRepository priceColumnRepository;
-	@Autowired
-	PriceColumnService priceColumnService;
 
-//TODO нужно изменить priceRoot. Связать с priceType и делать изменения для каждого Crude
-	public void save(@Valid PriceRoot newPriceRoot, int i) throws Exception {
+
+
+
+	public void save(@Valid PriceRoot newPriceRoot, int i, Boolean copy) throws Exception {
 		// Выбрать предыдущий прайс для тех же разделов прайса. Может быть разный для разных разделов.
 		PriceRoot oldPriceRoot = new PriceRoot();
 		// Для PriceType ищем PriceRoot с самой новой датой.
 		oldPriceRoot = repository.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(i, newPriceRoot.getSample())
-				.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot."));
+				.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception. PriceType="+i+", sample="+newPriceRoot.getSample()));
 
 		List<Price> oldPrice = new ArrayList<>();
-    		// Сохранить, чтобы было на что ссылаться.
+    	// Сохранить, чтобы было на что ссылаться.
 		newPriceRoot.setPriceType(repositoryPT.getOne(i));
-		repository.save(newPriceRoot);
-    		// Скопировать все Price из выбранных разделов со ссылкой на PriceRoot и PriceColumn с увеличением цен
-
-		if (oldPriceRoot != null) {
-			//get price's rows as source  
-			oldPrice = repositoryPrice.findByPriceTypeIdAndPriceRootIdOrderByName(i, ((oldPriceRoot.getId() == newPriceRoot.id) ? 0 : oldPriceRoot.getId()));
-			if (oldPrice != null) {
-				for (Price price : oldPrice) servicePrice.copyOne(price, newPriceRoot);
-			} else {
-				System.out.println("ERROR: PriceRootService save: Не найден исходный Price для PriceType & PriceRoot: " + i+", "+oldPriceRoot.getId());
-			}
-		} else {
-			System.out.println("ERROR: PriceRootService save: Не найден исходный PriceRoot для PriceType: " + i);
-		}		
+		if (!newPriceRoot.getPriceType().equals(null)) repository.save(newPriceRoot);
+		else throw new NoSuchElementException("PriceRoot not found exception. PriceType="+i+", sample="+newPriceRoot.getSample());
+		// get the rows of the oldPrice as source
+		oldPrice = repositoryPrice
+				.findByPriceTypeIdAndPriceRootIdOrderByName(i, ((oldPriceRoot.getId() == newPriceRoot.id) ? 0 : oldPriceRoot.getId()))
+				.orElseThrow(() -> new NoSuchElementException("Price not found exception. PriceType="+i+", newPriceRoot="+newPriceRoot.getId()));
+		
+		for (Price price : oldPrice) servicePrice.copyOne(price, newPriceRoot, copy); 		
 	}
 
 	public PriceRoot findActualPriceRootByPriceTypeIdAndSample (PriceType priceType, 
@@ -73,7 +53,7 @@ public class PriceRootService {
 		
 		PriceRoot responce = new PriceRoot();
 		//предыдущего значения нет, значит первый раз загружается страница || тип прайса изменился
-		if (prevPriceTypeId == null || prevPriceTypeId != priceType.getId()) {
+		if (prevPriceTypeId == null || prevPriceTypeId != priceType.getId() || checkForNull(priceRoot)) {
 			responce = repository.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc
 					(priceType.getId(), sample)
 					.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot."));

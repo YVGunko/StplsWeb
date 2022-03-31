@@ -1,12 +1,12 @@
 package hello.Controller;
 
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
-import javax.transaction.Transactional;
 import javax.xml.ws.Holder;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import hello.utils;
 import hello.Box.Box;
 import hello.Box.BoxRepository;
 import hello.BoxMoves.BoxMove;
@@ -26,7 +27,8 @@ import hello.BoxMoves.BoxMovesRepository;
 import hello.BoxMoves.BoxMovesService;
 import hello.PartBox.PartBox;
 import hello.PartBox.PartBoxRepository;
-import hello.PartBox.PartBoxService;
+import hello.Price.PriceType2CrudeRepository;
+import hello.Price.PriceType2Crude;
 
 @RestController
 public class ServiceController {
@@ -41,6 +43,8 @@ public class ServiceController {
 	private PartBoxRepository partBoxRepository;
 	@Autowired
 	private BoxRepository boxRepository;
+	@Autowired
+	private PriceType2CrudeRepository priceType2CrudeRepository;
 /*
 	public boolean containsName(final List<Object> list, final String name){
 		return list.stream().filter(o -> o.getName().equals(name)).findFirst().isPresent();
@@ -169,5 +173,14 @@ public class ServiceController {
 		count = count + countBox;
 		System.out.println("Total BoxMove updated - " + count);
 		return count;
+	}
+	
+	@GetMapping("/PriceType2Crude") 
+	public List<PriceType2Crude> getPriceType2Crude() throws Exception{
+
+		List<PriceType2Crude>  result = priceType2CrudeRepository.findByPriceTypeId(2, utils.sDateToDate ("2022-04-02", "yyyy-MM-dd"));
+
+		 return result;
+
 	}
 }

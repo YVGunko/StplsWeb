@@ -87,8 +87,7 @@ public interface BoxMovesRepository extends JpaRepository<BoxMove,String>{
 	Page<BoxMove> findAll(Pageable pageable);
 	Page<BoxMove> findByDateGreaterThanEqualOrderByDateAsc(Date date, Pageable pageable);
 
-	List<BoxMove> findByOperationIdAndDateGreaterThanOrderByDateAscOperationIdAsc(Long operationId, Date date);
-	List<BoxMove> findByOperationIdAndDateGreaterThanOrderByDateAscOperationIdAsc(Long operationId, String date);
+
 
 	List<BoxMove> findByOperationIdAndDateBetweenOrderByDateAscOperationIdAsc(Long operationId, Date atStartOfDay,
 			Date atEndOfDay);

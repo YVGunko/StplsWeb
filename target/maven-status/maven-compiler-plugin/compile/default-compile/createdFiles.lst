@@ -37,6 +37,7 @@ hello/OrderByOutDoc/OrderByOutDocService.class
 hello/Web/OutDoc/ViewOutDocSummaController.class
 hello/BoxMoves/BoxMovesRepository.class
 hello/Controller/EmployeeRequest.class
+hello/Price/Pt2CrudeRoot.class
 hello/OutDoorOrder/OutDoorOrderRep.class
 hello/Web/OutDoc/Command.class
 hello/OutDoorOrder/ViewOutDoorOrderListFilter.class

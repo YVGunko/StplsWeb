@@ -2,7 +2,6 @@ package hello.Price;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -82,13 +81,18 @@ public class ViewPriceController {
 			if (!priceFilter.getName().equals("")) 
 				price = repositoryPrice.findByPriceTypeIdAndPriceRootIdAndNameStartingWithOrderByName (priceFilter.getPriceType().getId(),
 						priceFilter.getPriceRoot().getId(),
-						priceFilter.getName());
+						priceFilter.getName())
+				.orElseThrow(() -> 
+						new NoSuchElementException("Price not found exception. PriceType="
+						+priceFilter.getPriceType().getId()+", newPriceRoot="+priceFilter.getPriceRoot().getId()));
 			else 
 				price = repositoryPrice.findByPriceTypeIdAndPriceRootIdOrderByName (priceFilter.getPriceType().getId(),
-						priceFilter.getPriceRoot().getId());
+						priceFilter.getPriceRoot().getId())
+				.orElseThrow(() -> 
+						new NoSuchElementException("Price not found exception. PriceType="
+						+priceFilter.getPriceType().getId()+", newPriceRoot="+priceFilter.getPriceRoot().getId()));
 			
-			if (price!=null) 
-				for (Price b : price) 
+			for (Price b : price) 
 					//PriceWeb(Integer id, String name, Integer priceTypeId, Double cost, Double paint, Double rant,
 					//Double shpalt, Double number_per_box, Double weight)
 					priceWeb.add(new PriceWeb(b.getId(), b.getName(), b.getNumber_per_box(), b.getWeight(), b.getbRant(), b.getbLiner(), 

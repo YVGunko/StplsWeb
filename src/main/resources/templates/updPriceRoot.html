@@ -18,7 +18,7 @@
 	                     class="text">Назад</span></a></span>
 	    		</div>
             <h2 class="mb-5"> Создать новый прайс </h2>
-              <form action="#" th:action="@{/addPriceRoot}" th:object="${priceRoot}" method="post">
+              <form action="#" th:action="@{/updPriceRoot/{id}(id=${priceRoot.id})}" th:object="${priceRoot}" method="post">
                 <fieldset>
 						<div class="form-group col-md-4">
 							<label for="sample"  class="col-form-label">Образцы</label>
@@ -57,31 +57,11 @@
 					        </tr>
 					    </tbody>
 					</table>
-					<table>
-					    <thead>
-					        <tr>
-					            <th> Сырье </th>
-					            <th> Изм.расходов </th>
-					            <th> Изм.отпускной цены </th>
-					            <th> Изм.стоимости ранта </th>
-					        </tr>
-					    </thead>
-					    <tbody>
-							<tr th:if="${crudeList.empty}">
-					            <td colspan="4"> Нет доступных разделов </td>
-
-					        <tr th:each="crude : ${crudeList}">
-			                    <td th:text = "${crude.columnName}"	></td>
-			                    <td th:text = "${crude.copyAddCosts}"></td>
-			                    <td th:text = "${crude.copyAddPrice}"></td>
-			                    <td th:text = "${crude.copyAddRant}"	></td>
-			                </tr>
-
-					    </tbody>
-					</table>
                    <div class="row">
+                   		<div class="col-md-2 mt-5">
+					      	<input class="btn btn-primary" th:formaction="@{/calcPriceRoot/{id}(id=${priceRoot.id})}" th:object="${priceRoot}" method="post" type="submit" value="Рассчитать цены"/>
+						</div>
                        <div class="col-md-2 mt-5">
-                       		<input type="checkbox" name="copy" th:value="${copy}"/>
                            <input type="submit" id="submitButton" class="btn btn-primary" value="Сохранить">
                        </div>
                    </div>

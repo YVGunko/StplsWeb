@@ -20,7 +20,8 @@
                                 <tr>
 			                        <th>Наименование сырья</th>
 			                        <th>Наим. колонки прайса</th>
-			                        <th>Расценка,руб/кг</th>
+			                        <th>Расценка,вал/кг</th>
+			                        <th>Курс,руб</th>
 			                        <th>Наценка на себестоимость,руб</th>
 			                        <th>Наценка на отпуск.цену,руб</th>
 			                        <th>Прямые расходы,руб</th>
@@ -35,6 +36,7 @@
 				                    <td th:text="${crude_.crudeName}"></td>
 				                    <td th:text="${crude_.columnName}"></td>
 				                    <td th:text="${crude_.crudeCost}"></td>
+				                    <td th:text="${crude_.crudeCurs}"></td>
 				                    <td th:text="${crude_.crudePlus}"></td>
 				                    <td th:text="${crude_.crudeExtra}"></td>
 				                    <td th:text="${crude_.directCosts}"></td>

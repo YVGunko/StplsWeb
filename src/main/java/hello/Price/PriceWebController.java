@@ -111,9 +111,6 @@ public class PriceWebController {
 		e.setPriceRoot(priceRootService.repository
 				.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(e.getPriceType().getId(), ViewPriceController.staticPriceFilter.getSample())
 				.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot.")));
-		//e.setSample(ViewPriceController.staticPriceFilter.getSample());
-		//e.setPriceRoot(priceRootRepository.findFirstByDateOfChangeBeforeAndPriceTypeIdOrderByDateOfChangeDesc(new Date(), e.getPriceType().getId()));
-
 
 	    if (priceService.save(e).getId() == 0) return "addPrice";
 	    priceService.sendMail(e, "Добавлено наименование");
@@ -318,5 +315,30 @@ public class PriceWebController {
 
     }
     
+    @GetMapping("/copyPricePaint")
+    public String copyPricePaint(Model model) throws Exception {
+
+        return "updPrice2";
+
+    }
+    
+    @PostMapping("/copyPricePaint/{id}")
+    public String copyPricePaint(@PathVariable("id") Integer id, @Valid Price e, 
+    	      BindingResult result, Model model) throws Exception {
+      		
+        if (result.hasErrors()) {
+            e.setId(id);
+            return "updPrice2";
+        }
+        //TODO calc with directPrice column of the Crude entity
+		model.addAttribute("priceColumns", priceColumnService.getPriceColumns(e));
+        priceService.copyPricePaint(e.getPriceRoot().getId(), e.getPaint());
+		List<PriceRoot> pr =  new ArrayList<>();
+		e.setPriceRoot(priceRootRepository.findOneById(e.getPriceRoot().getId()));
+		pr.add(e.getPriceRoot());
+		model.addAttribute("priceRoots", pr);
+		model.addAttribute("priceRoot", e.getPriceRoot());
+        return "updPrice2";
+    }
     //<td> <a type="hidden" th:href="@{/editPrice/{id}(id=${p.id})}" class="btn btn-primary"><i class="fas fa-edit ml-2" title ="Редактировать строку прайса"></i></a></td>
 }

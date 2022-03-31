@@ -20,12 +20,13 @@ import hello.utils;
 public class Crude {
 	public Crude(Integer id, String crudeName, String columnName, Double crudeCost,
 			Date dateOfLastChange, Double crudeExtra, Double crudePlus, Double directCosts,
-			Double copyAddCosts, Double copyAddPrice, Double copyAddRant) {
+			Double copyAddCosts, Double copyAddPrice, Double copyAddRant, Double crudeCurs) {
 		super();
 		this.id = id;
 		this.crudeName = crudeName;
 		this.columnName = columnName;
 		this.crudeCost = crudeCost;
+		this.crudeCurs = crudeCurs;
 		this.crudeExtra = crudeExtra;
 		this.crudePlus = crudePlus;
 		this.directCosts = directCosts;
@@ -47,6 +48,40 @@ public class Crude {
 		super();
 	}
 
+
+
+	@Access(AccessType.PROPERTY)
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@JsonProperty("id")
+	public Integer id;
+	@JsonProperty("crudeName")
+	public String crudeName;
+	@JsonProperty("columnName")
+	public String columnName;
+	@JsonProperty("crudeCost")
+	public Double crudeCost;
+	@JsonProperty("crudeCurs")
+	@Column(name = "crude_curs", columnDefinition="Decimal(10,2) default '1.00'")
+	public Double crudeCurs;
+	@JsonProperty("crudeExtra")
+	public Double crudeExtra;
+	@JsonProperty("crudePlus")
+	public Double crudePlus;
+	@JsonProperty("directCosts")
+	public Double directCosts;
+	@JsonProperty("copyAddCosts")
+	public Double copyAddCosts;
+	@JsonProperty("copyAddPrice")
+	public Double copyAddPrice;
+	@JsonProperty("copyAddRant")
+	public Double copyAddRant;
+	
+	@JsonProperty("dateOfLastChange")
+	@JsonFormat(pattern="dd.MM.yyyy HH:mm:ss",timezone="Europe/Moscow")
+	@Column(name = "dateOfLastChange", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	public Date dateOfLastChange ;
+	
 	public String getColumnName() {
 		return columnName;
 	}
@@ -86,31 +121,6 @@ public class Crude {
 	public void setDateOfLastChange(Date dateOfLastChange) {
 		this.dateOfLastChange = dateOfLastChange;
 	}
-
-	@Access(AccessType.PROPERTY)
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@JsonProperty("id")
-	public Integer id;
-	@JsonProperty("crudeName")
-	public String crudeName;
-	@JsonProperty("columnName")
-	public String columnName;
-	@JsonProperty("crudeCost")
-	public Double crudeCost;
-	@JsonProperty("crudeExtra")
-	public Double crudeExtra;
-	@JsonProperty("crudePlus")
-	public Double crudePlus;
-	@JsonProperty("directCosts")
-	public Double directCosts;
-	@JsonProperty("copyAddCosts")
-	public Double copyAddCosts;
-	@JsonProperty("copyAddPrice")
-	public Double copyAddPrice;
-	@JsonProperty("copyAddRant")
-	public Double copyAddRant;
-	
 	public Double getCrudeExtra() {
 		return crudeExtra;
 	}
@@ -118,11 +128,6 @@ public class Crude {
 	public void setCrudeExtra(Double crudeExtra) {
 		this.crudeExtra = crudeExtra;
 	}
-
-	@JsonProperty("dateOfLastChange")
-	@JsonFormat(pattern="dd.MM.yyyy HH:mm:ss",timezone="Europe/Moscow")
-	@Column(name = "dateOfLastChange", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-	public Date dateOfLastChange ;
 	
 	public String getStringDateOfLastChange() {
 		return utils.toString(utils.toLocalDate(dateOfLastChange));
@@ -158,6 +163,14 @@ public class Crude {
 
 	public void setCopyAddRant(Double copyAddRant) {
 		this.copyAddRant = copyAddRant;
+	}
+
+	public Double getCrudeCurs() {
+		return crudeCurs;
+	}
+
+	public void setCrudeCurs(Double crudeCurs) {
+		this.crudeCurs = crudeCurs;
 	}
 	
 }

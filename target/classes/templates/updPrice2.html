@@ -56,6 +56,9 @@
                                 <label for="paint" class="col-form-label">Расх.крас</label>
                                 <input type="number" min="0" step="1" th:field="*{paint}" class="form-control" id="paint" placeholder="Расх.краск">
                                 <span th:if="${#fields.hasErrors('paint')}" th:errors="*{paint}" class="text-danger"></span>
+
+				               	<input class="btn btn-primary" th:formaction="@{/copyPricePaint/{id}(id=${price.id})}" th:object="${price}" method="post" type="submit" value="Размножить"/>
+
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="rant" class="col-form-label">Расх.рант</label>

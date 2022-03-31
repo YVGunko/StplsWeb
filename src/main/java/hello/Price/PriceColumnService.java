@@ -23,8 +23,7 @@ public class PriceColumnService {
 	
 	public List<PriceColumn> getPriceColumns (Price p) {
 		List<PriceColumn> result = new ArrayList<>();
-		
-		
+				
 		if (p != null) {
 			//Выбираем все строки из таблицы столбцов прайса
 			List<PriceColumn> pc = priceColumnRepository.findByPriceId(p.id);	
@@ -38,7 +37,8 @@ public class PriceColumnService {
 			if ((pc != null)&&(!pc.isEmpty())) for (PriceColumn b : pc) {
 				result.add(b);
 			} else { //создать строки и вернуть
-				List<PriceType2Crude> pt2C = repositoryPT2C.findByPriceTypeId(p.priceType.id);
+				//Выбрать столбцы именно подходящие по дате и типу прайса
+				List<PriceType2Crude> pt2C = repositoryPT2C.findByPriceTypeId(p.priceType.id, p.getPriceRoot().getDateOfChange());
 				if (pt2C != null) { 
 					/*	public PriceColumn(Integer id, Date dateOfLastChange, @NotNull Price price, 
 					 * @NotNull PriceType2Crude priceType2Crude,
@@ -64,18 +64,23 @@ public class PriceColumnService {
 		List<PriceColumn> pc = this.priceColumnRepository.findByPriceId(id);
 		int i = -1;
 		for (PriceColumn b : pc) {
+			//Для случаев когда цена расчитывается как цена предыдущего материала + crudePlus
 			i = pc.indexOf(b);
 			if ((b.priceType2Crude.crude.crudeCost == 0)&(i > 0)) {
-				//System.out.println("calcPrice2 ((b.priceType2Crude.crude.crudeCost == 0)&(i > -1))  " );
 				b.columnCosts = pc.get(i-1).columnCosts + b.priceType2Crude.crude.crudePlus;
 			} else {
+				try {
 			b.columnCosts = (double) Math.round(
 					((b.priceType2Crude.crude.crudeCost == null)? 0 : b.priceType2Crude.crude.crudeCost)*
+					((b.priceType2Crude.crude.crudeCurs == null)? 0 : b.priceType2Crude.crude.crudeCurs)*
 					((e.weight == null)? 0 : e.weight)+
 					((b.priceType2Crude.crude.directCosts == null)? 0 : b.priceType2Crude.crude.directCosts)+
 					((e.paint == null)? 0 : e.paint)+
 					(e.bRant ? ( (e.rant == null)? 0 : e.rant ) : 0)+
 					(e.bLiner ? ( (e.shpalt == null)? 0 : e.shpalt ) : 0));
+				}catch(NullPointerException ex) {
+					System.err.println("NPE, id="+id+", price.id="+e.getId()+", price.name="+e.getName());
+				}
 			}
 			
 			b.columnPrice = (double) Math.round(
