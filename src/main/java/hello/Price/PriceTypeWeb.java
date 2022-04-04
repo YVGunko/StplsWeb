@@ -3,12 +3,13 @@ package hello.Price;
 
 public class PriceTypeWeb {
 	public PriceTypeWeb(Integer id, String name, String priceColumns, String def_costs, String def_paint,
-			String def_rant, String def_shpalt) {
+			String def_rant, String def_shpalt, String def_extra) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.priceColumns = priceColumns;
 		this.def_costs = def_costs;
+		this.def_extra = def_extra;
 		this.def_paint = def_paint;
 		this.def_rant = def_rant;
 		this.def_shpalt = def_shpalt;
@@ -31,6 +32,7 @@ public class PriceTypeWeb {
 	public String priceColumns;
 	
 	public String def_costs;
+	public String def_extra;
 	
 	public String def_paint;
 
@@ -73,5 +75,11 @@ public class PriceTypeWeb {
 	}
 	public void setDef_shpalt(String def_shpalt) {
 		this.def_shpalt = def_shpalt;
+	}
+	public String getDef_extra() {
+		return def_extra;
+	}
+	public void setDef_extra(String def_extra) {
+		this.def_extra = def_extra;
 	}
 }

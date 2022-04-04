@@ -107,21 +107,17 @@ public class ViewPrice3Controller {
 						priceFilter.getSample(),
 						prevSample));
 		} //if editable PriceRoot should not be set.
-		
+	
 		if (!editable) { //select price by priceRoot and possible filter by name
 			if (!priceFilter.getName().equals("")) 
 				price = repositoryPrice.findByPriceTypeIdAndPriceRootIdAndNameStartingWithOrderByName (priceFilter.getPriceType().getId(),
 						priceFilter.getPriceRoot().getId(),
 						priceFilter.getName())
-				.orElseThrow(() -> 
-						new NoSuchElementException("Price not found exception. PriceType="
-						+priceFilter.getPriceType().getId()+", newPriceRoot="+priceFilter.getPriceRoot().getId()));
+				.orElse(null);
 			else //TODO sorting here
 				price = repositoryPrice.findByPriceTypeIdAndPriceRootIdOrderByName (priceFilter.getPriceType().getId(),
 						priceFilter.getPriceRoot().getId())
-				.orElseThrow(() -> 
-						new NoSuchElementException("Price not found exception. PriceType="
-						+priceFilter.getPriceType().getId()+", newPriceRoot="+priceFilter.getPriceRoot().getId()));
+				.orElse(null);
 			
 			if (price!=null) 
 				for (Price b : price) 
@@ -142,7 +138,7 @@ public class ViewPrice3Controller {
 					.stream()
 					.map(ptl -> {
 						PriceRoot prh = repositoryPR.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(ptl.getId(), priceFilter.getSample())
-						.orElseThrow(() -> new NoSuchElementException("PriceRoot exception when trying to obtain the list of PriceRoots."));
+						.orElse(null);
 						return prh;
 								}
 						).collect(Collectors.toList());
@@ -153,16 +149,13 @@ public class ViewPrice3Controller {
 				if (!priceFilter.getName().equals("")) 
 					price = repositoryPrice.findByPriceTypeIdAndPriceRootIdAndNameStartingWithOrderByName (prl.getPriceType().getId(), prl.getId(),
 							priceFilter.getName())
-					.orElseThrow(() -> 
-							new NoSuchElementException("Price not found exception. PriceType="
-							+prl.getPriceType().getId()+", newPriceRoot="+prl.getId()));
+					.orElse(null);
 				else {
 					price = repositoryPrice.findByPriceTypeIdAndPriceRootIdOrderByName (prl.getPriceType().getId(), prl.getId())
-							.orElseThrow(() -> 
-							new NoSuchElementException("Price not found exception. PriceType="
-							+prl.getPriceType().getId()+", newPriceRoot="+prl.getId()));
+					.orElse(null);
 				}
-				priceWeb.addAll(
+				if (price != null) 
+					priceWeb.addAll(
 							price
 							.stream()
 							.map(b -> {

@@ -29,7 +29,11 @@ public class PriceTypeService {
 				pt2C1 = pt2C1 + " " + p.getCrude().getColumnName() +" |";
 			}
 			ptWeb.add(new PriceTypeWeb(b.getId(), b.getName(), pt2C1, 
-					String.format("%1$,.2f", b.def_costs), String.format("%1$,.2f", b.def_paint), String.format("%1$,.2f", b.def_rant), String.format("%1$,.2f", b.def_shpalt)));
+					String.format("%1$,.2f", b.def_costs), 
+					String.format("%1$,.2f", b.def_paint), 
+					String.format("%1$,.2f", b.def_rant), 
+					String.format("%1$,.2f", b.def_shpalt), 
+					String.format("%1$,.2f", b.def_extra)));
 		}
 			
 		return ptWeb;

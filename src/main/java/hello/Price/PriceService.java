@@ -148,7 +148,7 @@ public class PriceService {
 					.findByPriceTypeIdAndPriceRootId(typeId, rootId)
 					.orElseThrow(() -> new NoSuchElementException("Price not found exception. PriceType="+typeId+", newPriceRoot="+rootId));
 			
-			for (Price price : oldPrice) priceColumnService.calcAndSave(price.getId(), price) ; 
+			for (Price price : oldPrice) priceColumnService.calcAndSave(price.getId()) ; 
 		}else {
 			throw new NoSuchElementException("PriceType not found exception. PriceType="+typeId+", PriceRoot="+rootId);
 		}

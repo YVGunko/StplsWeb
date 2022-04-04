@@ -83,7 +83,7 @@ public class PriceWebController {
 			e.setPriceType(ViewPriceController.staticPriceFilter.getPriceType());
 			e.setPriceRoot(priceRootRepository
 					.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(e.getPriceType().getId(), ViewPriceController.staticPriceFilter.getSample())
-					.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot.")));
+					.orElseThrow(() -> new NoSuchElementException("signPrice. PriceRoot not found exception.")));
 			e.setName(ViewPriceController.staticPriceFilter.getName());
 			e.setCosts(ptService.repository.getOne(ViewPriceController.staticPriceFilter.getPriceType().getId()).getDef_costs());
 			e.setPaint(ptService.repository.getOne(ViewPriceController.staticPriceFilter.getPriceType().getId()).getDef_paint());
@@ -110,7 +110,7 @@ public class PriceWebController {
 		e.setShpalt(e.bLiner ? ptService.repository.getOne(e.getPriceType().getId()).getDef_shpalt() : (double)0);
 		e.setPriceRoot(priceRootService.repository
 				.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(e.getPriceType().getId(), ViewPriceController.staticPriceFilter.getSample())
-				.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot.")));
+				.orElseThrow(() -> new NoSuchElementException("addPrice. PriceRoot not found exception.")));
 
 	    if (priceService.save(e).getId() == 0) return "addPrice";
 	    priceService.sendMail(e, "Добавлено наименование");
@@ -155,7 +155,7 @@ public class PriceWebController {
 			e.setPriceRoot(priceRootService.repository.
 					findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(e.getPriceType().getId(), 
 							ViewPrice2Controller.staticPriceFilter.getSample())
-					.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot.")));
+					.orElseThrow(() -> new NoSuchElementException("signPrice2. PriceRoot not found exception.")));
 			//e.setPriceRoot(ViewPrice2Controller.staticPriceFilter.getPriceRoot());
 			e.setName(ViewPrice2Controller.staticPriceFilter.getName());
 			e.setCosts(ptService.repository.getOne(ViewPrice2Controller.staticPriceFilter.getPriceType().getId()).getDef_costs());
@@ -175,7 +175,7 @@ public class PriceWebController {
 	    if (result.hasErrors()) {
 	        return "addPrice2";
 	    }
-	    Integer id = 0;
+
 	    e.setDateOfLastChange(new Date());
 	    try {
 			e.setCosts(ptService.repository.getOne(e.getPriceType().getId()).getDef_costs());
@@ -184,10 +184,10 @@ public class PriceWebController {
 			e.setShpalt(e.bLiner ? ptService.repository.getOne(ViewPrice2Controller.staticPriceFilter.getPriceType().getId()).getDef_shpalt() : (double)0);
 			e.setPriceRoot(priceRootService.repository
 					.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(e.getPriceType().getId(), ViewPrice2Controller.staticPriceFilter.getSample())
-					.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot.")));
-    		id = priceService.save(e).getId();
-    	    if (id == 0) return "addPrice2";	    	    
-    	    model.addAttribute("priceColumns", priceColumnService.calcAndSave(id, e));
+					.orElseThrow(() -> new NoSuchElementException("addPrice2. PriceRoot not found exception.")));
+
+    	    if (priceService.save(e).getId() == 0) return "addPrice2";	    	    
+    	    model.addAttribute("priceColumns", priceColumnService.calcAndSave(e.getId()));
     	    model.addAttribute("prices", populatePrices(e.getPriceType().getId()));
         } catch(Exception ex) {
             model.addAttribute("errorData", ex.getMessage());
@@ -253,7 +253,7 @@ public class PriceWebController {
 	            if (e.getPriceRoot().getId() == null) e.setPriceRoot(priceRootService.repository
 	            		.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(e.getPriceType().getId()
 	            				, priceFilter.getSample())
-	            		.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot.")));        
+	            		.orElseThrow(() -> new NoSuchElementException("updPrice2. PriceRoot not found exception.")));        
 	        	e.setPriceUsers(new PriceUser(userRepository.findOneByName(request.getRemoteUser())
 	        			, "Изменено: "+strOfDifference));
 		        if (priceService.save(e).getId() == 0) return "updPrice2";
@@ -281,7 +281,7 @@ public class PriceWebController {
             return "updPrice2";
         }
         //TODO calc with directPrice column of the Crude entity
-		model.addAttribute("priceColumns", priceColumnService.calcAndSave(id, e));
+		model.addAttribute("priceColumns", priceColumnService.calcAndSave(id));
 		List<PriceRoot> pr =  new ArrayList<>();
 		e.setPriceRoot(priceRootRepository.findOneById(e.getPriceRoot().getId()));
 		pr.add(e.getPriceRoot());

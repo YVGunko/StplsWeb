@@ -26,8 +26,8 @@ public class CrudeWebController {
 	
 		@ModelAttribute("crudes")
 		public List<Crude> populateCrudes() {
-		    return this.repository.findByIdGreaterThanOrderById(0).stream()
-		    		.sorted(Comparator.comparing(Crude::getColumnName)).collect(Collectors.toList());
+		    return this.repository.findByIdGreaterThan(0).stream()
+		    		.sorted(Comparator.comparing(Crude::getCrudeName)).collect(Collectors.toList());
 		}
 		
 	    @GetMapping("/getCrude")

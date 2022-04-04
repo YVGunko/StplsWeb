@@ -2,7 +2,7 @@ CREATE TABLE `pt2crude_root` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date_of_change` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 insert into pt2crude_root (date_of_change) values ("2020-01-01");
 insert into pt2crude_root (date_of_change) values ("2022-04-01");

@@ -103,6 +103,7 @@
                                 <tr>
                                 	<th>Наименование</th>
                                 	<th>Прямые расходы, руб</th>
+                                	<th>Прибыль, руб</th>
 			                        <th>Себестоимость, руб</th>
 			                        <th>Отп. цена, руб</th>
 			                        <th>Наценка, руб</th>
@@ -111,7 +112,8 @@
                             <tbody>
                                 <tr th:each="p : ${priceColumns}">
                                 	<td th:text="${p.priceType2Crude.crude.columnName}"></td>
-                                	<td th:text="${p.priceType2Crude.crude.directCosts}"></td>
+                                	<td th:text="${p.priceType2Crude.crude.directCosts+p.price.priceType.def_costs}"></td>
+                                	<td th:text="${p.priceType2Crude.crude.crudeExtra+p.price.priceType.def_extra}"></td>
 				                    <td th:text="${p.columnCosts}"></td>
 				                    <td th:text="${p.columnPrice}"></td>
 				                    <td th:text="${p.columnPrice-p.columnCosts}"></td>

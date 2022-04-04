@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CrudeRepository extends JpaRepository<Crude, Integer>{
 	public Crude findOneById(Integer Id);
-	public List<Crude> findByIdGreaterThanOrderById(Integer Id);
+	public List<Crude> findByIdGreaterThan(Integer Id);
 	
 }

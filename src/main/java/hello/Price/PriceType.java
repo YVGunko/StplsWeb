@@ -14,11 +14,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Entity
 public class PriceType {
 	public PriceType(Integer id, @NotNull String name, Double def_costs, Double def_paint, Double def_rant,
-			Double def_shpalt) {
+			Double def_shpalt, Double def_extra) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.def_costs = def_costs;
+		this.def_extra = def_extra;
 		this.def_paint = def_paint;
 		this.def_rant = def_rant;
 		this.def_shpalt = def_shpalt;
@@ -40,6 +41,8 @@ public class PriceType {
 	
 	@Column(name = "def_costs", columnDefinition="Decimal(10,2) default '0.00'")
 	public Double def_costs;
+	@Column(name = "def_extra", columnDefinition="Decimal(10,2) default '0.00'")
+	public Double def_extra;
 	
 	@Column(name = "def_paint", columnDefinition="Decimal(10,2) default '0.00'")
 	public Double def_paint;
@@ -86,5 +89,11 @@ public class PriceType {
 	}
 	public void setDef_shpalt(Double def_shpalt) {
 		this.def_shpalt = def_shpalt;
+	}
+	public Double getDef_extra() {
+		return def_extra;
+	}
+	public void setDef_extra(Double def_extra) {
+		this.def_extra = def_extra;
 	}
 }

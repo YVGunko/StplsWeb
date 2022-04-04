@@ -52,11 +52,12 @@ public class PriceRootService {
 			Boolean prevSample) {
 		
 		PriceRoot responce = new PriceRoot();
+		if ((priceType == null) || (priceType != null & priceType.getId() == 0)) priceType = repositoryPT.findTopByIdGreaterThanOrderByName(0);
 		//предыдущего значения нет, значит первый раз загружается страница || тип прайса изменился
 		if (prevPriceTypeId == null || prevPriceTypeId != priceType.getId() || checkForNull(priceRoot)) {
 			responce = repository.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc
 					(priceType.getId(), sample)
-					.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot."));
+					.orElseThrow(() -> new NoSuchElementException("findActualPriceRootByPriceTypeIdAndSample. PriceRoot not found exception."));
 		} else {
 			if (prevPriceTypeId == priceType.getId() & !checkForNull(priceRoot)) {			//тип прайса не менялся & priceRoot not null
 				if (prevSample == sample) {						//образец не менялся
@@ -64,7 +65,7 @@ public class PriceRootService {
 				}else { 			//Образец изменился, получите максимальную дату прайса
 					responce = repository.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc
 							(priceType.getId(), sample)
-								.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot."));
+								.orElseThrow(() -> new NoSuchElementException("findActualPriceRootByPriceTypeIdAndSample. PriceRoot not found exception."));
 					}	
 				}
 			}
@@ -115,7 +116,7 @@ public class PriceRootService {
 			if (pt == 0) responce.addAll(repository.findBySampleOrderByDateOfChangeDesc(sample));
 			else {
 				responceOne = repository.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc(pt, sample)
-						.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot."));
+						.orElseThrow(() -> new NoSuchElementException("getTopPriceRootAsListByPriceTypeId. PriceRoot not found exception."));
 				if (responceOne == null) {
 					responceOne = new PriceRoot();
 					responceOne.setId(0);

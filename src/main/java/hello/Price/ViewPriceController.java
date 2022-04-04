@@ -75,24 +75,21 @@ public class ViewPriceController {
 			
 			pr = repositoryPR.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc
 					(priceFilter.getPriceType().getId(), priceFilter.getSample())
-					.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot."));
+					.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception. PriceType="
+							+priceFilter.getPriceType().getId()));
 			priceFilter.setPriceRoot(pr);
 			
 			if (!priceFilter.getName().equals("")) 
 				price = repositoryPrice.findByPriceTypeIdAndPriceRootIdAndNameStartingWithOrderByName (priceFilter.getPriceType().getId(),
 						priceFilter.getPriceRoot().getId(),
 						priceFilter.getName())
-				.orElseThrow(() -> 
-						new NoSuchElementException("Price not found exception. PriceType="
-						+priceFilter.getPriceType().getId()+", newPriceRoot="+priceFilter.getPriceRoot().getId()));
+						.orElse(null);
 			else 
 				price = repositoryPrice.findByPriceTypeIdAndPriceRootIdOrderByName (priceFilter.getPriceType().getId(),
 						priceFilter.getPriceRoot().getId())
-				.orElseThrow(() -> 
-						new NoSuchElementException("Price not found exception. PriceType="
-						+priceFilter.getPriceType().getId()+", newPriceRoot="+priceFilter.getPriceRoot().getId()));
-			
-			for (Price b : price) 
+						.orElse(null);
+			if (price != null)
+				for (Price b : price) 
 					//PriceWeb(Integer id, String name, Integer priceTypeId, Double cost, Double paint, Double rant,
 					//Double shpalt, Double number_per_box, Double weight)
 					priceWeb.add(new PriceWeb(b.getId(), b.getName(), b.getNumber_per_box(), b.getWeight(), b.getbRant(), b.getbLiner(), 

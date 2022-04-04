@@ -81,7 +81,7 @@ public class ViewPrice2Controller {
 		if (prevPriceTypeId == null) {//предыдущего значения нет, значит первый раз загружается страница.
 			pr = repositoryPR.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc
 					(priceFilter.getPriceType().getId(), priceFilter.getSample())
-					.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot."));
+					.orElseThrow(() -> new NoSuchElementException("PriceRoot not found."));
 			priceFilter.setPriceRoot(pr);
 		}else {
 			if (prevPriceTypeId == priceFilter.getPriceType().getId()) {			//тип прайса не менялся
@@ -93,14 +93,14 @@ public class ViewPrice2Controller {
 					else {							//тип прайса изменялся
 						pr = repositoryPR.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc
 								(priceFilter.getPriceType().getId(), priceFilter.getSample())
-								.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot."));
+								.orElseThrow(() -> new NoSuchElementException("PriceRoot not found."));
 						priceFilter.setPriceRoot(pr);
 					}	
 				}
 			}else {							//тип прайса изменялся
 				pr = repositoryPR.findTopByPriceTypeIdAndSampleOrderByDateOfChangeDesc
 						(priceFilter.getPriceType().getId(), priceFilter.getSample())
-						.orElseThrow(() -> new NoSuchElementException("PriceRoot not found exception when trying to obtain a PriceRoot."));
+						.orElseThrow(() -> new NoSuchElementException("PriceRoot not found."));
 				priceFilter.setPriceRoot(pr);
 			}
 		}
@@ -109,17 +109,14 @@ public class ViewPrice2Controller {
 			price = repositoryPrice.findByPriceTypeIdAndPriceRootIdAndNameStartingWithOrderByName (priceFilter.getPriceType().getId(),
 					priceFilter.getPriceRoot().getId(),
 					priceFilter.getName())
-			.orElseThrow(() -> 
-					new NoSuchElementException("Price not found exception. PriceType="
-					+priceFilter.getPriceType().getId()+", newPriceRoot="+priceFilter.getPriceRoot().getId()));
+			.orElse(null);
 		else 
 			price = repositoryPrice.findByPriceTypeIdAndPriceRootIdOrderByName (priceFilter.getPriceType().getId(),
 					priceFilter.getPriceRoot().getId())
-			.orElseThrow(() -> 
-					new NoSuchElementException("Price not found exception. PriceType="
-					+priceFilter.getPriceType().getId()+", newPriceRoot="+priceFilter.getPriceRoot().getId()));
+			.orElse(null);
 
-		for (Price b : price) 
+		if (price != null)
+			for (Price b : price) 
 				priceWeb.add(new PriceWeb(b.getId(), b.getName(), b.getCosts(), b.getPaint(), b.getRant(), 
 						b.getShpalt(), b.getNumber_per_box(), b.getWeight(), 
 						pcService.getPriceColumns(b), b.getbRant(), b.getbLiner(), b.getNote(), 

@@ -20,7 +20,8 @@
                                 <tr>
 			                        <th>Наименование</th>
 			                        <th>Столбцы прайса</th>
-			                        <th>Общие расходы, руб</th>
+			                        <th>Отклонение расходов, руб</th>
+			                        <th>Отклонение наценки, руб</th>
 			                        <th>Стоимость окраски, руб</th>
 			                        <th>Стоимость ранта, руб</th>
 			                        <th>Стоимость шпальта, руб</th>
@@ -31,6 +32,7 @@
 				                    <td th:text="${pt.name}"></td>
 				                    <td th:text="${pt.priceColumns}"></td>
 				                    <td th:text="${pt.def_costs}"></td>
+				                    <td th:text="${pt.def_extra}"></td>
 				                    <td th:text="${pt.def_paint}"></td>
 				                    <td th:text="${pt.def_rant}"></td>
 				                    <td th:text="${pt.def_shpalt}"></td>

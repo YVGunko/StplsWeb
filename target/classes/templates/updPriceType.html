@@ -22,9 +22,14 @@
                                 <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="def_costs" class="col-form-label">Общие расходы, руб</label>
-                                <input type="text" th:field="*{def_costs}" class="form-control" id="def_costs" placeholder="Общие расходы, руб">
+                                <label for="def_costs" class="col-form-label">Отклонение от прямых расходов, руб</label>
+                                <input type="text" th:field="*{def_costs}" class="form-control" id="def_costs" placeholder="Отклонение от прямых расходов, руб">
                                 <span th:if="${#fields.hasErrors('def_costs')}" th:errors="*{def_costs}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="def_extra" class="col-form-label">Отклонение от прибыли, руб</label>
+                                <input type="text" th:field="*{def_extra}" class="form-control" id="def_extra" placeholder="Отклонение от прибыли, руб">
+                                <span th:if="${#fields.hasErrors('def_extra')}" th:errors="*{def_extra}" class="text-danger"></span>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="def_paint" class="col-form-label">Стоимость окраски, руб</label>
