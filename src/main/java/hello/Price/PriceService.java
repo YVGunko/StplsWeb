@@ -195,7 +195,7 @@ public class PriceService {
     		put("priceType", "Тип прайса");
     		put("name", "Наименование");
     		put("priceType", "Тип прайса");
-    		put("name", "Наименование");
+    		put("note", "Примечание");
     		put("paint", "Расх.крас");
     		put("rant", "Расх.рант");
     		put("shpalt", "Расх.шпальт");

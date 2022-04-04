@@ -243,7 +243,7 @@ public class PriceWebController {
 			priceFilter = (ViewPriceFilter) session.getAttribute("viewPriceFilter");
 		
         response.setHeader("Cache-Control", "no-cache");
-        System.out.println(userRepository.findOneByName(request.getRemoteUser()));
+        //System.out.println(userRepository.findOneByName(request.getRemoteUser()));
         Price p = repository.findById(e.getId()).orElse(null);
         if (!e.equals(p))
         {
