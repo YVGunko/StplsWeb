@@ -3,3 +3,4 @@ secret-file
 serverpr.*
 target/
 **/src/main/resources/application.properties
+**/.DS_Store
