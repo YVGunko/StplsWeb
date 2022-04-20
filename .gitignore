@@ -1,5 +1,5 @@
 secret-file
 *.log
-serverqr.*
-target/*.jar
-target/*.original
+serverpr.*
+target/
+application.properties
