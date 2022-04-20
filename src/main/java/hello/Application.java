@@ -13,7 +13,6 @@ import org.springframework.web.filter.CommonsRequestLoggingFilter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @SpringBootApplication(exclude = {
-        MultipartAutoConfiguration.class,
         WebSocketServletAutoConfiguration.class
 })
 @EnableTransactionManagement
