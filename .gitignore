@@ -2,4 +2,4 @@ secret-file
 *.log
 serverpr.*
 target/
-/src/main/resources/application.properties
+src/main/resources/application.properties
