@@ -3,7 +3,6 @@ package hello;
 import java.util.List;
 import java.util.Map;
 
-import hello.OutDoorOrder.OutDoorOrderRep;
 import hello.Price.Price;
 import hello.Price.PriceColumn;
 
@@ -27,7 +26,6 @@ public class Mail {
 	private String sign;
 	
 	private Price price;
-	private List<OutDoorOrderRep> rows;
     private List<PriceColumn> pcRows;
     private Map<String, Object> props;
 
@@ -167,14 +165,6 @@ public class Mail {
 
 	public void setSign(String sign) {
 		this.sign = sign;
-	}
-
-	public List<OutDoorOrderRep> getRows() {
-		return rows;
-	}
-
-	public void setRows(List<OutDoorOrderRep> rows) {
-		this.rows = rows;
 	}
 
 	public List<PriceColumn> getPcRows() {

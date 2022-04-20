@@ -4,13 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.springframework</groupId>
-    <artifactId>serverqr</artifactId>
-    <version>1.1.0</version>
+    <artifactId>serverpr</artifactId>
+    <version>0.0.1</version>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.4.RELEASE</version>
+        <version>2.2.4.RELEASE</version>
+        <artifactId>spring-boot-starter-parent</artifactId>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	
@@ -78,8 +78,6 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
-
-			
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-mail</artifactId>
@@ -93,12 +91,10 @@
         <dependency>
         	<groupId>org.springframework.boot</groupId>
         	<artifactId>spring-boot-starter-validation</artifactId>
-        	<version>2.2.2.RELEASE</version>
         </dependency>
         <dependency>
         	<groupId>org.thymeleaf.extras</groupId>
         	<artifactId>thymeleaf-extras-springsecurity5</artifactId>
-        	<version>3.0.4.RELEASE</version>
         </dependency>
     </dependencies>
 

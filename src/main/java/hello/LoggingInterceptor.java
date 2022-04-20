@@ -17,9 +17,6 @@ public class LoggingInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
     		this.start = System.currentTimeMillis();
-    		/*response.setHeader("Access-Control-Allow-Origin", "*");
-    		response.setHeader("Access-Control-Allow-Methods", "*");
-    		response.setHeader("Access-Control-Allow-Headers", "*");*/
 		return true;
     }
     @Override
