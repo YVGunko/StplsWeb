@@ -14,16 +14,14 @@ public class LoggingInterceptor extends HandlerInterceptorAdapter {
 	long start;
 	
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-            throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler){
     		this.start = System.currentTimeMillis();
 		return true;
     }
     @Override
     public void afterCompletion(
-			HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
-			throws Exception {
-    		System.out.println("at : " + new Date()+". URI : " + request.getRequestURI() +" with responce: " + response.getStatus() + "; took: "+ (System.currentTimeMillis()-this.start));
+			HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex){
+    		System.out.println("at : " + new Date()+". URI : " + request.getRequestURI() +" with response: " + response.getStatus() + "; took: "+ (System.currentTimeMillis()-this.start));
     		if (ex!=null) System.out.println(ex.getMessage());
     }
 }

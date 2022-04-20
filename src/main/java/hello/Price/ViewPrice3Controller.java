@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,8 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
-
-import hello.Client.ClientRepository;
 
 
 @Controller
@@ -33,7 +30,6 @@ public class ViewPrice3Controller {
 	@Autowired PriceRepository repositoryPrice;
 	@Autowired PriceTypeRepository repositoryPT;
 	@Autowired PriceRootRepository repositoryPR;
-	@Autowired ClientRepository clientRepository;
 	@Autowired PriceColumnService pcService;
 	@Autowired PriceRootService servicePR;
 	@Autowired PriceTypeService servicePT;

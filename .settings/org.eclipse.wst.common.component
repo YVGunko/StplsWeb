@@ -2,7 +2,7 @@
                 
     
     
-    <wb-module deploy-name="serverqr-0.1.0">
+    <wb-module deploy-name="serverpr-0.0.1">
                                 
         
         
@@ -26,7 +26,7 @@
         <property name="java-output-path" value="/beauty_backend/target/classes"/>
                         
         
-        <property name="context-root" value="serverqr"/>
+        <property name="context-root" value="serverpr"/>
                             
     
     

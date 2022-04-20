@@ -13,8 +13,6 @@ import org.springframework.stereotype.Service;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 
-import hello.Mail;
-
 @Service
 public class EmailSenderService {
     @Autowired

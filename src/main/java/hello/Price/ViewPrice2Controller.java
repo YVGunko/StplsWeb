@@ -19,7 +19,6 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import hello.Client.ClientRepository;
 import hello.Price.PriceRoot;
 import hello.Price.PriceRootRepository;
 
@@ -32,7 +31,6 @@ public class ViewPrice2Controller {
 	@Autowired PriceRepository repositoryPrice;
 	@Autowired PriceTypeRepository repositoryPT;
 	@Autowired PriceRootRepository repositoryPR;
-	@Autowired ClientRepository clientRepository;
 	@Autowired PriceColumnService pcService;
 	@Autowired PriceRootService servicePR;
 	@Autowired PriceTypeService servicePT;

@@ -3,7 +3,6 @@ package hello.User;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.Access;
@@ -16,7 +15,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
@@ -34,7 +32,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import hello.Employee.Employee;
 import hello.TableRelation.PriceUser;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -81,14 +78,6 @@ public class User implements UserDetails {
 		this.superUser = superUser;
 	}
 
-	public Employee getEmployee() {
-		return employee;
-	}
-
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
-
 	public Date getDt() {
 		return dt;
 	}
@@ -102,14 +91,13 @@ public class User implements UserDetails {
         return "User{" + "id=" + id + ", name=" + name + ", superUser=" + superUser + '}';
     }
 	
-	public User(Long id, String name, String pswd, Boolean superUser, Employee employee, Date dt, Boolean external) {
+	public User(Long id, String name, String pswd, Boolean superUser, Date dt, Boolean external) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.pswd = pswd;
 		this.superUser = superUser;
 		this.external = external;
-		this.employee = employee;
 		this.dt = dt;
 	}
 	public User(Long id) {
@@ -119,7 +107,6 @@ public class User implements UserDetails {
 		this.pswd = "";
 		this.superUser = false;
 		this.external = false;
-		this.employee = null;
 		this.dt = new Date();
 	}
 
@@ -147,23 +134,11 @@ public class User implements UserDetails {
 	@ColumnDefault("false")
 	Boolean external;
 	
-	@JsonProperty("Id_s")
-	@ManyToOne(fetch = FetchType.EAGER)
-	@ColumnDefault("0")
-	public Employee employee;
-	
 	@JsonProperty("DT")
 	@JsonFormat(pattern="dd.MM.yyyy HH:mm:ss",timezone="Europe/Moscow")
 	@Column(name = "dt", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	Date dt = new Date();
 
-	public Boolean getExternal() {
-		return external;
-	}
-
-	public void setExternal(Boolean external) {
-		this.external = external;
-	}
 	@Size(min=5, message = "Не меньше 5 знаков")
 	private String password;
     @Transient
